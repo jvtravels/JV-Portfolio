@@ -1,0 +1,110 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+
+export default function CustomCursor() {
+  const [mounted, setMounted] = useState(false);
+  const cursorRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => { setMounted(true); }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    const el = cursorRef.current;
+    if (!el) return;
+
+    let tx = 0, ty = 0, cx = 0, cy = 0;
+    let visible = false;
+    let rafId = 0;
+
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+    function tick() {
+      cx = lerp(cx, tx, 0.14);
+      cy = lerp(cy, ty, 0.14);
+      if (el) el.style.transform = `translate3d(${cx}px,${cy}px,0)`;
+      rafId = requestAnimationFrame(tick);
+    }
+    rafId = requestAnimationFrame(tick);
+
+    const onMove = (e: MouseEvent) => {
+      tx = e.clientX;
+      ty = e.clientY;
+      if (!visible) {
+        cx = tx; cy = ty;
+        el.style.opacity = "1";
+        visible = true;
+      }
+    };
+
+    const onLeave = () => { el.style.opacity = "0"; visible = false; };
+    const onEnter = () => { el.style.opacity = "1"; visible = true; };
+
+    const INTERACTIVE = "a, button, [role='button'], input, textarea, select, label, [data-cursor]";
+    const TEXT = "p, h1, h2, h3, h4, h5, h6, span, li, blockquote";
+
+    const onOver = (e: MouseEvent) => {
+      const t = e.target as Element;
+      const isInteractive = t.closest(INTERACTIVE);
+      const isText = t.closest(TEXT);
+
+      if (isInteractive) {
+        el.style.width = "32px";
+        el.style.height = "32px";
+        el.style.marginLeft = "-16px";
+        el.style.marginTop = "-16px";
+        el.style.mixBlendMode = "difference";
+      } else if (isText) {
+        el.style.width = "18px";
+        el.style.height = "18px";
+        el.style.marginLeft = "-9px";
+        el.style.marginTop = "-9px";
+        el.style.mixBlendMode = "difference";
+      } else {
+        el.style.width = "18px";
+        el.style.height = "18px";
+        el.style.marginLeft = "-9px";
+        el.style.marginTop = "-9px";
+        el.style.mixBlendMode = "normal";
+      }
+    };
+
+    document.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseover", onOver);
+    document.documentElement.addEventListener("mouseleave", onLeave);
+    document.documentElement.addEventListener("mouseenter", onEnter);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      document.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseover", onOver);
+      document.documentElement.removeEventListener("mouseleave", onLeave);
+      document.documentElement.removeEventListener("mouseenter", onEnter);
+    };
+  }, [mounted]);
+
+  if (!mounted) return null;
+
+  return createPortal(
+    <div
+      ref={cursorRef}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        zIndex: 2147483647,
+        pointerEvents: "none",
+        opacity: 0,
+        transition: "opacity 0.2s ease, width 0.2s ease, height 0.2s ease, margin 0.2s ease",
+        width: 18,
+        height: 18,
+        marginLeft: -9,
+        marginTop: -9,
+        borderRadius: "50%",
+        background: "#fff",
+      }}
+    />,
+    document.body
+  );
+}
