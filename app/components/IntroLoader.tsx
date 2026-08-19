@@ -66,7 +66,7 @@ export default function IntroLoader() {
               fontSize: 13,
               fontWeight: 500,
               letterSpacing: /[ऀ-ॿ　-鿿゠-ヿ]/.test(WORDS[index]) ? "0" : "0.18em",
-              color: "#ff623b",
+              color: "#f7b538",
               userSelect: "none",
               fontFamily: "inherit",
             }}
