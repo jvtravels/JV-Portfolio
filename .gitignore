@@ -24,3 +24,4 @@ tempo/node_modules/
 tempo/dist/
 tempo/.next/
 /.tempo/
+.vercel
