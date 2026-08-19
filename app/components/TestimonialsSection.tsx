@@ -103,7 +103,7 @@ export default function TestimonialsSection() {
           }}>
             Testimonial
           </span>
-          <div className="testimonial-header" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
+          <div className="testimonial-header reveal" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
             <h2 style={{
               fontSize: "clamp(28px, 3vw, 40px)",
               fontWeight: 600,
@@ -155,7 +155,7 @@ export default function TestimonialsSection() {
           </div>
 
           {/* Cards */}
-          <div style={{ overflow: "hidden" }}>
+          <div className="reveal reveal-delay-1" style={{ overflow: "hidden" }}>
             <div
               style={{
                 display: "grid",

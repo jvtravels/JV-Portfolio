@@ -42,7 +42,7 @@ export default function Footer() {
 
       <div className="section-px">
         {/* Top row — blurb + social icons */}
-        <div style={{
+        <div className="reveal" style={{
           display: "flex",
           alignItems: "flex-start",
           justifyContent: "space-between",
