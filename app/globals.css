@@ -5,9 +5,12 @@
 }
 
 :root {
-  --accent: #ff623b;
-  --accent-hover: #e8502c;
-  --accent-text: #0a0a0a;
+  --accent: #780116;
+  --accent-hover: #f7b538;
+  --accent-text: #ffffff;
+  --accent-text-hover: #0a0a0a;
+  --accent-border: #f7b538;
+  --accent-border-hover: #780116;
   --font: var(--font-sans), system-ui, -apple-system, sans-serif;
   --content-width: 1200px;
   --page-px: clamp(96px, 12vw, 260px);
@@ -102,7 +105,7 @@ button:focus-visible,
 [role="button"]:focus-visible,
 input:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-hover);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -319,15 +322,40 @@ button {
   border-color: var(--text-dim);
 }
 
-/* CTA buttons */
+/* CTA buttons — shutter hover: a yellow panel wipes up from the bottom */
 .btn-primary {
+  position: relative;
   display: inline-block;
+  overflow: hidden;
   background: var(--accent);
   color: var(--accent-text);
-  transition: background 0.2s ease, opacity 0.2s ease;
+  border-bottom: 3px solid var(--accent-border);
+  transition: border-color 0.3s ease;
 }
-.btn-primary:hover {
+.btn-primary-label {
+  position: relative;
+  z-index: 1;
+}
+.btn-primary-fill {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: inherit;
+  justify-content: inherit;
+  padding: inherit;
   background: var(--accent-hover);
+  color: var(--accent-text-hover);
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  border-bottom-color: var(--accent-border-hover);
+}
+.btn-primary:hover .btn-primary-fill,
+.btn-primary:focus-visible .btn-primary-fill {
+  clip-path: inset(0 0 0 0);
 }
 
 .btn-ghost {

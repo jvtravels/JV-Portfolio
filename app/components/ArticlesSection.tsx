@@ -135,6 +135,7 @@ export default function ArticlesSection() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="View all articles on Medium (opens in a new tab)"
+              className="btn-primary"
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -143,20 +144,15 @@ export default function ArticlesSection() {
                 fontWeight: 500,
                 letterSpacing: "0.05em",
                 textTransform: "uppercase",
-                color: "var(--accent-text)",
-                background: "var(--accent)",
                 padding: "0 20px",
                 borderRadius: 2,
-                borderBottom: "3px solid #a53d1e",
-                transition: "background 0.2s ease",
                 boxSizing: "border-box",
               }}
-              onMouseEnter={e => (e.currentTarget.style.background = "var(--accent-hover)")}
-              onMouseLeave={e => (e.currentTarget.style.background = "var(--accent)")}
-              onFocus={e => (e.currentTarget.style.background = "var(--accent-hover)")}
-              onBlur={e => (e.currentTarget.style.background = "var(--accent)")}
             >
-              View all Articles
+              <span className="btn-primary-label">View all Articles</span>
+              <span className="btn-primary-fill" aria-hidden="true">
+                <span className="btn-primary-label">View all Articles</span>
+              </span>
             </a>
           </div>
         </div>
