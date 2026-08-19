@@ -50,6 +50,14 @@ html[data-theme="light"] {
   --toggle-icon-active: #ffffff;
   --toggle-active-bg: #0a0a0a;
   --toggle-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.06);
+
+  /* CTA buttons: inverse of dark mode — default yellow, hover red */
+  --accent: #f7b538;
+  --accent-hover: #780116;
+  --accent-text: #0a0a0a;
+  --accent-text-hover: #ffffff;
+  --accent-border: #780116;
+  --accent-border-hover: #f7b538;
 }
 
 html {
