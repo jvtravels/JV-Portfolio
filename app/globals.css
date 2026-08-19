@@ -315,6 +315,21 @@ button {
   }
 }
 
+/* Articles grid: 3 columns get too narrow for the card titles well above the
+   general 860px breakpoint, causing ugly heading wraps — collapse earlier. */
+@media (max-width: 1100px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+  .articles-card {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .articles-card:last-child {
+    border-bottom: none;
+  }
+}
+
 /* Nav link hover */
 .nav-link {
   color: var(--text-dim);
