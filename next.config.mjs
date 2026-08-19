@@ -6,6 +6,7 @@ const nextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "framerusercontent.com" },
+      { protocol: "https", hostname: "i.pravatar.cc" },
     ],
   },
 };

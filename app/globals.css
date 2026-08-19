@@ -5,20 +5,54 @@
 }
 
 :root {
-  --bg: #000000;
-  --text: #ffffff;
-  --text-dim: rgba(255, 255, 255, 0.55);
-  --text-muted: rgba(255, 255, 255, 0.32);
-  --border: rgba(255, 255, 255, 0.07);
   --accent: #ff623b;
-  --font: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --accent-hover: #e8502c;
+  --accent-text: #0a0a0a;
+  --font: var(--font-sans), system-ui, -apple-system, sans-serif;
   --content-width: 1200px;
-  --page-px: 120px;
+  --page-px: clamp(96px, 12vw, 260px);
+  --frame-inset: clamp(20px, 8vw, 120px);
+}
+
+/* Theme tokens. --fg-rgb lets every existing rgba(var(--fg-rgb), X) opacity
+   tier flip between white-on-black and black-on-white without redefining
+   each tier per theme. */
+html[data-theme="dark"] {
+  --bg: #000000;
+  --fg-rgb: 255, 255, 255;
+  --text: #ffffff;
+  --text-dim: rgba(var(--fg-rgb), 0.55);
+  --text-muted: rgba(var(--fg-rgb), 0.5);
+  --border: rgba(var(--fg-rgb), 0.07);
+  --surface: rgba(var(--fg-rgb), 0.04);
+  --cursor-color: #ffffff;
+  --toggle-bg: #ffffff;
+  --toggle-icon: #6b6b6b;
+  --toggle-icon-active: #ffffff;
+  --toggle-active-bg: #0a0a0a;
+  --toggle-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="light"] {
+  --bg: #ffffff;
+  --fg-rgb: 0, 0, 0;
+  --text: #0a0a0a;
+  --text-dim: rgba(var(--fg-rgb), 0.6);
+  --text-muted: rgba(var(--fg-rgb), 0.52);
+  --border: rgba(var(--fg-rgb), 0.1);
+  --surface: rgba(var(--fg-rgb), 0.035);
+  --cursor-color: #0a0a0a;
+  --toggle-bg: #ffffff;
+  --toggle-icon: #6b6b6b;
+  --toggle-icon-active: #ffffff;
+  --toggle-active-bg: #0a0a0a;
+  --toggle-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.06);
 }
 
 html {
   background: var(--bg);
   color: var(--text);
+  transition: background 0.25s ease;
 }
 
 body {
@@ -28,16 +62,49 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
-  cursor: none;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
-body a,
-body button,
-body [role="button"],
-body input,
-body select,
-body textarea {
-  cursor: none;
+@media (prefers-reduced-motion: no-preference) and (pointer: fine) {
+  body,
+  body a,
+  body button,
+  body [role="button"],
+  body input,
+  body select,
+  body textarea {
+    cursor: none;
+  }
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 300;
+  background: #fff;
+  color: #0a0a0a;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 16px;
+}
+
+/* Focus states (keyboard navigation) */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 /* Noise grain texture overlay on dark sections */
@@ -70,59 +137,234 @@ button {
   background: none;
 }
 
-.page-px {
+.page-px,
+.section-px {
   padding-left: var(--page-px);
   padding-right: var(--page-px);
 }
 
+.section-py {
+  padding: 64px 0;
+}
+
+.section-py-sm {
+  padding: 56px 0;
+}
+
+/* Work section: two-up rows that collapse to one column on narrow screens */
+.work-row {
+  display: grid;
+  gap: 0 64px;
+  margin-bottom: 96px;
+}
+.work-row:last-child {
+  margin-bottom: 0;
+}
+.work-row-a {
+  grid-template-columns: 0.75fr 1.25fr;
+}
+.work-row-b {
+  grid-template-columns: 1.25fr 0.75fr;
+}
+
+/* About Me section: photo + copy, collapses to one column */
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Articles section: 3-up grid, collapses to one column on narrow screens */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+}
+.articles-card {
+  border-right: 1px solid var(--border);
+}
+.articles-card:last-child {
+  border-right: none;
+}
+
+.hero-section {
+  min-height: 100vh;
+  padding-top: 120px;
+}
+
+#work h2.reveal {
+  margin-bottom: 100px;
+}
+#articles h2.reveal,
+#faq h2.reveal {
+  margin-bottom: 56px;
+}
+#about-me h2 {
+  margin-bottom: 40px;
+}
+#testimonials .testimonial-header {
+  margin-bottom: 40px;
+}
+#brands p.reveal {
+  margin-bottom: 48px;
+}
+
+@media (max-width: 860px) {
+  :root {
+    --page-px: clamp(26px, 7vw, 52px);
+    --frame-inset: clamp(16px, 4vw, 32px);
+  }
+  .hero-section {
+    min-height: 72vh;
+    padding-top: 96px;
+  }
+  .section-py {
+    padding: 40px 0;
+  }
+  .section-py-sm {
+    padding: 36px 0;
+  }
+  .work-row {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+  .articles-card {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .articles-card:last-child {
+    border-bottom: none;
+  }
+  #work h2.reveal {
+    margin-bottom: 32px;
+  }
+  #articles h2.reveal,
+  #faq h2.reveal {
+    margin-bottom: 32px;
+  }
+  #about-me h2 {
+    margin-bottom: 32px;
+  }
+  #brands p.reveal {
+    margin-bottom: 32px;
+  }
+  #testimonials .testimonial-card {
+    padding: 24px 20px 20px;
+  }
+  #testimonials .testimonial-eyebrow {
+    text-align: center;
+  }
+  #testimonials .testimonial-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --page-px: clamp(22px, 6vw, 44px);
+    --frame-inset: clamp(14px, 3.5vw, 26px);
+  }
+}
+
 /* Nav link hover */
 .nav-link {
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--text-dim);
   transition: color 0.4s cubic-bezier(0.44, 0, 0.56, 1);
 }
 .nav-link:hover {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+}
+
+/* Footer social icon hover */
+.footer-social-link:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
 }
 
 /* CTA buttons */
 .btn-primary {
   display: inline-block;
-  background: #ff623b;
-  color: #fff;
+  background: var(--accent);
+  color: var(--accent-text);
   transition: background 0.2s ease, opacity 0.2s ease;
 }
 .btn-primary:hover {
-  background: #e8502c;
+  background: var(--accent-hover);
 }
 
 .btn-ghost {
   display: inline-block;
-  color: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(var(--fg-rgb), 0.6);
+  border: 1px solid rgba(var(--fg-rgb), 0.12);
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 .btn-ghost:hover {
-  color: rgba(255, 255, 255, 0.9);
-  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--text);
+  border-color: rgba(var(--fg-rgb), 0.3);
 }
 
 .btn-nav {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.92);
-  color: #0a0a0a;
+  background: rgba(var(--fg-rgb), 0.92);
+  color: var(--bg);
   transition: background 0.2s ease;
 }
 .btn-nav:hover {
-  background: #fff;
+  background: var(--text);
 }
 
 /* Work section: live site link hover */
 .work-link {
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(var(--fg-rgb), 0.82);
   transition: color 0.2s ease;
 }
 .work-link:hover {
-  color: #ff623b;
+  color: var(--accent);
+}
+
+/* Brands marquee: single-line, seamless infinite loop, clipped to the dashed frame */
+.brands-marquee {
+  overflow: hidden;
+  margin-left: var(--frame-inset);
+  margin-right: var(--frame-inset);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+.brands-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 64px;
+  padding-right: 64px;
+  animation: brands-marquee 38s linear infinite;
+  will-change: transform;
+}
+.brands-marquee:hover .brands-marquee-track {
+  animation-play-state: paused;
+}
+@keyframes brands-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brands-marquee-track {
+    animation: none;
+  }
+  .brands-marquee {
+    overflow-x: auto;
+  }
 }
 
 /* Scroll reveal */
@@ -138,3 +380,11 @@ button {
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}

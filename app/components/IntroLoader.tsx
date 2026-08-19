@@ -18,9 +18,10 @@ export default function IntroLoader() {
   const [mounted, setMounted] = useState(false);
   const [index, setIndex] = useState(0);
   const [leaving, setLeaving] = useState(false);
-  // Skip in canvas/iframe context so the Tempo storyboard viewport doesn't time out
+  // Skip in canvas/iframe context (Tempo storyboard viewport) and for users who prefer reduced motion
   const [gone, setGone] = useState(() =>
-    typeof window !== "undefined" && window.self !== window.top
+    typeof window !== "undefined" &&
+    (window.self !== window.top || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
   );
 
   useEffect(() => { setMounted(true); }, []);
@@ -45,7 +46,7 @@ export default function IntroLoader() {
       style={{
         position: "fixed",
         inset: 0,
-        background: "#000",
+        background: "var(--bg)",
         zIndex: 99999,
         display: "flex",
         alignItems: "center",

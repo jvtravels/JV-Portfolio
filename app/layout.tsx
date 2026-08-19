@@ -1,34 +1,56 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { Playfair_Display } from "next/font/google";
+import { Playfair_Display, Schibsted_Grotesk, Gloock } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
+const schibstedGrotesk = Schibsted_Grotesk({ subsets: ["latin"], variable: "--font-sans" });
+const gloock = Gloock({ subsets: ["latin"], weight: "400", variable: "--font-gloock" });
 import SmoothScroll from "./components/SmoothScroll";
 import CustomCursor from "./components/CustomCursor";
 import RevealObserver from "./components/RevealObserver";
 import GradualBlur from "./components/GradualBlur";
+import { ThemeProvider } from "./components/ThemeProvider";
+import ThemeToggle from "./components/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "Jay Vyas — Designer",
   description: "Product design, brand identity and web design for ambitious companies.",
 };
 
+const THEME_INIT_SCRIPT = `
+(function () {
+  try {
+    var stored = localStorage.getItem("theme");
+    var resolved = stored === "light" || stored === "dark"
+      ? stored
+      : window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", resolved);
+  } catch (e) {}
+})();
+`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${schibstedGrotesk.variable} ${playfair.variable} ${gloock.variable}`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
       <body>
-        <CustomCursor />
-        <RevealObserver />
-        <GradualBlur
-          position="bottom"
-          strength={1}
-          divCount={3}
-          height="10rem"
-          zIndex={9999}
-          style={{ position: "fixed", bottom: 0 }}
-        />
-        <SmoothScroll>{children}</SmoothScroll>
+        <ThemeProvider>
+          <a href="#main-content" className="skip-link">Skip to content</a>
+          <CustomCursor />
+          <RevealObserver />
+          <GradualBlur
+            position="bottom"
+            strength={1}
+            divCount={3}
+            height="10rem"
+            zIndex={9999}
+            style={{ position: "fixed", bottom: 0 }}
+          />
+          <SmoothScroll>{children}</SmoothScroll>
+          <ThemeToggle />
+        </ThemeProvider>
       </body>
     </html>
   );

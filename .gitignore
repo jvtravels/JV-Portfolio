@@ -22,3 +22,5 @@ next-env.d.ts
 tempo/.tempo/
 tempo/node_modules/
 tempo/dist/
+tempo/.next/
+/.tempo/

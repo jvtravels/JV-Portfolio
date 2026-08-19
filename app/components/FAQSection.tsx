@@ -1,143 +1,140 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { FAQS } from "@/app/data/faqs";
+import { DashedH, DashedV } from "@/app/components/DashedFrame";
 
-const FAQS = [
-  {
-    q: "What does your process look like?",
-    a: "I start by understanding the business goal and user context, then move straight into design. I share progress early and often, iterate quickly based on feedback, and ship. No unnecessary workshops or drawn-out phases — just clear communication and focused work.",
-  },
-  {
-    q: "What happens after I reach out?",
-    a: "I'll respond within 24 hours to schedule a short call. We'll align on scope, timeline, and budget. If it's a good fit, I send a brief proposal and we get started.",
-  },
-  {
-    q: "Do you work on branding and web together?",
-    a: "Yes — and I prefer it that way. Brand identity and digital presence are most effective when designed as one cohesive system. I often take projects from logo and visual language through to launched website.",
-  },
-  {
-    q: "Do you work solo or with a team?",
-    a: "I work solo on most projects, which means you have a direct line to the designer doing the work. For larger builds I bring in trusted developers I've worked with before.",
-  },
-  {
-    q: "How long do projects typically take?",
-    a: "Brand projects run 3–5 weeks. Web design projects are 4–8 weeks depending on scope. Combined brand and web engagements are typically 6–10 weeks.",
-  },
-];
-
-function FAQItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-
+function FAQRow({ faq, isOpen, onToggle }: { faq: (typeof FAQS)[number]; isOpen: boolean; onToggle: () => void }) {
   return (
-    <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+    <div style={{
+      background: "var(--surface)",
+      border: "1px solid var(--border)",
+      borderRadius: 16,
+    }}>
       <button
-        onClick={() => setOpen(!open)}
+        type="button"
+        aria-expanded={isOpen}
+        onClick={onToggle}
         style={{
           width: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "22px 0",
-          background: "none",
+          gap: 16,
+          padding: "20px 24px",
+          background: "transparent",
           border: "none",
-          cursor: "pointer",
           textAlign: "left",
+          cursor: "pointer",
         }}
       >
         <span style={{
-          fontSize: 16,
-          fontWeight: 400,
-          color: "rgba(255,255,255,0.82)",
-          letterSpacing: "-0.015em",
-          lineHeight: 1.3,
+          fontSize: 17,
+          fontWeight: 500,
+          letterSpacing: "-0.01em",
+          color: "var(--text)",
         }}>
-          {q}
+          {faq.question}
         </span>
-        <motion.span
-          animate={{ rotate: open ? 45 : 0 }}
-          transition={{ duration: 0.2, ease: "easeInOut" }}
+        <span
+          aria-hidden="true"
           style={{
-            fontSize: 22,
-            fontWeight: 300,
-            color: "rgba(255,255,255,0.4)",
             flexShrink: 0,
-            marginLeft: 24,
-            lineHeight: 1,
-            display: "inline-block",
+            width: 28,
+            height: 28,
+            borderRadius: "50%",
+            background: "var(--surface)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
+            transition: "transform 0.25s ease",
           }}
         >
-          +
-        </motion.span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="var(--text)" strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        </span>
       </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            key="answer"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-            style={{ overflow: "hidden" }}
-          >
-            <p style={{
-              fontSize: 14,
-              fontWeight: 400,
-              color: "rgba(255,255,255,0.45)",
-              lineHeight: 1.72,
-              letterSpacing: "-0.01em",
-              paddingBottom: 22,
-              maxWidth: 680,
-            }}>
-              {a}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        style={{
+          maxHeight: isOpen ? 400 : 0,
+          overflow: "hidden",
+          transition: "max-height 0.3s ease",
+        }}
+      >
+        <p style={{
+          margin: 0,
+          padding: "0 24px 22px",
+          fontSize: 15,
+          lineHeight: 1.6,
+          color: "var(--text-muted)",
+          maxWidth: 640,
+        }}>
+          {faq.answer}
+        </p>
+      </div>
     </div>
   );
 }
 
 export default function FAQSection() {
-  return (
-    <section style={{
-      padding: "100px 120px",
-      borderTop: "1px solid rgba(255,255,255,0.07)",
-      display: "grid",
-      gridTemplateColumns: "1fr 1fr",
-      gap: 80,
-      boxSizing: "border-box",
-    }}>
-      {/* Left */}
-      <div>
-        <div style={{
-          fontSize: 10,
-          fontWeight: 500,
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          color: "#ff623b",
-          marginBottom: 24,
-        }}>
-          The Approach
-        </div>
-        <p style={{
-          fontSize: "clamp(22px, 2vw, 30px)",
-          fontWeight: 400,
-          lineHeight: 1.35,
-          letterSpacing: "-0.02em",
-          color: "rgba(255,255,255,0.85)",
-          maxWidth: 400,
-        }}>
-          Clear scope. Fast iteration. Work that ships.
-        </p>
-      </div>
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-      {/* Right: accordion */}
-      <div>
-        {FAQS.map((item, i) => (
-          <FAQItem key={i} q={item.q} a={item.a} />
-        ))}
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }} />
+  return (
+    <section id="faq">
+      <div className="section-py" style={{ position: "relative" }}>
+        <DashedH style={{ bottom: 0, left: 0, right: 0 }} />
+        <DashedV style={{ top: 0, bottom: 0, left: "var(--frame-inset)" }} />
+        <DashedV style={{ top: 0, bottom: 0, right: "var(--frame-inset)" }} />
+
+        <div className="section-px">
+          <span style={{
+            display: "block",
+            textAlign: "center",
+            fontSize: 11,
+            fontWeight: 500,
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            color: "var(--text-muted)",
+            marginBottom: 12,
+          }}>
+            FAQ
+          </span>
+          <h2 className="reveal" style={{
+            textAlign: "center",
+            fontSize: "clamp(28px, 3vw, 40px)",
+            fontWeight: 600,
+            letterSpacing: "-0.02em",
+            color: "var(--text)",
+            lineHeight: 1.25,
+            marginLeft: "auto",
+            marginRight: "auto",
+            maxWidth: 640,
+          }}>
+            Frequently asked questions
+          </h2>
+
+          <div
+            className="reveal"
+            style={{
+              maxWidth: 720,
+              margin: "0 auto",
+              display: "flex",
+              flexDirection: "column",
+              gap: 12,
+            }}
+          >
+            {FAQS.map((faq, i) => (
+              <FAQRow
+                key={faq.question}
+                faq={faq}
+                isOpen={openIndex === i}
+                onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

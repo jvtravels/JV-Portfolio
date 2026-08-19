@@ -3,8 +3,11 @@ import Nav from "./components/Nav";
 import Noise from "./components/Noise";
 import Hero from "./components/Hero";
 import WorkSection from "./components/WorkSection";
+import AboutMeSection from "./components/AboutMeSection";
 import TestimonialsSection from "./components/TestimonialsSection";
-import BioSection from "./components/BioSection";
+import ArticlesSection from "./components/ArticlesSection";
+import FAQSection from "./components/FAQSection";
+import BrandsSection from "./components/BrandsSection";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -13,10 +16,15 @@ export default function Home() {
       <IntroLoader />
       <Noise patternSize={200} patternRefreshInterval={2} patternAlpha={22} />
       <Nav />
-      <Hero />
-      <WorkSection />
-      <TestimonialsSection />
-      <BioSection />
+      <main id="main-content">
+        <Hero />
+        <BrandsSection />
+        <WorkSection />
+        <AboutMeSection />
+        <TestimonialsSection />
+        <ArticlesSection />
+        <FAQSection />
+      </main>
       <Footer />
     </>
   );

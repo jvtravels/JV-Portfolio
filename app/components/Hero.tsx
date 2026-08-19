@@ -2,46 +2,38 @@
 
 export default function Hero() {
   return (
-    <section style={{
+    <section className="section-px hero-section" style={{
       display: "flex",
       flexDirection: "column",
-      justifyContent: "flex-end",
-      minHeight: "100vh",
-      paddingTop: 120,
-      paddingBottom: 64,
-      paddingLeft: 160,
-      paddingRight: 160,
+      alignItems: "center",
+      justifyContent: "center",
+      textAlign: "center",
+      background: "#000",
     }}>
-      <h1 style={{
-        fontSize: "clamp(20px, 2vw, 27px)",
+      <h1 className="reveal" style={{
+        fontFamily: "var(--font-gloock)",
+        fontSize: "clamp(40px, 7vw, 108px)",
         fontWeight: 400,
-        lineHeight: 1.2,
-        letterSpacing: "-0.03em",
+        lineHeight: 1.05,
+        letterSpacing: "-0.01em",
         color: "#fff",
-        maxWidth: 620,
-        marginBottom: 24,
+        margin: 0,
       }}>
-        High-impact websites and branding for AI and tech brands. Convert more users, build trust, and turn traffic into real business results
+        Intelligent by Design
       </h1>
 
-      <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-        <a href="mailto:vyasjay85@gmail.com" style={{
-          fontSize: 12,
-          fontWeight: 500,
-          letterSpacing: "0.05em",
-          textTransform: "uppercase",
-          color: "#fff",
-          background: "#ff623b",
-          padding: "11px 20px",
-          borderRadius: 2,
-          transition: "background 0.2s ease",
-        }}
-          onMouseEnter={e => (e.currentTarget.style.background = "#e8502c")}
-          onMouseLeave={e => (e.currentTarget.style.background = "#ff623b")}
-        >
-          Start a project
-        </a>
-      </div>
+      <p className="reveal reveal-delay-1" style={{
+        fontSize: 12,
+        fontWeight: 500,
+        letterSpacing: "0.08em",
+        textTransform: "uppercase",
+        color: "rgba(255,255,255,0.45)",
+        lineHeight: 1.8,
+        maxWidth: 460,
+        marginTop: 40,
+      }}>
+        Living for curiosity, designing for the world and passionate about the design and mechanics of everyday things.
+      </p>
     </section>
   );
 }

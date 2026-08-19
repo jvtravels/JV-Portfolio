@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function Nav() {
   return (
     <div style={{
@@ -11,27 +13,29 @@ export default function Nav() {
       display: "flex",
       justifyContent: "center",
       pointerEvents: "none",
+      padding: "0 16px",
     }}>
       <nav style={{
         pointerEvents: "auto",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        gap: 80,
-        background: "rgba(255,255,255,0.03)",
+        gap: "clamp(24px, 8vw, 80px)",
+        background: "rgba(var(--fg-rgb),0.03)",
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
         borderRadius: 8,
         padding: "6px 20px 6px 10px",
-        minWidth: 440,
+        maxWidth: "calc(100vw - 32px)",
       }}>
         {/* Left: avatar + name */}
-        <a href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-          <img
+        <a href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", flexShrink: 0 }}>
+          <Image
             src="/JV.png"
             alt="Jay Vyas"
             width={34}
             height={34}
+            priority
             style={{
               borderRadius: 5,
               objectFit: "cover",
@@ -44,7 +48,7 @@ export default function Nav() {
             fontSize: 14,
             fontWeight: 500,
             letterSpacing: "-0.02em",
-            color: "rgba(255,255,255,0.88)",
+            color: "rgba(var(--fg-rgb),0.88)",
             lineHeight: 1,
           }}>
             Jay Vyas
@@ -60,9 +64,14 @@ export default function Nav() {
             gap: 7,
             textDecoration: "none",
             transition: "opacity 0.2s ease",
+            padding: "12px 0",
+            margin: "-12px 0",
+            minWidth: 0,
           }}
           onMouseEnter={e => (e.currentTarget.style.opacity = "0.7")}
           onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
+          onFocus={e => (e.currentTarget.style.opacity = "0.7")}
+          onBlur={e => (e.currentTarget.style.opacity = "1")}
         >
           <span style={{
             width: 7,
@@ -70,15 +79,18 @@ export default function Nav() {
             borderRadius: "50%",
             background: "#4ade80",
             flexShrink: 0,
-            boxShadow: "0 0 6px rgba(74,222,128,0.6)",
           }} />
           <span style={{
             fontSize: 11,
             fontWeight: 500,
             letterSpacing: "0.06em",
             textTransform: "uppercase",
-            color: "rgba(255,255,255,0.75)",
+            color: "rgba(var(--fg-rgb),0.75)",
             lineHeight: 1,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            minWidth: 0,
           }}>
             vyasjay85@gmail.com
           </span>

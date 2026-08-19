@@ -14,6 +14,10 @@ export default function CustomCursor() {
     const el = cursorRef.current;
     if (!el) return;
 
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    if (prefersReducedMotion || isCoarsePointer) return;
+
     let tx = 0, ty = 0, cx = 0, cy = 0;
     let visible = false;
     let rafId = 0;
@@ -26,7 +30,18 @@ export default function CustomCursor() {
       if (el) el.style.transform = `translate3d(${cx}px,${cy}px,0)`;
       rafId = requestAnimationFrame(tick);
     }
-    rafId = requestAnimationFrame(tick);
+
+    const onVisibilityChange = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      } else if (!rafId) {
+        rafId = requestAnimationFrame(tick);
+      }
+    };
+
+    if (!document.hidden) rafId = requestAnimationFrame(tick);
+    document.addEventListener("visibilitychange", onVisibilityChange);
 
     const onMove = (e: MouseEvent) => {
       tx = e.clientX;
@@ -77,6 +92,7 @@ export default function CustomCursor() {
 
     return () => {
       cancelAnimationFrame(rafId);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
       document.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseover", onOver);
       document.documentElement.removeEventListener("mouseleave", onLeave);
@@ -102,7 +118,7 @@ export default function CustomCursor() {
         marginLeft: -9,
         marginTop: -9,
         borderRadius: "50%",
-        background: "#fff",
+        background: "var(--cursor-color)",
       }}
     />,
     document.body

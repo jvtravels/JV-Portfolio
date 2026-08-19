@@ -15,3 +15,9 @@
     opacity: 0.5;
   }
 }
+
+@media (max-width: 860px) {
+  .gradual-blur {
+    height: 4.5rem !important;
+  }
+}
