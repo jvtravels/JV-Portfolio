@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import WorkSection from "./components/WorkSection";
 import AboutMeSection from "./components/AboutMeSection";
 import TestimonialsSection from "./components/TestimonialsSection";
+import ProcessSection from "./components/ProcessSection";
 import ArticlesSection from "./components/ArticlesSection";
 import FAQSection from "./components/FAQSection";
 import BrandsSection from "./components/BrandsSection";
@@ -22,6 +23,7 @@ export default function Home() {
         <WorkSection />
         <AboutMeSection />
         <TestimonialsSection />
+        <ProcessSection />
         <ArticlesSection />
         <FAQSection />
       </main>

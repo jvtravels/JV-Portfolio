@@ -175,6 +175,22 @@ button {
   align-items: start;
 }
 
+/* Process section: 2x2 step grid, collapses to one column on narrow screens */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.steps-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
 /* Articles section: 3-up grid, collapses to one column on narrow screens */
 .articles-grid {
   display: grid;
@@ -197,7 +213,8 @@ button {
   margin-bottom: 100px;
 }
 #articles h2.reveal,
-#faq h2.reveal {
+#faq h2.reveal,
+#process h2.reveal {
   margin-bottom: 56px;
 }
 #about-me h2 {
@@ -237,6 +254,14 @@ button {
   .articles-grid {
     grid-template-columns: 1fr;
   }
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .steps-card {
+    min-height: 0;
+    padding: 24px;
+  }
   .articles-card {
     border-right: none;
     border-bottom: 1px solid var(--border);
@@ -248,7 +273,8 @@ button {
     margin-bottom: 32px;
   }
   #articles h2.reveal,
-  #faq h2.reveal {
+  #faq h2.reveal,
+  #process h2.reveal {
     margin-bottom: 32px;
   }
   #about-me h2 {
