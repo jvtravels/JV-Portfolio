@@ -80,24 +80,6 @@ export default function IntroLoader() {
           )}
         </AnimatePresence>
       </motion.div>
-
-      {/* Bottom seam: brand duotone rule, only appears once the word cycle ends, then unzips apart to lead the shutter's exit */}
-      {leaving && (
-        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 3, display: "flex" }}>
-          <motion.div
-            initial={{ x: "0%" }}
-            animate={{ x: "-100%" }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            style={{ width: "50%", height: "100%", background: "#780116" }}
-          />
-          <motion.div
-            initial={{ x: "0%" }}
-            animate={{ x: "100%" }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            style={{ width: "50%", height: "100%", background: "#f7b538" }}
-          />
-        </div>
-      )}
     </motion.div>
   );
 }
