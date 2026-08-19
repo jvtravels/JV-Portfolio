@@ -29,7 +29,7 @@ export default function ArticlesSection() {
           </span>
           <h2 className="reveal" style={{
             textAlign: "center",
-            fontSize: "clamp(28px, 3vw, 40px)",
+            fontSize: "clamp(24px, 7vw, 40px)",
             fontWeight: 600,
             letterSpacing: "-0.02em",
             color: "var(--text)",
@@ -103,7 +103,7 @@ export default function ArticlesSection() {
                   display: "flex",
                   alignItems: "flex-start",
                   gap: 8,
-                  fontSize: "clamp(20px, 5vw, 28px)",
+                  fontSize: "clamp(18px, 6.5vw, 28px)",
                   fontWeight: 600,
                   letterSpacing: "-0.01em",
                   lineHeight: 1.2,

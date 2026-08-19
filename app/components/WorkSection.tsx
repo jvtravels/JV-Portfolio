@@ -73,7 +73,7 @@ function WorkItem({ project, size }: { project: (typeof PROJECTS)[number]; size:
         </div>
       </div>
       <h3 style={{
-        fontSize: 20,
+        fontSize: "clamp(17px, 4.5vw, 20px)",
         fontWeight: 600,
         letterSpacing: "-0.01em",
         lineHeight: 1.35,
@@ -120,7 +120,7 @@ export default function WorkSection() {
           </span>
           <h2 className="reveal" style={{
             textAlign: "center",
-            fontSize: "clamp(28px, 3vw, 40px)",
+            fontSize: "clamp(24px, 7vw, 40px)",
             fontWeight: 600,
             letterSpacing: "-0.02em",
             color: "var(--text)",

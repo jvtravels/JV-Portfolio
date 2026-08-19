@@ -105,7 +105,7 @@ export default function TestimonialsSection() {
           </span>
           <div className="testimonial-header reveal" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
             <h2 style={{
-              fontSize: "clamp(28px, 3vw, 40px)",
+              fontSize: "clamp(24px, 7vw, 40px)",
               fontWeight: 600,
               letterSpacing: "-0.02em",
               color: "var(--text)",
