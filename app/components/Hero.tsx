@@ -8,7 +8,7 @@ export default function Hero() {
       alignItems: "center",
       justifyContent: "center",
       textAlign: "center",
-      background: "#000",
+      background: "var(--bg)",
     }}>
       <h1 className="reveal" style={{
         fontFamily: "var(--font-gloock)",
@@ -16,7 +16,7 @@ export default function Hero() {
         fontWeight: 400,
         lineHeight: 1.05,
         letterSpacing: "-0.01em",
-        color: "#fff",
+        color: "rgba(var(--fg-rgb), 1)",
         margin: 0,
       }}>
         Intelligent by Design
@@ -27,7 +27,7 @@ export default function Hero() {
         fontWeight: 500,
         letterSpacing: "0.08em",
         textTransform: "uppercase",
-        color: "rgba(255,255,255,0.45)",
+        color: "var(--text-muted)",
         lineHeight: 1.8,
         maxWidth: 460,
         marginTop: 40,

@@ -70,7 +70,7 @@ export const PROJECTS: Project[] = [
     liveSite: "enroute.health",
     liveUrl: "https://enroute.health",
     year: "2024",
-    images: ["EGgJ7JF4N08AsCKjTeiGPxd38U","8QlMUEtVYS6dqr4GfdB8Umv60JQ","Sahgsx48pJL0cvlUITtPY2HbZP8","jntD6zKnUyOGhyXFUEq1KF00E","w9SbEoxuADcWNbOCIzu9urWLU","y0KLvqDVRtBqMqRoSaWXr3xNkx8"].map(FU),
+    images: ["/Work/P1.avif", ...["8QlMUEtVYS6dqr4GfdB8Umv60JQ","Sahgsx48pJL0cvlUITtPY2HbZP8","jntD6zKnUyOGhyXFUEq1KF00E","w9SbEoxuADcWNbOCIzu9urWLU","y0KLvqDVRtBqMqRoSaWXr3xNkx8"].map(FU)],
     userGroups: [
       { num: "01", title: "Athletes", bullets: ["Training seriously and tracking performance", "Need data that connects health metrics to actual output", "Expect scientific rigour, not wellness aesthetics"] },
       { num: "02", title: "Active Individuals", bullets: ["Exercising regularly but hitting a ceiling", "Want to understand their body's data and act on it", "Frustrated by generic advice not tied to their numbers"] },
@@ -111,7 +111,7 @@ export const PROJECTS: Project[] = [
     liveSite: "tractorbeam",
     liveUrl: "#",
     year: "2024",
-    images: ["lTCu2v7UhDJ4WGGd19d6wws8","e3lK9Ov9Q9u8WvRujeF7X2QRXY","Exq8Vjye7Y3PHYcJvxalgtFwjc","0ffw3v5Z7jsrji9TkxFxG9B1J8","cCjuiJEMlLqBgSNZCrgufUjpU","EqbPYOlgHFBs4QRS1zCVAk97ik","ZB1DGKF1vzMTlryk64fmAOEruus"].map(FU),
+    images: ["/Work/P2.avif", ...["e3lK9Ov9Q9u8WvRujeF7X2QRXY","Exq8Vjye7Y3PHYcJvxalgtFwjc","0ffw3v5Z7jsrji9TkxFxG9B1J8","cCjuiJEMlLqBgSNZCrgufUjpU","EqbPYOlgHFBs4QRS1zCVAk97ik","ZB1DGKF1vzMTlryk64fmAOEruus"].map(FU)],
     userGroups: [
       { num: "01", title: "Limited Partners", bullets: ["Evaluating technical partners for portfolio companies", "Need proof of calibre before any conversation", "Judge expertise through the quality of presentation"] },
       { num: "02", title: "Portfolio Founders", bullets: ["Looking for an AI partner who can execute, not just advise", "Need to evaluate fit quickly in competitive timelines", "Want to see evidence of end-to-end delivery"] },
@@ -152,7 +152,7 @@ export const PROJECTS: Project[] = [
     liveSite: "axilon.com",
     liveUrl: "https://axilon.com",
     year: "2024",
-    images: ["8WAgXZfhCeCW37Sb36z8lI5N28","VNo0ZCTQqXteCBsfJRxzH6TEBBo","MaXORaaP6w2bOFBYiGuULl9DxA","okOjAR0IPhkgvkbkoWowksy1Q"].map(FU),
+    images: ["/Work/P3.avif", ...["VNo0ZCTQqXteCBsfJRxzH6TEBBo","MaXORaaP6w2bOFBYiGuULl9DxA","okOjAR0IPhkgvkbkoWowksy1Q"].map(FU)],
     userGroups: [
       { num: "01", title: "Plant Managers", bullets: ["Overseeing complex operations across multiple lines", "Need to understand deployment workflows without engineering depth", "Evaluate tools based on reliability signals, not feature lists"] },
       { num: "02", title: "OT Engineers", bullets: ["Responsible for implementation and integration", "Need technical clarity on how the system slots in", "Look for specificity — generic claims lose them immediately"] },
@@ -193,7 +193,7 @@ export const PROJECTS: Project[] = [
     liveSite: "cypher.build",
     liveUrl: "https://cypher.build",
     year: "2024",
-    images: ["U3FdQdXfwnzbHMxVgqYsbk4","fynz6BBRInDRcNAbR3yxF6bBpXM","6Rp81LAufsCTmiSLdaZ4r0ONk","KGmmFz02BG6G7gU5DSsQvZyAns","N4kMZRWkDBbqycFllX3fgDfNBE","37jFAEJjlvkZ0UzGaV6uQWxOw"].map(FU),
+    images: ["/Work/P4.avif", ...["fynz6BBRInDRcNAbR3yxF6bBpXM","6Rp81LAufsCTmiSLdaZ4r0ONk","KGmmFz02BG6G7gU5DSsQvZyAns","N4kMZRWkDBbqycFllX3fgDfNBE","37jFAEJjlvkZ0UzGaV6uQWxOw"].map(FU)],
     userGroups: [
       { num: "01", title: "E-commerce Leaders", bullets: ["Running high-volume Shopify and DTC stores", "Need analytics that connect data to revenue decisions", "Compare Cypher against in-house data teams"] },
       { num: "02", title: "Growth Teams", bullets: ["Running experiments and attribution models", "Need a partner who speaks conversion, not just dashboards", "Judge the consultancy by how well their site communicates"] },

@@ -79,7 +79,7 @@ function FAQRow({ faq, isOpen, onToggle }: { faq: (typeof FAQS)[number]; isOpen:
 }
 
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section id="faq">
