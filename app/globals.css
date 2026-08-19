@@ -351,6 +351,9 @@ button {
   animation: brands-marquee 38s linear infinite;
   will-change: transform;
 }
+html[data-theme="light"] .brands-marquee-track img {
+  filter: invert(1);
+}
 .brands-marquee:hover .brands-marquee-track {
   animation-play-state: paused;
 }
