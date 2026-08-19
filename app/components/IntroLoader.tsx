@@ -32,7 +32,7 @@ export default function IntroLoader() {
       return () => clearTimeout(t);
     } else {
       setLeaving(true);
-      const t = setTimeout(() => setGone(true), 600);
+      const t = setTimeout(() => setGone(true), 700);
       return () => clearTimeout(t);
     }
   }, [index]);
@@ -41,8 +41,8 @@ export default function IntroLoader() {
 
   return (
     <motion.div
-      animate={{ opacity: leaving ? 0 : 1 }}
-      transition={{ duration: 0.55, ease: "easeInOut" }}
+      animate={{ y: leaving ? "-100%" : "0%" }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       style={{
         position: "fixed",
         inset: 0,
@@ -54,27 +54,32 @@ export default function IntroLoader() {
         pointerEvents: leaving ? "none" : "all",
       }}
     >
-      <AnimatePresence mode="wait">
-        {index < WORDS.length && (
-          <motion.span
-            key={index}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.18, ease: "easeInOut" }}
-            style={{
-              fontSize: 13,
-              fontWeight: 500,
-              letterSpacing: /[ऀ-ॿ　-鿿゠-ヿ]/.test(WORDS[index]) ? "0" : "0.18em",
-              color: "#f7b538",
-              userSelect: "none",
-              fontFamily: "inherit",
-            }}
-          >
-            {WORDS[index]}
-          </motion.span>
-        )}
-      </AnimatePresence>
+      <motion.div
+        animate={{ opacity: leaving ? 0 : 1 }}
+        transition={{ duration: 0.25, ease: "easeInOut" }}
+      >
+        <AnimatePresence mode="wait">
+          {index < WORDS.length && (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.18, ease: "easeInOut" }}
+              style={{
+                fontSize: 13,
+                fontWeight: 500,
+                letterSpacing: /[ऀ-ॿ　-鿿゠-ヿ]/.test(WORDS[index]) ? "0" : "0.18em",
+                color: "#f7b538",
+                userSelect: "none",
+                fontFamily: "inherit",
+              }}
+            >
+              {WORDS[index]}
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </motion.div>
   );
 }
