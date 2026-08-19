@@ -32,7 +32,7 @@ export default function IntroLoader() {
       return () => clearTimeout(t);
     } else {
       setLeaving(true);
-      const t = setTimeout(() => setGone(true), 700);
+      const t = setTimeout(() => setGone(true), 1000);
       return () => clearTimeout(t);
     }
   }, [index]);
@@ -42,7 +42,7 @@ export default function IntroLoader() {
   return (
     <motion.div
       animate={{ y: leaving ? "-100%" : "0%" }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       style={{
         position: "fixed",
         inset: 0,
