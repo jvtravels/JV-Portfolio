@@ -32,9 +32,10 @@ const TESTIMONIALS = [
   {
     quote: "Working with Jay over the last few months has been a blast. He’s quick, responsive and very collaborative.",
     highlight: "He always listens and understands what the client is looking for and explores all possibilities to make sure the client is satisfied. 10/10 recommend working with him — if you don’t, then more for me!",
-    name: "Vimalan Vijayasekaran",
-    role: "CEO at ViDesigns",
+    name: "Samuel Darwin",
+    role: "CEO at Joy Technologies",
     avatar: "https://i.pravatar.cc/80?img=7",
+    logo: "/Testimonial-logo/T4.png",
   },
   {
     quote: "Jay designed our new site and absolutely nailed it.",
