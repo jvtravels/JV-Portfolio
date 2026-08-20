@@ -48,9 +48,10 @@ const TESTIMONIALS = [
   {
     quote: "Jay was an incredible partner.",
     highlight: "He worked efficiently and thoughtfully to help us recreate our website, was responsive and collaborative, and produced excellent work at a fraction of the cost and time.",
-    name: "Ben Simon",
-    role: "CEO at Axilon",
+    name: "Riddhi Keralia",
+    role: "Founder at Unpause",
     avatar: "https://i.pravatar.cc/80?img=68",
+    logo: "/Testimonial-logo/T6.png",
   },
 ];
 
