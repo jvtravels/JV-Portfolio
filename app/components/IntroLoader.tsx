@@ -68,7 +68,7 @@ export default function IntroLoader() {
             transition={{
               duration: BAND_DURATION,
               ease: [0.16, 1, 0.3, 1],
-              delay: i * BAND_STAGGER,
+              delay: (BAND_COUNT - 1 - i) * BAND_STAGGER,
             }}
             style={{
               position: "absolute",
@@ -77,7 +77,7 @@ export default function IntroLoader() {
               top: `${(i * 100) / BAND_COUNT}%`,
               height: `${100 / BAND_COUNT}%`,
               background: "#f7b538",
-              transformOrigin: "top",
+              transformOrigin: "bottom",
               zIndex: -1,
             }}
           />
