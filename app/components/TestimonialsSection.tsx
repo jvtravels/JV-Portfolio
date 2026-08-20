@@ -61,6 +61,14 @@ const TESTIMONIALS = [
     avatar: "https://i.pravatar.cc/80?img=45",
     logo: "/Testimonial-logo/T7.png",
   },
+  {
+    quote: "Jay understood exactly what we were going for.",
+    highlight: "He moved quickly without cutting corners, and the final result felt polished from day one.",
+    name: "Nihar Tanna",
+    role: "Founder at Two Words Studio",
+    avatar: "https://i.pravatar.cc/80?img=22",
+    logo: "/Testimonial-logo/T8.png",
+  },
 ];
 
 function getCardsVisible(width: number) {
