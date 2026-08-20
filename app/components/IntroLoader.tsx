@@ -13,6 +13,10 @@ const WORDS = [
 ];
 
 const WORD_DURATION = 560;
+const BAND_COUNT = 9;
+const BAND_DURATION = 0.5;
+const BAND_STAGGER = 0.045;
+const EXIT_MS = (BAND_COUNT - 1) * BAND_STAGGER * 1000 + BAND_DURATION * 1000;
 
 export default function IntroLoader() {
   const [mounted, setMounted] = useState(false);
@@ -32,7 +36,7 @@ export default function IntroLoader() {
       return () => clearTimeout(t);
     } else {
       setLeaving(true);
-      const t = setTimeout(() => setGone(true), 1000);
+      const t = setTimeout(() => setGone(true), EXIT_MS + 80);
       return () => clearTimeout(t);
     }
   }, [index]);
@@ -40,23 +44,44 @@ export default function IntroLoader() {
   if (!mounted || gone) return null;
 
   return (
-    <motion.div
-      animate={{ y: leaving ? "-100%" : "0%" }}
-      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+    <div
       style={{
         position: "fixed",
         inset: 0,
-        background: "var(--bg)",
         zIndex: 99999,
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        flexDirection: "column",
         pointerEvents: leaving ? "none" : "all",
       }}
     >
+      {Array.from({ length: BAND_COUNT }).map((_, i) => (
+        <motion.div
+          key={i}
+          initial={{ scaleY: 1 }}
+          animate={{ scaleY: leaving ? 0 : 1 }}
+          transition={{
+            duration: BAND_DURATION,
+            ease: [0.16, 1, 0.3, 1],
+            delay: leaving ? i * BAND_STAGGER : 0,
+          }}
+          style={{
+            flex: 1,
+            background: "var(--bg)",
+            transformOrigin: "top",
+          }}
+        />
+      ))}
+
       <motion.div
         animate={{ opacity: leaving ? 0 : 1 }}
         transition={{ duration: 0.25, ease: "easeInOut" }}
+        style={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         <AnimatePresence mode="wait">
           {index < WORDS.length && (
@@ -80,6 +105,6 @@ export default function IntroLoader() {
           )}
         </AnimatePresence>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
