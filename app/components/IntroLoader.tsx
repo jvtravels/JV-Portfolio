@@ -18,13 +18,12 @@ const BAND_DURATION = 0.5;
 const BAND_STAGGER = 0.045;
 const YELLOW_HOLD_MS = 500;
 const SWEEP_MS = (BAND_COUNT - 1) * BAND_STAGGER * 1000 + BAND_DURATION * 1000;
-const FADE_MS = 500;
 
 export default function IntroLoader() {
   const [mounted, setMounted] = useState(false);
   const [index, setIndex] = useState(0);
   const [blindsOpen, setBlindsOpen] = useState(false);
-  const [fadingOut, setFadingOut] = useState(false);
+  const [yellowOpen, setYellowOpen] = useState(false);
   // Skip in canvas/iframe context (Tempo storyboard viewport) and for users who prefer reduced motion
   const [gone, setGone] = useState(() =>
     typeof window !== "undefined" &&
@@ -41,21 +40,16 @@ export default function IntroLoader() {
       return () => clearTimeout(t);
     } else {
       setBlindsOpen(true);
-      const fadeTimer = setTimeout(() => setFadingOut(true), SWEEP_MS + YELLOW_HOLD_MS);
-      const goneTimer = setTimeout(
-        () => setGone(true),
-        SWEEP_MS + YELLOW_HOLD_MS + FADE_MS
-      );
-      return () => { clearTimeout(fadeTimer); clearTimeout(goneTimer); };
+      const yellowTimer = setTimeout(() => setYellowOpen(true), SWEEP_MS + YELLOW_HOLD_MS);
+      const goneTimer = setTimeout(() => setGone(true), SWEEP_MS + YELLOW_HOLD_MS + SWEEP_MS + 60);
+      return () => { clearTimeout(yellowTimer); clearTimeout(goneTimer); };
     }
   }, [index, wordsDone]);
 
   if (!mounted || gone) return null;
 
   return (
-    <motion.div
-      animate={{ opacity: fadingOut ? 0 : 1 }}
-      transition={{ duration: FADE_MS / 1000, ease: "easeInOut" }}
+    <div
       style={{
         position: "fixed",
         inset: 0,
@@ -65,9 +59,29 @@ export default function IntroLoader() {
         pointerEvents: wordsDone ? "none" : "all",
       }}
     >
-      {wordsDone && (
-        <div style={{ position: "absolute", inset: 0, zIndex: -1, background: "#f7b538" }} />
-      )}
+      {wordsDone &&
+        Array.from({ length: BAND_COUNT }).map((_, i) => (
+          <motion.div
+            key={`yellow-${i}`}
+            initial={{ scaleY: 1 }}
+            animate={{ scaleY: yellowOpen ? 0 : 1 }}
+            transition={{
+              duration: BAND_DURATION,
+              ease: [0.16, 1, 0.3, 1],
+              delay: i * BAND_STAGGER,
+            }}
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: `${(i * 100) / BAND_COUNT}%`,
+              height: `${100 / BAND_COUNT}%`,
+              background: "#f7b538",
+              transformOrigin: "top",
+              zIndex: -1,
+            }}
+          />
+        ))}
 
       {Array.from({ length: BAND_COUNT }).map((_, i) => (
         <motion.div
@@ -121,6 +135,6 @@ export default function IntroLoader() {
           )}
         </AnimatePresence>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
