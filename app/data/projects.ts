@@ -69,9 +69,9 @@ export const PROJECTS: Project[] = [
     liveSite: "tempo.new",
     liveUrl: "https://tempo.new",
     year: "2026",
-    images: ["/Work/Tempo-dark.jpg"],
-    coverDark: "/Work/Tempo-dark.jpg",
-    coverLight: "/Work/Tempo-light.jpg",
+    images: ["/Work/Tempo-dark.png"],
+    coverDark: "/Work/Tempo-dark.png",
+    coverLight: "/Work/Tempo-light.png",
     userGroups: [
       { num: "01", title: "Placeholder audience", bullets: ["Placeholder — to be replaced with real audience insight"] },
     ],
