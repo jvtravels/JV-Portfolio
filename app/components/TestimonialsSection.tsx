@@ -53,6 +53,14 @@ const TESTIMONIALS = [
     avatar: "https://i.pravatar.cc/80?img=68",
     logo: "/Testimonial-logo/T6.png",
   },
+  {
+    quote: "Jay brought real clarity to a project that needed it.",
+    highlight: "He was thoughtful about the details and easy to work with from start to finish.",
+    name: "Thuy-an Nguyen",
+    role: "CPO at Unpause",
+    avatar: "https://i.pravatar.cc/80?img=45",
+    logo: "/Testimonial-logo/T7.png",
+  },
 ];
 
 function getCardsVisible(width: number) {
