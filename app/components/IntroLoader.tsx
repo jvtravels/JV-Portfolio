@@ -16,34 +16,34 @@ const WORD_DURATION = 560;
 const BAND_COUNT = 9;
 const BAND_DURATION = 0.5;
 const BAND_STAGGER = 0.045;
-const FILL_MS = 380;
-const HOLD_MS = 220;
-const OPEN_MS = (BAND_COUNT - 1) * BAND_STAGGER * 1000 + BAND_DURATION * 1000;
+const YELLOW_HOLD_MS = 1600;
+const SWEEP_MS = (BAND_COUNT - 1) * BAND_STAGGER * 1000 + BAND_DURATION * 1000;
 
 export default function IntroLoader() {
   const [mounted, setMounted] = useState(false);
   const [index, setIndex] = useState(0);
-  const [filling, setFilling] = useState(false);
-  const [leaving, setLeaving] = useState(false);
+  const [blindsOpen, setBlindsOpen] = useState(false);
   // Skip in canvas/iframe context (Tempo storyboard viewport) and for users who prefer reduced motion
   const [gone, setGone] = useState(() =>
     typeof window !== "undefined" &&
     (window.self !== window.top || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
   );
 
+  const wordsDone = index >= WORDS.length;
+
   useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
-    if (index < WORDS.length) {
+    if (!wordsDone) {
       const t = setTimeout(() => setIndex(i => i + 1), WORD_DURATION);
       return () => clearTimeout(t);
     } else {
-      setFilling(true);
-      const openTimer = setTimeout(() => setLeaving(true), FILL_MS + HOLD_MS);
-      const goneTimer = setTimeout(() => setGone(true), FILL_MS + HOLD_MS + OPEN_MS + 80);
-      return () => { clearTimeout(openTimer); clearTimeout(goneTimer); };
+      setBlindsOpen(true);
+      const closeTimer = setTimeout(() => setBlindsOpen(false), SWEEP_MS + YELLOW_HOLD_MS);
+      const goneTimer = setTimeout(() => setGone(true), SWEEP_MS + YELLOW_HOLD_MS + SWEEP_MS + 60);
+      return () => { clearTimeout(closeTimer); clearTimeout(goneTimer); };
     }
-  }, [index]);
+  }, [index, wordsDone]);
 
   if (!mounted || gone) return null;
 
@@ -55,18 +55,22 @@ export default function IntroLoader() {
         zIndex: 99999,
         display: "flex",
         flexDirection: "column",
-        pointerEvents: filling || leaving ? "none" : "all",
+        pointerEvents: wordsDone ? "none" : "all",
       }}
     >
+      {wordsDone && (
+        <div style={{ position: "absolute", inset: 0, zIndex: -1, background: "#f7b538" }} />
+      )}
+
       {Array.from({ length: BAND_COUNT }).map((_, i) => (
         <motion.div
           key={i}
           initial={{ scaleY: 1 }}
-          animate={{ scaleY: leaving ? 0 : 1 }}
+          animate={{ scaleY: blindsOpen ? 0 : 1 }}
           transition={{
             duration: BAND_DURATION,
             ease: [0.16, 1, 0.3, 1],
-            delay: leaving ? i * BAND_STAGGER : 0,
+            delay: i * BAND_STAGGER,
           }}
           style={{
             flex: 1,
@@ -74,18 +78,11 @@ export default function IntroLoader() {
             background: "var(--bg)",
             transformOrigin: "top",
           }}
-        >
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: filling || leaving ? 1 : 0 }}
-            transition={{ duration: FILL_MS / 1000, ease: "easeOut" }}
-            style={{ position: "absolute", inset: 0, background: "#f7b538" }}
-          />
-        </motion.div>
+        />
       ))}
 
       <motion.div
-        animate={{ opacity: filling || leaving ? 0 : 1 }}
+        animate={{ opacity: wordsDone ? 0 : 1 }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
         style={{
           position: "absolute",
