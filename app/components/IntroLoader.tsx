@@ -22,8 +22,6 @@ const OPEN_MS = (BAND_COUNT - 1) * BAND_STAGGER * 1000 + BAND_DURATION * 1000;
 
 export default function IntroLoader() {
   const [mounted, setMounted] = useState(false);
-  const [entering, setEntering] = useState(false);
-  const [entered, setEntered] = useState(false);
   const [index, setIndex] = useState(0);
   const [filling, setFilling] = useState(false);
   const [leaving, setLeaving] = useState(false);
@@ -36,15 +34,6 @@ export default function IntroLoader() {
   useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
-    if (!mounted) return;
-    setEntering(true);
-    const fadeTimer = setTimeout(() => setEntering(false), FILL_MS + HOLD_MS);
-    const enterTimer = setTimeout(() => setEntered(true), FILL_MS + HOLD_MS + FILL_MS);
-    return () => { clearTimeout(fadeTimer); clearTimeout(enterTimer); };
-  }, [mounted]);
-
-  useEffect(() => {
-    if (!entered) return;
     if (index < WORDS.length) {
       const t = setTimeout(() => setIndex(i => i + 1), WORD_DURATION);
       return () => clearTimeout(t);
@@ -54,7 +43,7 @@ export default function IntroLoader() {
       const goneTimer = setTimeout(() => setGone(true), FILL_MS + HOLD_MS + OPEN_MS + 80);
       return () => { clearTimeout(openTimer); clearTimeout(goneTimer); };
     }
-  }, [index, entered]);
+  }, [index]);
 
   if (!mounted || gone) return null;
 
@@ -66,7 +55,7 @@ export default function IntroLoader() {
         zIndex: 99999,
         display: "flex",
         flexDirection: "column",
-        pointerEvents: entering || filling || leaving ? "none" : "all",
+        pointerEvents: filling || leaving ? "none" : "all",
       }}
     >
       {Array.from({ length: BAND_COUNT }).map((_, i) => (
@@ -88,7 +77,7 @@ export default function IntroLoader() {
         >
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: entering || filling || leaving ? 1 : 0 }}
+            animate={{ opacity: filling || leaving ? 1 : 0 }}
             transition={{ duration: FILL_MS / 1000, ease: "easeOut" }}
             style={{ position: "absolute", inset: 0, background: "#f7b538" }}
           />
@@ -96,7 +85,7 @@ export default function IntroLoader() {
       ))}
 
       <motion.div
-        animate={{ opacity: entering || filling || leaving ? 0 : 1 }}
+        animate={{ opacity: filling || leaving ? 0 : 1 }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
         style={{
           position: "absolute",
@@ -107,7 +96,7 @@ export default function IntroLoader() {
         }}
       >
         <AnimatePresence mode="wait">
-          {entered && index < WORDS.length && (
+          {index < WORDS.length && (
             <motion.span
               key={index}
               initial={{ opacity: 0 }}
