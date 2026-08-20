@@ -40,9 +40,10 @@ const TESTIMONIALS = [
   {
     quote: "Jay designed our new site and absolutely nailed it.",
     highlight: "He brought great ideas to the table and was super easy to work with throughout the process. Would definitely work with him again!",
-    name: "Tom Wolting",
-    role: "Founder at Cypher",
+    name: "Nikhil Ranka",
+    role: "Co-founder at Catalyst IQ",
     avatar: "https://i.pravatar.cc/80?img=15",
+    logo: "/Testimonial-logo/T5.png",
   },
   {
     quote: "Jay was an incredible partner.",
