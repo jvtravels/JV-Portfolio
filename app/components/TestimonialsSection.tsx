@@ -11,14 +11,15 @@ const TESTIMONIALS = [
     name: "Vanshil Patel",
     role: "Founder at Nousoft",
     avatar: "https://i.pravatar.cc/80?img=13",
-    logo: "/Testimonial-logo/Nouasoft.png",
+    logo: "/Testimonial-logo/T1.png",
   },
   {
     quote: "Jay was very creative and dependable in helping us establish a new brand identity and website for Calldesk.",
     highlight: "He worked fast, was extremely adaptive and we could reach him for any quick iterations needed.",
-    name: "Marco van Bree",
-    role: "CMO at Calldesk",
+    name: "Johnathan Sanjay",
+    role: "Product Manager at Tempo",
     avatar: "https://i.pravatar.cc/80?img=33",
+    logo: "/Testimonial-logo/T2.png",
   },
   {
     quote: "Jay was refreshing to work with, he integrated well into our landing page work, emulating the style I had already set perfectly.",
