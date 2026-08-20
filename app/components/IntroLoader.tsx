@@ -18,10 +18,11 @@ const BAND_DURATION = 0.5;
 const BAND_STAGGER = 0.045;
 const FILL_MS = 380;
 const HOLD_MS = 220;
-const OPEN_MS = (BAND_COUNT - 1) * BAND_STAGGER * 1000 + BAND_DURATION * 1000;
+const SWEEP_MS = (BAND_COUNT - 1) * BAND_STAGGER * 1000 + BAND_DURATION * 1000;
 
 export default function IntroLoader() {
   const [mounted, setMounted] = useState(false);
+  const [entered, setEntered] = useState(false);
   const [index, setIndex] = useState(0);
   const [filling, setFilling] = useState(false);
   const [leaving, setLeaving] = useState(false);
@@ -34,16 +35,22 @@ export default function IntroLoader() {
   useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
+    const t = setTimeout(() => setEntered(true), SWEEP_MS + 80);
+    return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    if (!entered) return;
     if (index < WORDS.length) {
       const t = setTimeout(() => setIndex(i => i + 1), WORD_DURATION);
       return () => clearTimeout(t);
     } else {
       setFilling(true);
       const openTimer = setTimeout(() => setLeaving(true), FILL_MS + HOLD_MS);
-      const goneTimer = setTimeout(() => setGone(true), FILL_MS + HOLD_MS + OPEN_MS + 80);
+      const goneTimer = setTimeout(() => setGone(true), FILL_MS + HOLD_MS + SWEEP_MS + 80);
       return () => { clearTimeout(openTimer); clearTimeout(goneTimer); };
     }
-  }, [index]);
+  }, [index, entered]);
 
   if (!mounted || gone) return null;
 
@@ -61,12 +68,12 @@ export default function IntroLoader() {
       {Array.from({ length: BAND_COUNT }).map((_, i) => (
         <motion.div
           key={i}
-          initial={{ scaleY: 1 }}
+          initial={{ scaleY: 0 }}
           animate={{ scaleY: leaving ? 0 : 1 }}
           transition={{
             duration: BAND_DURATION,
             ease: [0.16, 1, 0.3, 1],
-            delay: leaving ? i * BAND_STAGGER : 0,
+            delay: i * BAND_STAGGER,
           }}
           style={{
             flex: 1,
@@ -96,7 +103,7 @@ export default function IntroLoader() {
         }}
       >
         <AnimatePresence mode="wait">
-          {index < WORDS.length && (
+          {entered && index < WORDS.length && (
             <motion.span
               key={index}
               initial={{ opacity: 0 }}
