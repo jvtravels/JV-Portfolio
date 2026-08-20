@@ -29,6 +29,8 @@ export interface Project {
   liveUrl: string;
   year: string;
   images: string[];
+  coverDark?: string;
+  coverLight?: string;
   userGroups: UserGroup[];
   hmwQuestion: string;
   brandNote: string;
@@ -39,45 +41,42 @@ const FU = (id: string) =>
 
 export const PROJECTS: Project[] = [
   {
-    slug: "enroute-health",
-    shortTitle: "Enroute Health",
-    title: "Enroute Health — Brand and launch website for performance-focused health lab",
-    tags: ["Web Design", "Development", "Branding"],
-    description: "The website was designed to capture early demand and build credibility before launch.\n\nIt converted initial interest into a growing waitlist while clearly communicating Enroute's performance-driven positioning. The visual system reinforced sport, precision, and scientific trust.",
-    whatIs: "Enroute Health is a performance-focused sports lab offering data-driven health assessments, biomarker testing, and personalised coaching for athletes and active individuals. They help people understand their body's performance data and act on it.",
-    timeline: "10 weeks",
-    problem: "Enroute had no digital presence to capture early demand. The brand hadn't been defined, and without a launch site, interest from early partners had nowhere to land. They needed to convert attention into waitlist signups before the product was ready to show.",
+    slug: "tempo",
+    shortTitle: "Tempo",
+    title: "Tempo - AI Software Factory",
+    tags: ["Product Design", "AI Workflows", "SaaS"],
+    description: "Tempo is an AI software factory that brings design, planning, and engineering into one workspace.\n\nThe product design work focused on making AI-driven workflows feel legible and trustworthy for teams shipping production software.",
+    whatIs: "Tempo is an all-in-one workspace for software teams, combining docs, canvases, issues, and AI agents to help teams design and ship features faster.",
+    timeline: "Ongoing",
+    problem: "Teams using AI tools to build software lacked a shared workspace that kept design, planning, and code in sync. Context was scattered across disconnected tools.",
     tldrDecisions: [
-      "Built the brand identity before the website — visual credibility had to precede product screenshots",
-      "Designed a waitlist-first funnel anchored in scientific trust: data, precision, sport",
-      "Led with athlete endorsement signals over wellness aesthetics",
-      "Kept the color system restrained — performance and science, not wellness pastels",
+      "Placeholder — real product decisions to be added",
+      "Placeholder — real product decisions to be added",
+      "Placeholder — real product decisions to be added",
     ],
-    solution: "Built the brand system and launch website together — sport, precision, and scientific trust as visual principles. Waitlist-first architecture, no product screenshots needed.",
-    results: "Growing waitlist within weeks of going live. The visual identity became the anchor for all partner conversations and early press coverage.",
+    solution: "Placeholder solution summary — to be replaced with real case-study content.",
+    results: "Placeholder results summary — to be replaced with real case-study content.",
     metrics: [
-      { value: "10wk", label: "Brief to launch" },
-      { value: "3×", label: "Waitlist target hit" },
-      { value: "↑", label: "Partner confidence" },
+      { value: "—", label: "Placeholder metric" },
+      { value: "—", label: "Placeholder metric" },
+      { value: "—", label: "Placeholder metric" },
     ],
     learningsList: [
-      "Pre-launch credibility is built through design, not product. Brands that look right attract clients before they can demonstrate results.",
-      "Constraints sharpen decisions. No product screenshots meant the visual system had to carry 100% of the conversion weight.",
-      "The brand became the sales tool. Early partners referenced the site in their own outreach — without being asked.",
+      "Placeholder learning — to be replaced with real case-study content.",
     ],
-    industry: "Sports Lab",
-    role: "Brand, Design, Development",
-    liveSite: "enroute.health",
-    liveUrl: "https://enroute.health",
-    year: "2024",
-    images: ["/Work/P1.avif", ...["8QlMUEtVYS6dqr4GfdB8Umv60JQ","Sahgsx48pJL0cvlUITtPY2HbZP8","jntD6zKnUyOGhyXFUEq1KF00E","w9SbEoxuADcWNbOCIzu9urWLU","y0KLvqDVRtBqMqRoSaWXr3xNkx8"].map(FU)],
+    industry: "SaaS",
+    role: "Product Design",
+    liveSite: "tempo.new",
+    liveUrl: "https://tempo.new",
+    year: "2026",
+    images: ["/Work/Tempo-dark.png"],
+    coverDark: "/Work/Tempo-dark.png",
+    coverLight: "/Work/Tempo-light.png",
     userGroups: [
-      { num: "01", title: "Athletes", bullets: ["Training seriously and tracking performance", "Need data that connects health metrics to actual output", "Expect scientific rigour, not wellness aesthetics"] },
-      { num: "02", title: "Active Individuals", bullets: ["Exercising regularly but hitting a ceiling", "Want to understand their body's data and act on it", "Frustrated by generic advice not tied to their numbers"] },
-      { num: "03", title: "Coaches & Trainers", bullets: ["Managing multiple clients with different physiology", "Need objective biomarker data to build personalised plans", "Looking for a credible partner to recommend to clients"] },
+      { num: "01", title: "Placeholder audience", bullets: ["Placeholder — to be replaced with real audience insight"] },
     ],
-    hmwQuestion: "How might we establish credibility and capture early demand for a performance health brand before the product is ready to show?",
-    brandNote: "Since this was a pre-launch with nothing to demo, the brand had to carry 100% of the conversion weight. I built the visual identity first — sport, precision, and scientific trust as design principles — before a single web page was touched. The color system stayed deliberately restrained: performance and science, not wellness pastels.",
+    hmwQuestion: "Placeholder HMW question — to be replaced with real case-study content.",
+    brandNote: "Placeholder brand note — to be replaced with real case-study content.",
   },
   {
     slug: "tractorbeam",

@@ -39,14 +39,37 @@ function WorkItem({ project, size }: { project: (typeof PROJECTS)[number]; size:
         } as React.CSSProperties}
       >
         <div style={{ position: "relative", width: "100%", aspectRatio: size === "large" ? "16 / 11" : "16 / 13" }}>
-          <Image
-            src={project.images[0]}
-            alt={project.shortTitle}
-            fill
-            draggable={false}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            style={{ objectFit: "cover" }}
-          />
+          {project.coverDark && project.coverLight ? (
+            <>
+              <Image
+                src={project.coverDark}
+                alt={project.shortTitle}
+                fill
+                draggable={false}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="work-cover-dark"
+                style={{ objectFit: "cover", transition: "opacity 0.2s ease" }}
+              />
+              <Image
+                src={project.coverLight}
+                alt={project.shortTitle}
+                fill
+                draggable={false}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="work-cover-light"
+                style={{ objectFit: "cover", position: "absolute", top: 0, left: 0, transition: "opacity 0.2s ease" }}
+              />
+            </>
+          ) : (
+            <Image
+              src={project.images[0]}
+              alt={project.shortTitle}
+              fill
+              draggable={false}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              style={{ objectFit: "cover" }}
+            />
+          )}
         </div>
         {/* Cursor-follow arrow badge */}
         <div

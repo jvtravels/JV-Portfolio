@@ -431,6 +431,15 @@ button {
 html[data-theme="light"] .brands-marquee-track img {
   filter: invert(1);
 }
+.work-cover-light {
+  opacity: 0;
+}
+html[data-theme="light"] .work-cover-dark {
+  opacity: 0;
+}
+html[data-theme="light"] .work-cover-light {
+  opacity: 1;
+}
 .brands-marquee:hover .brands-marquee-track {
   animation-play-state: paused;
 }
