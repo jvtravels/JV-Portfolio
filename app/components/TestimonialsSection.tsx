@@ -24,9 +24,10 @@ const TESTIMONIALS = [
   {
     quote: "Jay was refreshing to work with, he integrated well into our landing page work, emulating the style I had already set perfectly.",
     highlight: "He picked up on the tone we'd already established and carried it forward without needing much direction from us.",
-    name: "Daryl Ginn",
-    role: "Founder at Endless",
+    name: "Naren Lokwani",
+    role: "CEO at Frshr Technologies",
     avatar: "https://i.pravatar.cc/80?img=52",
+    logo: "/Testimonial-logo/T3.png",
   },
   {
     quote: "Working with Jay over the last few months has been a blast. He’s quick, responsive and very collaborative.",
