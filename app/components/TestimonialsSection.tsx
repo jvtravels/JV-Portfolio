@@ -8,9 +8,10 @@ const TESTIMONIALS = [
   {
     quote: "Jay is as much an artist as he is a web designer. He was able to communicate authority, attention to detail, a clean user experience, and clarity.",
     highlight: "Anyone who lands on this page will now expect these characteristics from us; which creates the frame for us to offer premium services.",
-    name: "Ben Smith",
-    role: "Founder at Live Aura",
+    name: "Vanshil Patel",
+    role: "Founder at Nousoft",
     avatar: "https://i.pravatar.cc/80?img=13",
+    logo: "/Testimonial-logo/Nouasoft.png",
   },
   {
     quote: "Jay was very creative and dependable in helping us establish a new brand identity and website for Calldesk.",
@@ -259,11 +260,23 @@ export default function TestimonialsSection() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
+                        overflow: "hidden",
                       }}>
-                        <svg width="19" height="19" viewBox="0 0 24 24">
-                          <path d="M11 20A7 7 0 0 1 4 13c0-4 8-10 15-11-1 7-1 14-8 18z" fill="black" />
-                          <path d="M4 21c5-4 8-8 12-14" stroke="white" strokeWidth="1.6" fill="none" strokeLinecap="round" />
-                        </svg>
+                        {t.logo ? (
+                          <Image
+                            src={t.logo}
+                            alt=""
+                            width={26}
+                            height={26}
+                            draggable={false}
+                            style={{ width: 26, height: 26, objectFit: "contain" }}
+                          />
+                        ) : (
+                          <svg width="19" height="19" viewBox="0 0 24 24">
+                            <path d="M11 20A7 7 0 0 1 4 13c0-4 8-10 15-11-1 7-1 14-8 18z" fill="black" />
+                            <path d="M4 21c5-4 8-8 12-14" stroke="white" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+                          </svg>
+                        )}
                       </div>
                     </div>
                     <div>
