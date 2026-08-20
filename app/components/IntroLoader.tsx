@@ -16,7 +16,7 @@ const WORD_DURATION = 560;
 const BAND_COUNT = 9;
 const BAND_DURATION = 0.5;
 const BAND_STAGGER = 0.045;
-const YELLOW_HOLD_MS = 500;
+const YELLOW_HOLD_MS = 300;
 const SWEEP_MS = (BAND_COUNT - 1) * BAND_STAGGER * 1000 + BAND_DURATION * 1000;
 
 export default function IntroLoader() {
