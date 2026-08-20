@@ -41,13 +41,12 @@ export default function IntroLoader() {
       return () => clearTimeout(t);
     } else {
       setBlindsOpen(true);
-      const closeTimer = setTimeout(() => setBlindsOpen(false), SWEEP_MS + YELLOW_HOLD_MS);
-      const fadeTimer = setTimeout(() => setFadingOut(true), SWEEP_MS + YELLOW_HOLD_MS + SWEEP_MS);
+      const fadeTimer = setTimeout(() => setFadingOut(true), SWEEP_MS + YELLOW_HOLD_MS);
       const goneTimer = setTimeout(
         () => setGone(true),
-        SWEEP_MS + YELLOW_HOLD_MS + SWEEP_MS + FADE_MS
+        SWEEP_MS + YELLOW_HOLD_MS + FADE_MS
       );
-      return () => { clearTimeout(closeTimer); clearTimeout(fadeTimer); clearTimeout(goneTimer); };
+      return () => { clearTimeout(fadeTimer); clearTimeout(goneTimer); };
     }
   }, [index, wordsDone]);
 
