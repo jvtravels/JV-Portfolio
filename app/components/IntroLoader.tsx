@@ -66,7 +66,7 @@ export default function IntroLoader() {
           }}
           style={{
             flex: 1,
-            background: "var(--bg)",
+            background: "#f7b538",
             transformOrigin: "top",
           }}
         />
@@ -95,7 +95,7 @@ export default function IntroLoader() {
                 fontSize: 13,
                 fontWeight: 500,
                 letterSpacing: /[ऀ-ॿ　-鿿゠-ヿ]/.test(WORDS[index]) ? "0" : "0.18em",
-                color: "var(--accent-hover)",
+                color: "#780116",
                 userSelect: "none",
                 fontFamily: "inherit",
               }}
