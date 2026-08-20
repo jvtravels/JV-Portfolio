@@ -76,7 +76,7 @@ export default function IntroLoader() {
               right: 0,
               top: `${(i * 100) / BAND_COUNT}%`,
               height: `${100 / BAND_COUNT}%`,
-              background: "#f7b538",
+              background: "var(--accent-hover)",
               transformOrigin: "bottom",
               zIndex: -1,
             }}
