@@ -43,7 +43,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "tempo",
     shortTitle: "Tempo",
-    title: "Tempo - AI Software Factory",
+    title: "Tempo (YC23) - AI Software Factory",
     tags: ["Product Design", "AI Workflows", "SaaS"],
     description: "Tempo is an AI software factory that brings design, planning, and engineering into one workspace.\n\nThe product design work focused on making AI-driven workflows feel legible and trustworthy for teams shipping production software.",
     whatIs: "Tempo is an all-in-one workspace for software teams, combining docs, canvases, issues, and AI agents to help teams design and ship features faster.",
