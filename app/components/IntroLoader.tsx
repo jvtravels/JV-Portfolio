@@ -66,10 +66,23 @@ export default function IntroLoader() {
           }}
           style={{
             flex: 1,
+            position: "relative",
             background: "var(--bg)",
             transformOrigin: "top",
           }}
-        />
+        >
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: leaving ? [0, 1, 0] : 0 }}
+            transition={{
+              duration: BAND_DURATION,
+              times: [0, 0.4, 1],
+              ease: "easeInOut",
+              delay: leaving ? i * BAND_STAGGER : 0,
+            }}
+            style={{ position: "absolute", inset: 0, background: "#f7b538" }}
+          />
+        </motion.div>
       ))}
 
       <motion.div
