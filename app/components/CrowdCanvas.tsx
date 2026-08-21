@@ -52,25 +52,21 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
     const BOB_AMPLITUDE = 10;
     // Our figures are bust-only art (no legs), so their bottom edge is a flat,
     // uniform cut. Sitting that edge flush against the stage's bottom border
-    // reads as a chopped-off body. Reserving a gap there instead lets the cut
-    // blend into the dark background rather than sit on a visible boundary —
-    // the same trick the upstream skiper39 crowd canvas gets "for free" from
-    // rendering into a much taller (90vh) stage than any single figure needs.
-    const MIN_BOTTOM_GAP = 20;
-
+    // reads as a chopped-off body. Every peep gets pushed up by at least this
+    // much so the cut blends into the dark background instead of sitting on a
+    // visible boundary — the same trick the upstream skiper39 crowd canvas gets
+    // "for free" from rendering into a much taller (90vh) stage than any single
+    // figure needs. FLOAT_RANGE then adds per-peep variety on top of that floor
+    // so the crowd doesn't all land on one identical line (a uniform ceiling is
+    // just as visible a "hard edge" as a uniform floor would be).
     const resetPeep = ({ peep }: { peep: Peep }) => {
+      const minBottomGap = isCompact ? 24 : 30;
+      const floatRange = isCompact ? 30 : 45;
       const direction = Math.random() > 0.5 ? 1 : -1;
-      const maxDrop = isCompact ? 0 : 40;
-      const offsetY = maxDrop - 90 * (gsap.parseEase("power2.in") as (v: number) => number)(Math.random());
-      // Clamp so a peep's full height always fits inside the stage — otherwise
-      // the canvas's overflow:hidden chops heads (top) or feet (bottom) off.
-      // The lower bound reserves BOB_AMPLITUDE of headroom, since the walk cycle
-      // lifts each peep by that much on every step (see normalWalk) — without the
-      // margin, that lift pushes the head above y=0 and clips it mid-stride. The
-      // upper bound reserves MIN_BOTTOM_GAP so the flat bust cutoff never sits
-      // flush against the stage's bottom edge.
-      const maxY = Math.max(stage.height - peep.height - MIN_BOTTOM_GAP, BOB_AMPLITUDE);
-      const startY = Math.min(Math.max(stage.height - peep.height + offsetY, BOB_AMPLITUDE), maxY);
+      const offsetY = -minBottomGap - floatRange * Math.random();
+      // Guarantee the bottom-gap floor above; only clamp the top so the walk
+      // cycle's per-step lift (see normalWalk) never pushes a head above y=0.
+      const startY = Math.max(stage.height - peep.height + offsetY, BOB_AMPLITUDE);
       let startX: number;
       let endX: number;
 
