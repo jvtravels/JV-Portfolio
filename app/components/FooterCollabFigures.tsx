@@ -14,6 +14,8 @@ export default function FooterCollabFigures() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const manRef = useRef<HTMLImageElement>(null);
   const foxRef = useRef<HTMLImageElement>(null);
+  const manShadowRef = useRef<HTMLDivElement>(null);
+  const foxShadowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const align = () => {
@@ -21,8 +23,10 @@ export default function FooterCollabFigures() {
       const heading = headingRef.current;
       const man = manRef.current;
       const fox = foxRef.current;
+      const manShadow = manShadowRef.current;
+      const foxShadow = foxShadowRef.current;
       const textNode = heading?.firstChild;
-      if (!figures || !heading || !man || !fox || !textNode) return;
+      if (!figures || !heading || !man || !fox || !manShadow || !foxShadow || !textNode) return;
 
       const getCharCenterX = (index: number) => {
         const range = document.createRange();
@@ -38,8 +42,10 @@ export default function FooterCollabFigures() {
 
       man.style.left = `${aCenter - man.offsetWidth / 2}px`;
       man.style.right = "auto";
+      manShadow.style.left = `${aCenter}px`;
       fox.style.left = `${bCenter - fox.offsetWidth / 2}px`;
       fox.style.right = "auto";
+      foxShadow.style.left = `${bCenter}px`;
     };
 
     align();
@@ -52,12 +58,14 @@ export default function FooterCollabFigures() {
 
   return (
     <div ref={figuresRef} className="reveal footer-collab-figures">
+      <div ref={manShadowRef} className="footer-collab-shadow" />
       <img
         ref={manRef}
         src="/Man.png"
         alt=""
         style={{ width: "clamp(64px, 5.4vw, 106px)", height: "auto", transform: "translateY(calc(-100% + 36px))" }}
       />
+      <div ref={foxShadowRef} className="footer-collab-shadow footer-collab-shadow-fox" />
       <img
         ref={foxRef}
         src="/Fox.png"
