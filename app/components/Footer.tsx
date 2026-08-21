@@ -21,8 +21,8 @@ export default function Footer() {
     <footer style={{ position: "relative" }}>
       <div className="footer-collab">
         <div className="reveal footer-collab-figures">
-          <img src="/Man.png" alt="" style={{ width: "clamp(90px, 9vw, 170px)", height: "auto", right: "38%", top: "-58%" }} />
-          <img src="/Fox.png" alt="" className="footer-collab-fox" style={{ width: "clamp(55px, 5.5vw, 105px)", height: "auto", right: "33%", top: "-42%" }} />
+          <img src="/Man.png" alt="" style={{ width: "clamp(70px, 6.2vw, 120px)", height: "auto", right: "38%", top: "-112%" }} />
+          <img src="/Fox.png" alt="" className="footer-collab-fox" style={{ width: "clamp(45px, 4vw, 74px)", height: "auto", right: "33%", top: "-41%" }} />
           <h2 className="footer-collab-heading">Let&apos;s Collaborate</h2>
         </div>
 

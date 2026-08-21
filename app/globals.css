@@ -329,7 +329,7 @@ button {
 }
 
 .footer-crowd {
-  height: 380px;
+  height: 300px;
 }
 
 @media (max-width: 860px) {
@@ -374,7 +374,7 @@ button {
   position: relative;
   background: #000000;
   color: #f3f1ea;
-  padding: 64px clamp(20px, 3vw, 48px) 32px;
+  padding: 140px clamp(20px, 3vw, 48px) 32px;
   overflow: hidden;
   container-type: inline-size;
 }
@@ -421,15 +421,19 @@ button {
 
 @media (max-width: 860px) {
   .footer-collab {
-    padding: 40px 20px 24px;
+    padding: 100px 20px 24px;
   }
   .footer-collab-heading {
     font-size: clamp(1.8rem, 10.5vw, 3.2rem);
     white-space: normal;
     overflow-wrap: break-word;
   }
+  .footer-collab-figures img {
+    top: -109% !important;
+  }
   .footer-collab-fox {
     right: 22% !important;
+    top: -7% !important;
   }
   .footer-collab-bottom-row {
     margin-top: 64px;
