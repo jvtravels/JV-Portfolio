@@ -77,6 +77,7 @@ export default function GradualBlur({
             backdropFilter: `blur(${blurValue.toFixed(3)}rem)`,
             WebkitBackdropFilter: `blur(${blurValue.toFixed(3)}rem)`,
             opacity,
+            transition: "opacity 300ms ease-out",
           }}
         />
       );

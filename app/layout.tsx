@@ -8,7 +8,7 @@ const gloock = Gloock({ subsets: ["latin"], weight: "400", variable: "--font-glo
 import SmoothScroll from "./components/SmoothScroll";
 import CustomCursor from "./components/CustomCursor";
 import RevealObserver from "./components/RevealObserver";
-import GradualBlur from "./components/GradualBlur";
+import ScrollFadeBlur from "./components/ScrollFadeBlur";
 import { ThemeProvider } from "./components/ThemeProvider";
 import ThemeToggle from "./components/ThemeToggle";
 
@@ -40,14 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <a href="#main-content" className="skip-link">Skip to content</a>
           <CustomCursor />
           <RevealObserver />
-          <GradualBlur
-            position="bottom"
-            strength={1}
-            divCount={3}
-            height="10rem"
-            zIndex={9999}
-            style={{ position: "fixed", bottom: 0 }}
-          />
+          <ScrollFadeBlur />
           <SmoothScroll>{children}</SmoothScroll>
           <ThemeToggle />
         </ThemeProvider>
