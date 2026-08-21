@@ -112,12 +112,12 @@ export default function Footer() {
         style={{
           position: "relative",
           width: "100%",
-          height: 160,
+          height: 220,
           marginTop: 40,
           overflow: "hidden",
         }}
       >
-        <CrowdCanvas src="/images/peeps/all-peeps.png" rows={15} cols={7} peepHeight={90} />
+        <CrowdCanvas src="/images/peeps/all-peeps.png" rows={15} cols={7} peepHeight={150} density={3} />
       </div>
     </footer>
   );

@@ -11,6 +11,8 @@ interface CrowdCanvasProps {
   peepHeight?: number;
   /** Optional tint palette applied per-figure. Omit to keep the source black/white line art. */
   colors?: string[];
+  /** How many walking instances to spawn per unique figure, to pack the crowd tighter. */
+  density?: number;
 }
 
 type Peep = {
@@ -27,7 +29,7 @@ type Peep = {
   render: (ctx: CanvasRenderingContext2D) => void;
 };
 
-export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90, colors = [] }: CrowdCanvasProps) {
+export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90, colors = [], density = 1 }: CrowdCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -48,7 +50,7 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
 
     const resetPeep = ({ peep }: { peep: Peep }) => {
       const direction = Math.random() > 0.5 ? 1 : -1;
-      const offsetY = 100 - 250 * (gsap.parseEase("power2.in") as (v: number) => number)(Math.random());
+      const offsetY = 40 - 90 * (gsap.parseEase("power2.in") as (v: number) => number)(Math.random());
       const startY = stage.height - peep.height + offsetY;
       let startX: number;
       let endX: number;
@@ -72,11 +74,11 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
 
     const normalWalk = ({ peep, props }: { peep: Peep; props: { startX: number; startY: number; endX: number } }) => {
       const { startY, endX } = props;
-      const xDuration = 10;
+      const xDuration = 22;
       const yDuration = 0.25;
 
       const tl = gsap.timeline();
-      tl.timeScale(randomRange(0.5, 1.5));
+      tl.timeScale(randomRange(0.4, 0.9));
       tl.to(peep, { duration: xDuration, x: endX, ease: "none" }, 0);
       tl.to(peep, { duration: yDuration, repeat: xDuration / yDuration, yoyo: true, y: startY - 10 }, 0);
 
@@ -140,19 +142,21 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
 
     const createPeeps = () => {
       const { naturalWidth: width, naturalHeight: height } = img;
-      const total = rows * cols;
+      const unique = rows * cols;
+      const total = Math.round(unique * density);
       const rectWidth = width / rows;
       const rectHeight = height / cols;
       const scale = peepHeight / rectHeight;
       const tintedSheets = colors.map((color) => tintSheet(img, color));
 
       for (let i = 0; i < total; i++) {
+        const cell = i % unique;
         allPeeps.push(
           createPeep({
             image: tintedSheets.length ? getRandomFromArray(tintedSheets) : img,
             rect: [
-              (i % rows) * rectWidth,
-              ((i / rows) | 0) * rectHeight,
+              (cell % rows) * rectWidth,
+              ((cell / rows) | 0) * rectHeight,
               rectWidth,
               rectHeight,
             ],
@@ -236,7 +240,7 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
       crowd.forEach((peep) => peep.walk?.kill());
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [src, rows, cols, peepHeight, colors]);
+  }, [src, rows, cols, peepHeight, colors, density]);
 
   return (
     <canvas
