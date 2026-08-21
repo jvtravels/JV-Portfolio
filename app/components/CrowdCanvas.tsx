@@ -81,11 +81,11 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, scale = 1 }: Cro
 
     const normalWalk = ({ peep, props }: { peep: Peep; props: { startX: number; startY: number; endX: number } }) => {
       const { startX, startY, endX } = props;
-      const xDuration = 10;
+      const xDuration = 22;
       const yDuration = 0.25;
 
       const tl = gsap.timeline();
-      tl.timeScale(randomRange(0.5, 1.5));
+      tl.timeScale(randomRange(0.4, 0.9));
       tl.to(peep, { duration: xDuration, x: endX, ease: "none" }, 0);
       tl.to(peep, { duration: yDuration, repeat: xDuration / yDuration, yoyo: true, y: startY - 10 }, 0);
 
