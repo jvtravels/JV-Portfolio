@@ -178,22 +178,22 @@ button {
   grid-template-columns: 1.25fr 0.75fr;
 }
 
-/* About Me section: photo + copy, collapses to one column */
+/* About Me section: photo + copy, collapses to one column.
+   minmax(0, ...) instead of a bare fr: a bare fr track's minimum is "auto",
+   which lets the lanyard's aspect-ratio box dictate the track's width and
+   force it wider than its fr share (squeezing the copy column) on any
+   viewport where 0.9fr would naturally be narrower than the box wants. */
 .about-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 64px;
   align-items: start;
 }
 
 /* Pulls the lanyard flush with the section's top dashed border, cancelling
-   out section-py's top padding so the strap appears to hang from it.
-   min-height lives here (not inline) so the mobile override below can
-   relax it — otherwise the aspect-ratio square is forced past the width
-   of a narrow single-column layout and gets clipped by the viewport. */
+   out section-py's top padding so the strap appears to hang from it. */
 .about-lanyard {
   margin-top: -64px;
-  min-height: 480px;
 }
 
 /* Process section: 2x2 step grid, collapses to one column on narrow screens */
@@ -269,12 +269,11 @@ button {
     margin-bottom: 48px;
   }
   .about-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 32px;
   }
   .about-lanyard {
     margin-top: -40px;
-    min-height: 0;
   }
   .articles-grid {
     grid-template-columns: 1fr;
