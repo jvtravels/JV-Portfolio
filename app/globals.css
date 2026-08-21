@@ -405,8 +405,11 @@ html[data-theme="light"] .footer-collab-img-light {
   display: block;
 }
 
+/* The illustration has ~12% transparent margin baked into its bottom edge,
+   so pull the row up to close the gap that leaves — scaled with viewport
+   width since the image is full-bleed and its whitespace scales with it. */
 .footer-collab-bottom-row {
-  margin-top: 4px;
+  margin-top: clamp(-48px, -2.2vw, -16px);
 }
 
 .footer-collab-pill {
