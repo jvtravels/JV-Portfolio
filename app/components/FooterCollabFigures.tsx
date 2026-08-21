@@ -56,14 +56,14 @@ export default function FooterCollabFigures() {
         ref={manRef}
         src="/Man.png"
         alt=""
-        style={{ width: "clamp(55px, 4.6vw, 90px)", height: "auto", transform: "translateY(calc(-100% + 22px))" }}
+        style={{ width: "clamp(64px, 5.4vw, 106px)", height: "auto", transform: "translateY(calc(-100% + 36px))" }}
       />
       <img
         ref={foxRef}
         src="/Fox.png"
         alt=""
         className="footer-collab-fox"
-        style={{ width: "clamp(35px, 3vw, 60px)", height: "auto", transform: "translateY(calc(-100% + 14px))" }}
+        style={{ width: "clamp(40px, 3.5vw, 70px)", height: "auto", transform: "translateY(calc(-100% + 26px))" }}
       />
       <h2 ref={headingRef} className="footer-collab-heading">Let&apos;s Collaborate</h2>
     </div>
