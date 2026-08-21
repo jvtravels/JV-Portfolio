@@ -50,6 +50,13 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
     let isCompact = false;
 
     const BOB_AMPLITUDE = 10;
+    // Our figures are bust-only art (no legs), so their bottom edge is a flat,
+    // uniform cut. Sitting that edge flush against the stage's bottom border
+    // reads as a chopped-off body. Reserving a gap there instead lets the cut
+    // blend into the dark background rather than sit on a visible boundary —
+    // the same trick the upstream skiper39 crowd canvas gets "for free" from
+    // rendering into a much taller (90vh) stage than any single figure needs.
+    const MIN_BOTTOM_GAP = 20;
 
     const resetPeep = ({ peep }: { peep: Peep }) => {
       const direction = Math.random() > 0.5 ? 1 : -1;
@@ -57,11 +64,13 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
       const offsetY = maxDrop - 90 * (gsap.parseEase("power2.in") as (v: number) => number)(Math.random());
       // Clamp so a peep's full height always fits inside the stage — otherwise
       // the canvas's overflow:hidden chops heads (top) or feet (bottom) off.
-      // The lower bound also reserves BOB_AMPLITUDE of headroom, since the walk
-      // cycle lifts each peep by that much on every step (see normalWalk) — without
-      // the margin, that lift pushes the head above y=0 and clips it mid-stride.
-      const maxY = stage.height - peep.height;
-      const startY = Math.min(Math.max(stage.height - peep.height + offsetY, BOB_AMPLITUDE), Math.max(maxY, BOB_AMPLITUDE));
+      // The lower bound reserves BOB_AMPLITUDE of headroom, since the walk cycle
+      // lifts each peep by that much on every step (see normalWalk) — without the
+      // margin, that lift pushes the head above y=0 and clips it mid-stride. The
+      // upper bound reserves MIN_BOTTOM_GAP so the flat bust cutoff never sits
+      // flush against the stage's bottom edge.
+      const maxY = Math.max(stage.height - peep.height - MIN_BOTTOM_GAP, BOB_AMPLITUDE);
+      const startY = Math.min(Math.max(stage.height - peep.height + offsetY, BOB_AMPLITUDE), maxY);
       let startX: number;
       let endX: number;
 
