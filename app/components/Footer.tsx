@@ -1,6 +1,11 @@
 import { DashedH } from "@/app/components/DashedFrame";
 import CrowdCanvas from "@/app/components/CrowdCanvas";
 
+const FOOTER_PEEPS = Array.from(
+  { length: 30 },
+  (_, i) => `/images/peeps/full-body/peep-standing-${i + 1}.svg`,
+);
+
 const SOCIAL_LINKS = [
   {
     label: "Email",
@@ -116,7 +121,7 @@ export default function Footer() {
           overflow: "hidden",
         }}
       >
-        <CrowdCanvas src="/images/peeps/all-peeps.png" rows={15} cols={7} peepHeight={150} density={3} />
+        <CrowdCanvas srcs={FOOTER_PEEPS} peepHeight={150} density={3} />
       </div>
     </footer>
   );
