@@ -427,6 +427,9 @@ button {
     white-space: normal;
     overflow-wrap: break-word;
   }
+  .footer-collab-fox {
+    right: 22% !important;
+  }
   .footer-collab-bottom-row {
     margin-top: 64px;
     flex-direction: column;

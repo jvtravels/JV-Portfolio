@@ -22,7 +22,7 @@ export default function Footer() {
       <div className="footer-collab">
         <div className="reveal footer-collab-figures">
           <img src="/Man.png" alt="" style={{ width: "clamp(90px, 9vw, 170px)", height: "auto", right: "38%", top: "-58%" }} />
-          <img src="/Fox.png" alt="" style={{ width: "clamp(55px, 5.5vw, 105px)", height: "auto", right: "27%", top: "-38%" }} />
+          <img src="/Fox.png" alt="" className="footer-collab-fox" style={{ width: "clamp(55px, 5.5vw, 105px)", height: "auto", right: "33%", top: "-38%" }} />
           <h2 className="footer-collab-heading">Let&apos;s Collaborate</h2>
         </div>
 
