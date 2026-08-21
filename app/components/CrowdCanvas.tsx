@@ -260,8 +260,8 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
       // short mobile height while figures are still sized for the tall desktop
       // stage, so every figure overflows the same way and clamps to one flat line.
       const compact = canvas.clientWidth < 860;
-      const effectiveDensity = compact ? Math.min(density, 5) : density;
-      const effectivePeepHeight = compact ? Math.min(peepHeight, 70) : peepHeight;
+      const effectiveDensity = compact ? Math.min(density, 2.4) : density;
+      const effectivePeepHeight = compact ? Math.min(peepHeight, 140) : peepHeight;
 
       createPeeps(effectiveDensity, effectivePeepHeight);
       resize();
