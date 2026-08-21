@@ -97,7 +97,7 @@ export default function FAQSection() {
             letterSpacing: "0.14em",
             textTransform: "uppercase",
             color: "var(--text-muted)",
-            marginBottom: 12,
+            marginBottom: 6,
           }}>
             FAQ
           </span>
@@ -107,7 +107,7 @@ export default function FAQSection() {
             fontWeight: 600,
             letterSpacing: "-0.02em",
             color: "var(--text)",
-            lineHeight: 1.25,
+            lineHeight: 1,
             marginLeft: "auto",
             marginRight: "auto",
             maxWidth: 640,

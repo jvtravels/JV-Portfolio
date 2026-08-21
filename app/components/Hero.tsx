@@ -15,7 +15,7 @@ export default function Hero() {
         fontFamily: "var(--font-gloock)",
         fontSize: "clamp(32px, 6.4vw, 82px)",
         fontWeight: 400,
-        lineHeight: 1.05,
+        lineHeight: 1,
         letterSpacing: "-0.01em",
         color: "rgba(var(--fg-rgb), 1)",
         margin: 0,

@@ -40,7 +40,7 @@ export default function ProcessSection() {
             letterSpacing: "0.14em",
             textTransform: "uppercase",
             color: "var(--text-muted)",
-            marginBottom: 12,
+            marginBottom: 6,
           }}>
             HireStepX
           </span>
@@ -50,7 +50,7 @@ export default function ProcessSection() {
             fontWeight: 600,
             letterSpacing: "-0.02em",
             color: "var(--text)",
-            lineHeight: 1.25,
+            lineHeight: 1,
             marginLeft: "auto",
             marginRight: "auto",
             maxWidth: 640,
@@ -75,6 +75,7 @@ export default function ProcessSection() {
                   fontSize: 20,
                   fontWeight: 600,
                   letterSpacing: "-0.01em",
+                  lineHeight: 1,
                   color: "var(--text)",
                   margin: "0 0 10px",
                 }}>

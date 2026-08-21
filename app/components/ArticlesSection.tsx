@@ -23,7 +23,7 @@ export default function ArticlesSection() {
             letterSpacing: "0.14em",
             textTransform: "uppercase",
             color: "var(--text-muted)",
-            marginBottom: 12,
+            marginBottom: 6,
           }}>
             Articles
           </span>
@@ -33,7 +33,7 @@ export default function ArticlesSection() {
             fontWeight: 600,
             letterSpacing: "-0.02em",
             color: "var(--text)",
-            lineHeight: 1.25,
+            lineHeight: 1,
             marginLeft: "auto",
             marginRight: "auto",
             maxWidth: 640,
@@ -106,7 +106,7 @@ export default function ArticlesSection() {
                   fontSize: "clamp(18px, 6.5vw, 28px)",
                   fontWeight: 600,
                   letterSpacing: "-0.01em",
-                  lineHeight: 1.2,
+                  lineHeight: 1,
                   color: "var(--text)",
                   margin: "20px 0 12px",
                 }}>

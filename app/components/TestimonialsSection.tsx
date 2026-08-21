@@ -121,7 +121,7 @@ export default function TestimonialsSection() {
             letterSpacing: "0.14em",
             textTransform: "uppercase",
             color: "var(--text-muted)",
-            marginBottom: 14,
+            marginBottom: 7,
           }}>
             Testimonial
           </span>
@@ -131,6 +131,7 @@ export default function TestimonialsSection() {
               fontWeight: 600,
               letterSpacing: "-0.02em",
               color: "var(--text)",
+              lineHeight: 1,
               margin: 0,
             }}>
               Words from founders

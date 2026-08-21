@@ -27,7 +27,7 @@ export default function AboutMeSection() {
               letterSpacing: "0.14em",
               textTransform: "uppercase",
               color: "var(--text-muted)",
-              marginBottom: 16,
+              marginBottom: 8,
             }}>
               About Me
             </span>
@@ -37,7 +37,7 @@ export default function AboutMeSection() {
               fontWeight: 600,
               letterSpacing: "-0.02em",
               color: "var(--text)",
-              lineHeight: 1.25,
+              lineHeight: 1,
             }}>
               I&apos;m Jay Vyas, the person you&apos;re looking for.
             </h2>

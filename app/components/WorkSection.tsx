@@ -99,7 +99,7 @@ function WorkItem({ project, size }: { project: (typeof PROJECTS)[number]; size:
         fontSize: "clamp(17px, 4.5vw, 20px)",
         fontWeight: 600,
         letterSpacing: "-0.01em",
-        lineHeight: 1.35,
+        lineHeight: 1,
         color: "var(--text)",
         margin: "0 0 8px",
       }}>
@@ -137,7 +137,7 @@ export default function WorkSection() {
             letterSpacing: "0.14em",
             textTransform: "uppercase",
             color: "var(--text-muted)",
-            marginBottom: 12,
+            marginBottom: 6,
           }}>
             Work
           </span>
@@ -147,7 +147,7 @@ export default function WorkSection() {
             fontWeight: 600,
             letterSpacing: "-0.02em",
             color: "var(--text)",
-            lineHeight: 1.25,
+            lineHeight: 1,
             marginLeft: "auto",
             marginRight: "auto",
             maxWidth: 640,
