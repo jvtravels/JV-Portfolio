@@ -1,109 +1,51 @@
-import { DashedH } from "@/app/components/DashedFrame";
 import CrowdCanvas from "@/app/components/CrowdCanvas";
 
-const SOCIAL_LINKS = [
-  {
-    label: "Email",
-    href: "mailto:vyasjay85@gmail.com",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.8" />
-        <path d="M4 7l8 6 8-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    label: "Resume",
-    href: "/resume.pdf",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-        <path d="M14 3v4h4M9 12h6M9 16h6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      </svg>
-    ),
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.8" />
-        <path d="M8 10v6M8 7.5v.01M12.5 16v-3.6c0-1.3.8-2.1 2-2.1s2 .8 2 2.1V16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-];
+const RESUME_ICON = (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    <path d="M14 3v4h4M9 12h6M9 16h6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+  </svg>
+);
+
+const LINKEDIN_ICON = (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.8" />
+    <path d="M8 10v6M8 7.5v.01M12.5 16v-3.6c0-1.3.8-2.1 2-2.1s2 .8 2 2.1V16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer style={{ position: "relative", paddingTop: 56 }}>
-      <DashedH style={{ top: 0, left: 0, right: 0 }} />
-
       <div className="section-px">
-        {/* Top row — blurb + social icons */}
-        <div className="reveal" style={{
-          display: "flex",
-          alignItems: "flex-start",
-          justifyContent: "space-between",
-          gap: 24,
-          flexWrap: "wrap",
-        }}>
-          <p style={{
-            margin: 0,
-            fontSize: 15,
-            lineHeight: 1.5,
-            color: "var(--text)",
-          }}>
-            Let&apos;s connect.
-            <br />
-            I&apos;m always down for a chat.
-          </p>
-
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            {SOCIAL_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.href.startsWith("http") ? "_blank" : undefined}
-                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                aria-label={link.label}
-                className="footer-social-link"
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: "50%",
-                  background: "var(--surface)",
-                  border: "1px solid var(--border)",
-                  color: "var(--text-muted)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  transition: "color 0.2s ease, border-color 0.2s ease",
-                }}
-              >
-                {link.icon}
-              </a>
-            ))}
+        <div className="footer-collab">
+          <div className="reveal" style={{ display: "flex", justifyContent: "flex-end", gap: 10, marginBottom: 48 }}>
+            <a href="/resume.pdf" className="footer-collab-pill">
+              {RESUME_ICON}
+              Resume
+            </a>
+            <a
+              href="https://www.linkedin.com/in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-collab-pill"
+            >
+              {LINKEDIN_ICON}
+              LinkedIn
+            </a>
           </div>
-        </div>
 
-        {/* Bottom row */}
-        <div style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 16,
-          flexWrap: "wrap",
-          marginTop: 40,
-        }}>
-          <span style={{ fontSize: 13, color: "var(--text-muted)", letterSpacing: "-0.01em" }}>
+          <div className="reveal footer-collab-figures">
+            <img src="/Man.png" alt="" style={{ width: "clamp(90px, 9vw, 170px)", height: "auto", right: "33%", top: "-58%" }} />
+            <img src="/Fox.png" alt="" style={{ width: "clamp(55px, 5.5vw, 105px)", height: "auto", right: "13%", top: "-38%" }} />
+            <h2 className="footer-collab-heading">Let&apos;s Collaborate</h2>
+          </div>
+
+          <div style={{ marginTop: 24, fontSize: 13, color: "rgba(243, 241, 234, 0.6)", letterSpacing: "-0.01em" }}>
             © {year} Jay Vyas
-          </span>
-          <span style={{ fontSize: 13, color: "var(--text-muted)", letterSpacing: "-0.01em" }}>
-            Built with love
-          </span>
+          </div>
         </div>
       </div>
 

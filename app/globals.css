@@ -368,6 +368,65 @@ button {
   border-color: var(--text-dim);
 }
 
+/* Footer collab band: intentionally locked to dark regardless of theme —
+   it sits directly above the crowd canvas, which is already dark-reliant. */
+.footer-collab {
+  position: relative;
+  border-radius: 28px;
+  background: #0a0a09;
+  color: #f3f1ea;
+  padding: 56px clamp(20px, 5vw, 56px) 40px;
+  overflow: hidden;
+}
+
+.footer-collab-figures {
+  position: relative;
+}
+
+.footer-collab-figures img {
+  position: absolute;
+  pointer-events: none;
+}
+
+.footer-collab-heading {
+  font-family: var(--font-figura);
+  font-size: clamp(2.2rem, 7vw, 7.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.footer-collab-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(243, 241, 234, 0.25);
+  color: #f3f1ea;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.footer-collab-pill:hover {
+  background: rgba(243, 241, 234, 0.1);
+  border-color: rgba(243, 241, 234, 0.5);
+}
+
+@media (max-width: 860px) {
+  .footer-collab {
+    border-radius: 20px;
+    padding: 40px 20px 28px;
+  }
+  .footer-collab-heading {
+    font-size: clamp(1.8rem, 10.5vw, 3.2rem);
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+}
+
 /* CTA buttons — shutter hover: a yellow panel wipes up from the bottom */
 .btn-primary {
   position: relative;

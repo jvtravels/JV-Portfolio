@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Schibsted_Grotesk, Gloock } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 const schibstedGrotesk = Schibsted_Grotesk({ subsets: ["latin"], variable: "--font-sans" });
 const gloock = Gloock({ subsets: ["latin"], weight: "400", variable: "--font-gloock" });
+const figura = localFont({ src: "../public/fonts/FIGURA-ExtraBold.otf", variable: "--font-figura" });
 import SmoothScroll from "./components/SmoothScroll";
 import CustomCursor from "./components/CustomCursor";
 import RevealObserver from "./components/RevealObserver";
