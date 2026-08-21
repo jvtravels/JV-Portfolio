@@ -3,6 +3,7 @@
 export default function Hero() {
   return (
     <section className="section-px hero-section" style={{
+      position: "relative",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
@@ -25,6 +26,10 @@ export default function Hero() {
       </h1>
 
       <p className="reveal reveal-delay-1" style={{
+        position: "absolute",
+        left: "50%",
+        bottom: "clamp(32px, 8vh, 96px)",
+        transform: "translateX(-50%)",
         fontSize: 12,
         fontWeight: 500,
         letterSpacing: "0.08em",
@@ -32,7 +37,6 @@ export default function Hero() {
         color: "var(--text-muted)",
         lineHeight: 1.8,
         maxWidth: 460,
-        marginTop: 40,
       }}>
         Turning questions, ideas, and complex problems into thoughtful products - from first concept to shipped experience.
       </p>
