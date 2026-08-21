@@ -1,5 +1,7 @@
-import Image from "next/image";
+import dynamic from "next/dynamic";
 import { DashedH, DashedV } from "@/app/components/DashedFrame";
+
+const Lanyard = dynamic(() => import("@/app/components/Lanyard/Lanyard"), { ssr: false });
 
 export default function AboutMeSection() {
   return (
@@ -11,19 +13,9 @@ export default function AboutMeSection() {
         <DashedV style={{ top: 0, bottom: 0, right: "var(--frame-inset)" }} />
 
         <div className="section-px about-grid">
-          {/* Left — photo */}
+          {/* Left — interactive 3D lanyard badge */}
           <div className="reveal" style={{ position: "relative", width: "100%", aspectRatio: "2428 / 1968", borderRadius: 8, overflow: "hidden" }}>
-            <Image
-              src="/About-me.png"
-              alt="Jay Vyas"
-              fill
-              draggable={false}
-              sizes="(max-width: 768px) 100vw, 50vw"
-              style={{
-                objectFit: "cover",
-                objectPosition: "top center",
-              }}
-            />
+            <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} frontImage="/JV.png" />
           </div>
 
           {/* Right — heading + copy */}
