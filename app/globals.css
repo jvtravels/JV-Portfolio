@@ -187,9 +187,13 @@ button {
 }
 
 /* Pulls the lanyard flush with the section's top dashed border, cancelling
-   out section-py's top padding so the strap appears to hang from it. */
+   out section-py's top padding so the strap appears to hang from it.
+   min-height lives here (not inline) so the mobile override below can
+   relax it — otherwise the aspect-ratio square is forced past the width
+   of a narrow single-column layout and gets clipped by the viewport. */
 .about-lanyard {
   margin-top: -64px;
+  min-height: 480px;
 }
 
 /* Process section: 2x2 step grid, collapses to one column on narrow screens */
@@ -270,6 +274,7 @@ button {
   }
   .about-lanyard {
     margin-top: -40px;
+    min-height: 0;
   }
   .articles-grid {
     grid-template-columns: 1fr;
