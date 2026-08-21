@@ -57,7 +57,11 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, scale = 1 }: Cro
 
     const resetPeep = ({ peep }: { peep: Peep }) => {
       const direction = Math.random() > 0.5 ? 1 : -1;
-      const offsetY = 100 - 250 * gsap.parseEase("power2.in")(Math.random());
+      // Upstream's full 250px rise puts a peep's feet well above the rest of
+      // the crowd on our stage, so rare "rising tail" peeps read as floating
+      // heads with a black void beneath them instead of depth. Cap the rise so
+      // an elevated peep still overlaps the main body.
+      const offsetY = 100 - 130 * gsap.parseEase("power2.in")(Math.random());
       const startY = stage.height - peep.height + offsetY;
       let startX: number;
       let endX: number;
