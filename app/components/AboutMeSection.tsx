@@ -14,7 +14,7 @@ export default function AboutMeSection() {
 
         <div className="section-px about-grid">
           {/* Left — interactive 3D lanyard badge */}
-          <div className="reveal" style={{ position: "relative", width: "100%", aspectRatio: "1 / 1", minHeight: 480, borderRadius: 8, overflow: "hidden" }}>
+          <div className="reveal about-lanyard" style={{ position: "relative", width: "100%", aspectRatio: "1 / 1", minHeight: 480, borderRadius: 8, overflow: "hidden" }}>
             <Lanyard position={[0, 0, 13]} gravity={[0, -40, 0]} frontImage="/About-me.png" />
           </div>
 

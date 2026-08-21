@@ -186,6 +186,12 @@ button {
   align-items: start;
 }
 
+/* Pulls the lanyard flush with the section's top dashed border, cancelling
+   out section-py's top padding so the strap appears to hang from it. */
+.about-lanyard {
+  margin-top: -64px;
+}
+
 /* Process section: 2x2 step grid, collapses to one column on narrow screens */
 .steps-grid {
   display: grid;
@@ -261,6 +267,9 @@ button {
   .about-grid {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+  .about-lanyard {
+    margin-top: -40px;
   }
   .articles-grid {
     grid-template-columns: 1fr;
