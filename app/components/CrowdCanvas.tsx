@@ -57,7 +57,7 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, scale = 1 }: Cro
 
     const resetPeep = ({ peep }: { peep: Peep }) => {
       const direction = Math.random() > 0.5 ? 1 : -1;
-      const offsetY = 100 - 250 * gsap.parseEase("power2.in")(Math.random());
+      const offsetY = 100 - 200 * Math.random();
       const startY = stage.height - peep.height + offsetY;
       let startX: number;
       let endX: number;
@@ -85,7 +85,7 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, scale = 1 }: Cro
       const yDuration = 0.25;
 
       const tl = gsap.timeline();
-      tl.timeScale(randomRange(0.4, 0.9));
+      tl.timeScale(randomRange(0.55, 0.75));
       tl.to(peep, { duration: xDuration, x: endX, ease: "none" }, 0);
       tl.to(peep, { duration: yDuration, repeat: xDuration / yDuration, yoyo: true, y: startY - 10 }, 0);
 
