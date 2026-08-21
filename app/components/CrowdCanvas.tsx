@@ -9,20 +9,9 @@ interface CrowdCanvasProps {
   cols?: number;
   /** Rendered height (px) of each figure, scaled down from the sprite sheet's native cell size. */
   peepHeight?: number;
-  /** Tint palette applied per-figure (the source art is black/white line work). */
+  /** Optional tint palette applied per-figure. Omit to keep the source black/white line art. */
   colors?: string[];
 }
-
-const DEFAULT_COLORS = [
-  "#f2545b", // coral
-  "#f7a13b", // amber
-  "#f4d35e", // yellow
-  "#4fb286", // emerald
-  "#3fa7d6", // sky blue
-  "#5865c9", // indigo
-  "#b565d8", // orchid
-  "#ef6fa7", // pink
-];
 
 type Peep = {
   image: CanvasImageSource;
@@ -38,7 +27,7 @@ type Peep = {
   render: (ctx: CanvasRenderingContext2D) => void;
 };
 
-export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90, colors = DEFAULT_COLORS }: CrowdCanvasProps) {
+export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90, colors = [] }: CrowdCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -160,7 +149,7 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
       for (let i = 0; i < total; i++) {
         allPeeps.push(
           createPeep({
-            image: getRandomFromArray(tintedSheets),
+            image: tintedSheets.length ? getRandomFromArray(tintedSheets) : img,
             rect: [
               (i % rows) * rectWidth,
               ((i / rows) | 0) * rectHeight,
