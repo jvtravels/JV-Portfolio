@@ -9,10 +9,23 @@ interface CrowdCanvasProps {
   cols?: number;
   /** Rendered height (px) of each figure, scaled down from the sprite sheet's native cell size. */
   peepHeight?: number;
+  /** Tint palette applied per-figure (the source art is black/white line work). */
+  colors?: string[];
 }
 
+const DEFAULT_COLORS = [
+  "#f2545b", // coral
+  "#f7a13b", // amber
+  "#f4d35e", // yellow
+  "#4fb286", // emerald
+  "#3fa7d6", // sky blue
+  "#5865c9", // indigo
+  "#b565d8", // orchid
+  "#ef6fa7", // pink
+];
+
 type Peep = {
-  image: HTMLImageElement;
+  image: CanvasImageSource;
   rect: number[];
   width: number;
   height: number;
@@ -25,7 +38,7 @@ type Peep = {
   render: (ctx: CanvasRenderingContext2D) => void;
 };
 
-export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90 }: CrowdCanvasProps) {
+export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90, colors = DEFAULT_COLORS }: CrowdCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -83,7 +96,21 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90 
 
     const walks = [normalWalk];
 
-    const createPeep = ({ image, rect, scale }: { image: HTMLImageElement; rect: number[]; scale: number }): Peep => {
+    const tintSheet = (source: HTMLImageElement, color: string): HTMLCanvasElement => {
+      const tinted = document.createElement("canvas");
+      tinted.width = source.naturalWidth;
+      tinted.height = source.naturalHeight;
+      const tctx = tinted.getContext("2d")!;
+      tctx.drawImage(source, 0, 0);
+      tctx.globalCompositeOperation = "multiply";
+      tctx.fillStyle = color;
+      tctx.fillRect(0, 0, tinted.width, tinted.height);
+      tctx.globalCompositeOperation = "destination-in";
+      tctx.drawImage(source, 0, 0);
+      return tinted;
+    };
+
+    const createPeep = ({ image, rect, scale }: { image: CanvasImageSource; rect: number[]; scale: number }): Peep => {
       const peep: Peep = {
         image,
         rect: [],
@@ -128,11 +155,12 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90 
       const rectWidth = width / rows;
       const rectHeight = height / cols;
       const scale = peepHeight / rectHeight;
+      const tintedSheets = colors.map((color) => tintSheet(img, color));
 
       for (let i = 0; i < total; i++) {
         allPeeps.push(
           createPeep({
-            image: img,
+            image: getRandomFromArray(tintedSheets),
             rect: [
               (i % rows) * rectWidth,
               ((i / rows) | 0) * rectHeight,
@@ -219,7 +247,7 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90 
       crowd.forEach((peep) => peep.walk?.kill());
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [src, rows, cols, peepHeight]);
+  }, [src, rows, cols, peepHeight, colors]);
 
   return (
     <canvas
