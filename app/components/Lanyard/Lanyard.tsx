@@ -8,6 +8,7 @@ import {
   CuboidCollider,
   Physics,
   RigidBody,
+  useRapier,
   useRopeJoint,
   useSphericalJoint,
 } from "@react-three/rapier";
@@ -158,6 +159,8 @@ function Band({
     j2 = useRef<any>(),
     j3 = useRef<any>(),
     card = useRef<any>();
+  const { world } = useRapier();
+  const baseGravity = useRef<{ x: number; y: number; z: number } | null>(null);
   const vec = new THREE.Vector3(),
     ang = new THREE.Vector3(),
     rot = new THREE.Vector3(),
@@ -253,6 +256,26 @@ function Band({
   }, [hovered, dragged]);
 
   useFrame((state, delta) => {
+    if (!baseGravity.current) {
+      const g = world.gravity;
+      baseGravity.current = { x: g.x, y: g.y, z: g.z };
+    }
+    // Idle wind: tilt gravity a couple of degrees off vertical, drifting on a
+    // few overlapping sine waves so it never repeats on a noticeable cycle.
+    // This nudges the resting angle rather than injecting momentum, so the
+    // sway stays gentle and bounded instead of building up over time.
+    const t = state.clock.elapsedTime;
+    const windX = Math.sin(t * 0.55) * 2.2 + Math.sin(t * 1.4 + 1.7) * 0.9;
+    const windZ = Math.sin(t * 0.35 + 4.1) * 1.6 + Math.sin(t * 0.9 + 2.3) * 0.7;
+    world.gravity = {
+      x: baseGravity.current.x + windX,
+      y: baseGravity.current.y,
+      z: baseGravity.current.z + windZ,
+    };
+    // Keep the chain awake so it keeps responding to the drifting gravity
+    // tilt instead of settling to sleep and ignoring it.
+    [j1, j2, j3, card].forEach((ref) => ref.current?.wakeUp());
+
     if (dragged) {
       vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
       dir.copy(vec).sub(state.camera.position).normalize();
