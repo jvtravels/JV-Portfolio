@@ -58,17 +58,6 @@ export default function Footer() {
         }}
       >
         <CrowdCanvas src="/images/peeps/all-peeps.png" rows={15} cols={7} scale={0.9} />
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            height: 70,
-            background: "linear-gradient(to bottom, #000000, transparent)",
-            pointerEvents: "none",
-          }}
-        />
       </div>
     </footer>
   );
