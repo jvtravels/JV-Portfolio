@@ -329,12 +329,12 @@ button {
 }
 
 .footer-crowd {
-  height: 300px;
+  height: 420px;
 }
 
 @media (max-width: 860px) {
   .footer-crowd {
-    height: 260px;
+    height: 280px;
   }
 }
 
@@ -395,12 +395,13 @@ button {
   line-height: 0.92;
   letter-spacing: -0.015em;
   text-transform: uppercase;
+  text-align: center;
   margin: 0;
   white-space: nowrap;
 }
 
 .footer-collab-bottom-row {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .footer-collab-pill {
