@@ -38,22 +38,8 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer style={{ position: "relative", padding: "56px 0 40px" }}>
+    <footer style={{ position: "relative", paddingTop: 56 }}>
       <DashedH style={{ top: 0, left: 0, right: 0 }} />
-
-      <div
-        className="reveal footer-crowd"
-        style={{
-          position: "relative",
-          height: 120,
-          margin: "0 var(--page-px) 40px",
-          overflow: "hidden",
-          borderTop: "1px solid var(--border)",
-          borderBottom: "1px solid var(--border)",
-        }}
-      >
-        <CrowdCanvas src="/images/peeps/all-peeps.png" rows={15} cols={7} peepHeight={72} />
-      </div>
 
       <div className="section-px">
         {/* Top row — blurb + social icons */}
@@ -119,6 +105,19 @@ export default function Footer() {
             Built with love
           </span>
         </div>
+      </div>
+
+      <div
+        className="reveal footer-crowd"
+        style={{
+          position: "relative",
+          width: "100%",
+          height: 160,
+          marginTop: 40,
+          overflow: "hidden",
+        }}
+      >
+        <CrowdCanvas src="/images/peeps/all-peeps.png" rows={15} cols={7} peepHeight={90} />
       </div>
     </footer>
   );
