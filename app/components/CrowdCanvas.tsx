@@ -4,9 +4,10 @@ import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 
 interface CrowdCanvasProps {
-  /** Full-body figure images (SVG/PNG), one per unique figure. */
-  srcs: string[];
-  /** Rendered height (px) of each figure. */
+  src: string;
+  rows?: number;
+  cols?: number;
+  /** Rendered height (px) of each figure, scaled down from the sprite sheet's native cell size. */
   peepHeight?: number;
   /** Optional tint palette applied per-figure. Omit to keep the source black/white line art. */
   colors?: string[];
@@ -16,6 +17,7 @@ interface CrowdCanvasProps {
 
 type Peep = {
   image: CanvasImageSource;
+  rect: number[];
   width: number;
   height: number;
   x: number;
@@ -23,10 +25,11 @@ type Peep = {
   anchorY: number;
   scaleX: number;
   walk: gsap.core.Timeline | null;
+  setRect: (rect: number[]) => void;
   render: (ctx: CanvasRenderingContext2D) => void;
 };
 
-export default function CrowdCanvas({ srcs, peepHeight = 90, colors = [], density = 1 }: CrowdCanvasProps) {
+export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90, colors = [], density = 1 }: CrowdCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -44,17 +47,20 @@ export default function CrowdCanvas({ srcs, peepHeight = 90, colors = [], densit
     const getRandomFromArray = <T,>(array: T[]) => array[randomIndex(array)];
 
     const stage = { width: 0, height: 0 };
-    let isCompact = false;
 
-    const BOB_AMPLITUDE = 6;
-
-    // Full-body figures stand on the stage floor; only a small random lift
-    // keeps the crowd from looking like it's pinned to one exact baseline.
+    const BOB_AMPLITUDE = 10;
+    // Our figures are bust-only art (no legs) with a flat bottom cut, same as
+    // the upstream skiper39 sheet. In the reference, that cut is invisible
+    // because the crowd is dense and multi-layered: heads and shoulders at
+    // every depth overlap, so no single figure's edge is ever isolated
+    // against open background. Scattering peeps across the FULL stage height
+    // (not just a thin band near the bottom) is what creates that layered
+    // "photo of a crowd" look — combined with high density (see Footer's
+    // density prop) so there's always overlap to hide the cut in.
     const resetPeep = ({ peep }: { peep: Peep }) => {
-      const floatRange = isCompact ? 10 : 16;
+      const maxY = Math.max(stage.height - peep.height, BOB_AMPLITUDE);
+      const startY = randomRange(BOB_AMPLITUDE, maxY);
       const direction = Math.random() > 0.5 ? 1 : -1;
-      const offsetY = -floatRange * Math.random();
-      const startY = Math.max(stage.height - peep.height + offsetY, BOB_AMPLITUDE);
       let startX: number;
       let endX: number;
 
@@ -77,6 +83,9 @@ export default function CrowdCanvas({ srcs, peepHeight = 90, colors = [], densit
 
     const normalWalk = ({ peep, props }: { peep: Peep; props: { startX: number; startY: number; endX: number } }) => {
       const { startX, startY, endX } = props;
+      // Constant walking speed (px/sec) so the crossing time — and how visible
+      // the step bob is — scales with viewport width instead of always taking
+      // a fixed duration regardless of how far a peep actually has to travel.
       const speed = 55;
       const xDuration = Math.abs(endX - startX) / speed;
       const yDuration = 0.25;
@@ -91,7 +100,7 @@ export default function CrowdCanvas({ srcs, peepHeight = 90, colors = [], densit
 
     const walks = [normalWalk];
 
-    const tintImage = (source: HTMLImageElement, color: string): HTMLCanvasElement => {
+    const tintSheet = (source: HTMLImageElement, color: string): HTMLCanvasElement => {
       const tinted = document.createElement("canvas");
       tinted.width = source.naturalWidth;
       tinted.height = source.naturalHeight;
@@ -105,46 +114,66 @@ export default function CrowdCanvas({ srcs, peepHeight = 90, colors = [], densit
       return tinted;
     };
 
-    const createPeep = ({ image, width, height }: { image: CanvasImageSource; width: number; height: number }): Peep => {
+    const createPeep = ({ image, rect, scale }: { image: CanvasImageSource; rect: number[]; scale: number }): Peep => {
       const peep: Peep = {
         image,
-        width,
-        height,
+        rect: [],
+        width: 0,
+        height: 0,
         x: 0,
         y: 0,
         anchorY: 0,
         scaleX: 1,
         walk: null,
+        setRect(r) {
+          peep.rect = r;
+          peep.width = r[2] * scale;
+          peep.height = r[3] * scale;
+        },
         render(context) {
           context.save();
           context.translate(peep.x, peep.y);
           context.scale(peep.scaleX, 1);
-          context.drawImage(peep.image, 0, 0, peep.width, peep.height);
+          context.drawImage(
+            peep.image,
+            peep.rect[0], peep.rect[1], peep.rect[2], peep.rect[3],
+            0, 0, peep.width, peep.height,
+          );
           context.restore();
         },
       };
 
+      peep.setRect(rect);
       return peep;
     };
+
+    const img = document.createElement("img");
 
     const allPeeps: Peep[] = [];
     const availablePeeps: Peep[] = [];
     const crowd: Peep[] = [];
-    let sourceImages: HTMLImageElement[] = [];
 
     const createPeeps = (effectiveDensity: number, effectivePeepHeight: number) => {
-      const total = Math.round(sourceImages.length * effectiveDensity);
+      const { naturalWidth: width, naturalHeight: height } = img;
+      const unique = rows * cols;
+      const total = Math.round(unique * effectiveDensity);
+      const rectWidth = width / rows;
+      const rectHeight = height / cols;
+      const scale = effectivePeepHeight / rectHeight;
+      const tintedSheets = colors.map((color) => tintSheet(img, color));
 
       for (let i = 0; i < total; i++) {
-        const source = sourceImages[i % sourceImages.length];
-        const scale = effectivePeepHeight / source.naturalHeight;
-        const image = colors.length ? tintImage(source, getRandomFromArray(colors)) : source;
-
+        const cell = i % unique;
         allPeeps.push(
           createPeep({
-            image,
-            width: source.naturalWidth * scale,
-            height: source.naturalHeight * scale,
+            image: tintedSheets.length ? getRandomFromArray(tintedSheets) : img,
+            rect: [
+              (cell % rows) * rectWidth,
+              ((cell / rows) | 0) * rectHeight,
+              rectWidth,
+              rectHeight,
+            ],
+            scale,
           }),
         );
       }
@@ -207,12 +236,15 @@ export default function CrowdCanvas({ srcs, peepHeight = 90, colors = [], densit
     };
 
     const init = () => {
-      // Must match the .footer-crowd CSS breakpoint (globals.css) — otherwise
-      // the container switches to its short mobile height before the figures
-      // shrink to match, and every figure overflows identically.
+      // Narrow (mobile) viewports get smaller figures than the desktop strip,
+      // but a similar density — too few peeps left wide gaps of empty black
+      // between small clumps instead of a continuous crowd line. This threshold
+      // must match the .footer-crowd CSS breakpoint (globals.css) — otherwise,
+      // in the gap between the two breakpoints, the container shrinks to its
+      // short mobile height while figures are still sized for the tall desktop
+      // stage, so every figure overflows the same way and clamps to one flat line.
       const compact = canvas.clientWidth < 860;
-      isCompact = compact;
-      const effectiveDensity = compact ? Math.min(density, 2.2) : density;
+      const effectiveDensity = compact ? Math.min(density, 5) : density;
       const effectivePeepHeight = compact ? Math.min(peepHeight, 70) : peepHeight;
 
       createPeeps(effectiveDensity, effectivePeepHeight);
@@ -220,34 +252,19 @@ export default function CrowdCanvas({ srcs, peepHeight = 90, colors = [], densit
       gsap.ticker.add(render);
     };
 
-    let cancelled = false;
-    Promise.all(
-      srcs.map(
-        (src) =>
-          new Promise<HTMLImageElement>((resolve, reject) => {
-            const image = document.createElement("img");
-            image.onload = () => resolve(image);
-            image.onerror = reject;
-            image.src = src;
-          }),
-      ),
-    ).then((images) => {
-      if (cancelled) return;
-      sourceImages = images;
-      init();
-    });
+    img.onload = init;
+    img.src = src;
 
     const handleResize = () => resize();
     window.addEventListener("resize", handleResize);
 
     return () => {
-      cancelled = true;
       window.removeEventListener("resize", handleResize);
       gsap.ticker.remove(render);
       crowd.forEach((peep) => peep.walk?.kill());
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [srcs, peepHeight, colors, density]);
+  }, [src, rows, cols, peepHeight, colors, density]);
 
   return (
     <canvas
