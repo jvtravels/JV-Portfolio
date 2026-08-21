@@ -47,10 +47,15 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
     const getRandomFromArray = <T,>(array: T[]) => array[randomIndex(array)];
 
     const stage = { width: 0, height: 0 };
+    let isCompact = false;
 
     const resetPeep = ({ peep }: { peep: Peep }) => {
       const direction = Math.random() > 0.5 ? 1 : -1;
-      const offsetY = 40 - 90 * (gsap.parseEase("power2.in") as (v: number) => number)(Math.random());
+      // On the short mobile strip, a downward offset pushes a peep's feet past
+      // the container's bottom edge and overflow:hidden guillotines them —
+      // only let peeps shift upward (into the "back row") there, never down.
+      const maxDrop = isCompact ? 0 : 40;
+      const offsetY = maxDrop - 90 * (gsap.parseEase("power2.in") as (v: number) => number)(Math.random());
       const startY = stage.height - peep.height + offsetY;
       let startX: number;
       let endX: number;
@@ -227,12 +232,13 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
     };
 
     const init = () => {
-      // Narrow (mobile) viewports get fewer, smaller figures — the same
-      // density/size tuned for a wide desktop strip packs into an
-      // illegible wall of heads on a phone-width canvas.
+      // Narrow (mobile) viewports get smaller figures than the desktop strip,
+      // but a similar density — too few peeps left wide gaps of empty black
+      // between small clumps instead of a continuous crowd line.
       const compact = canvas.clientWidth < 700;
-      const effectiveDensity = compact ? Math.min(density, 1.3) : density;
-      const effectivePeepHeight = compact ? Math.min(peepHeight, 80) : peepHeight;
+      isCompact = compact;
+      const effectiveDensity = compact ? Math.min(density, 2.2) : density;
+      const effectivePeepHeight = compact ? Math.min(peepHeight, 70) : peepHeight;
 
       createPeeps(effectiveDensity, effectivePeepHeight);
       resize();
