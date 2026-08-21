@@ -12,6 +12,7 @@ import {
   useSphericalJoint,
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
+import { useTheme } from "@/app/components/ThemeProvider";
 
 import * as THREE from "three";
 import "./Lanyard.css";
@@ -20,6 +21,7 @@ extend({ MeshLineGeometry, MeshLineMaterial });
 
 const CARD_GLB_URL = "/lanyard/card.glb";
 const LANYARD_PNG_URL = "/lanyard/lanyard.png";
+const LANYARD_PNG_URL_DARK = "/lanyard/lanyard-white.png";
 
 // 1x1 transparent pixel — lets useTexture be called unconditionally when a
 // front/back image isn't supplied.
@@ -167,8 +169,11 @@ function Band({
     angularDamping: 4,
     linearDamping: 4,
   };
+  const { resolvedTheme } = useTheme();
   const { nodes, materials } = useGLTF(CARD_GLB_URL) as any;
-  const texture = useTexture(lanyardImage || LANYARD_PNG_URL);
+  const texture = useTexture(
+    lanyardImage || (resolvedTheme === "dark" ? LANYARD_PNG_URL_DARK : LANYARD_PNG_URL)
+  );
   // useTexture must be called unconditionally; use a blank pixel when an image
   // isn't supplied for a given face, then skip compositing it below.
   const frontTex = useTexture(frontImage || BLANK_PIXEL);
