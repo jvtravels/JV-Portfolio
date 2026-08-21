@@ -43,10 +43,8 @@ export default function AboutMeSection() {
             </h2>
 
             {[
-              "I'm Jay Vyas, a Senior Product Designer working across AI, SaaS, and complex digital products.",
-              "Over 7+ years, I've learned to look beyond the interface, into the workflows, systems, trade-offs, and product decisions underneath it.",
-              "I work across 0→1 ideas and mature products, helping teams simplify complexity and scale without losing clarity.",
-              "Building HireStepX added a founder's perspective: balancing user experience with technical constraints, cost, speed, and what's actually worth building next.",
+              "A Senior Product Designer working across AI, SaaS, and complex digital products.",
+              "Over 7+ years, I've learned to look beyond the interface, into the workflows, systems, trade-offs, and product decisions underneath it. I work across 0→1 ideas and mature products, helping teams simplify complexity and scale without losing clarity.",
               "I care about making complex products feel clear, coherent, and useful.",
             ].map((line, i) => (
               <p key={i} style={{
