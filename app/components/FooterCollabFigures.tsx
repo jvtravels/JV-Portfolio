@@ -64,14 +64,14 @@ export default function FooterCollabFigures() {
       <div ref={manShadowRef} className="footer-collab-shadow" />
       <img
         ref={manRef}
-        src="/Man.png"
+        src="/FooterMan.png"
         alt=""
         style={{ width: "clamp(64px, 5.4vw, 106px)", height: "auto", transform: "translateY(calc(-100% + 32px))" }}
       />
       <div ref={foxShadowRef} className="footer-collab-shadow footer-collab-shadow-fox" />
       <img
         ref={foxRef}
-        src="/Fox.png"
+        src="/FooterDog.png"
         alt=""
         className="footer-collab-fox"
         style={{ width: "clamp(40px, 3.5vw, 70px)", height: "auto", transform: "translateY(calc(-100% + 32px))" }}
