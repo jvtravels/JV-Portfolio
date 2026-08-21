@@ -34,7 +34,7 @@ export default function Hero() {
         maxWidth: 460,
         marginTop: 40,
       }}>
-        Living for curiosity, designing for the world and passionate about the design and mechanics of everyday things.
+        Turning questions, ideas, and complex problems into thoughtful products - from first concept to shipped experience.
       </p>
     </section>
   );
