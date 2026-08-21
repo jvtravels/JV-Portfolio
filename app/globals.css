@@ -374,7 +374,7 @@ button {
   position: relative;
   background: #000000;
   color: #f3f1ea;
-  padding: 56px clamp(20px, 6vw, 80px) 32px;
+  padding: 120px clamp(20px, 3vw, 48px) 32px;
   overflow: hidden;
 }
 
@@ -389,7 +389,7 @@ button {
 
 .footer-collab-heading {
   font-family: var(--font-figura);
-  font-size: clamp(2.2rem, 7vw, 7.4rem);
+  font-size: 10.8vw;
   line-height: 0.92;
   letter-spacing: -0.015em;
   text-transform: uppercase;
