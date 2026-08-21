@@ -1,4 +1,5 @@
 import { DashedH } from "@/app/components/DashedFrame";
+import CrowdCanvas from "@/app/components/CrowdCanvas";
 
 const SOCIAL_LINKS = [
   {
@@ -39,6 +40,20 @@ export default function Footer() {
   return (
     <footer style={{ position: "relative", padding: "56px 0 40px" }}>
       <DashedH style={{ top: 0, left: 0, right: 0 }} />
+
+      <div
+        className="reveal footer-crowd"
+        style={{
+          position: "relative",
+          height: 120,
+          margin: "0 var(--page-px) 40px",
+          overflow: "hidden",
+          borderTop: "1px solid var(--border)",
+          borderBottom: "1px solid var(--border)",
+        }}
+      >
+        <CrowdCanvas src="/images/peeps/all-peeps.png" rows={15} cols={7} peepHeight={72} />
+      </div>
 
       <div className="section-px">
         {/* Top row — blurb + social icons */}
