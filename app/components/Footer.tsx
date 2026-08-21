@@ -18,10 +18,19 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer style={{ position: "relative", paddingTop: 56 }}>
-      <div className="section-px">
-        <div className="footer-collab">
-          <div className="reveal" style={{ display: "flex", justifyContent: "flex-end", gap: 10, marginBottom: 48 }}>
+    <footer style={{ position: "relative" }}>
+      <div className="footer-collab">
+        <div className="reveal footer-collab-figures">
+          <img src="/Man.png" alt="" style={{ width: "clamp(90px, 9vw, 170px)", height: "auto", right: "38%", top: "-58%" }} />
+          <img src="/Fox.png" alt="" style={{ width: "clamp(55px, 5.5vw, 105px)", height: "auto", right: "27%", top: "-38%" }} />
+          <h2 className="footer-collab-heading">Let&apos;s Collaborate</h2>
+        </div>
+
+        <div className="reveal footer-collab-bottom-row" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+          <span style={{ fontSize: 13, color: "rgba(243, 241, 234, 0.6)", letterSpacing: "-0.01em" }}>
+            © {year} Jay Vyas
+          </span>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <a href="/resume.pdf" className="footer-collab-pill">
               {RESUME_ICON}
               Resume
@@ -35,16 +44,6 @@ export default function Footer() {
               {LINKEDIN_ICON}
               LinkedIn
             </a>
-          </div>
-
-          <div className="reveal footer-collab-figures">
-            <img src="/Man.png" alt="" style={{ width: "clamp(90px, 9vw, 170px)", height: "auto", right: "33%", top: "-58%" }} />
-            <img src="/Fox.png" alt="" style={{ width: "clamp(55px, 5.5vw, 105px)", height: "auto", right: "13%", top: "-38%" }} />
-            <h2 className="footer-collab-heading">Let&apos;s Collaborate</h2>
-          </div>
-
-          <div style={{ marginTop: 24, fontSize: 13, color: "rgba(243, 241, 234, 0.6)", letterSpacing: "-0.01em" }}>
-            © {year} Jay Vyas
           </div>
         </div>
       </div>

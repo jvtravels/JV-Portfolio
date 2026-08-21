@@ -372,10 +372,9 @@ button {
    it sits directly above the crowd canvas, which is already dark-reliant. */
 .footer-collab {
   position: relative;
-  border-radius: 28px;
   background: #0a0a09;
   color: #f3f1ea;
-  padding: 56px clamp(20px, 5vw, 56px) 40px;
+  padding: 56px clamp(20px, 6vw, 80px) 32px;
   overflow: hidden;
 }
 
@@ -398,6 +397,10 @@ button {
   white-space: nowrap;
 }
 
+.footer-collab-bottom-row {
+  margin-top: 32px;
+}
+
 .footer-collab-pill {
   display: inline-flex;
   align-items: center;
@@ -417,13 +420,18 @@ button {
 
 @media (max-width: 860px) {
   .footer-collab {
-    border-radius: 20px;
-    padding: 40px 20px 28px;
+    padding: 40px 20px 24px;
   }
   .footer-collab-heading {
     font-size: clamp(1.8rem, 10.5vw, 3.2rem);
     white-space: normal;
     overflow-wrap: break-word;
+  }
+  .footer-collab-bottom-row {
+    margin-top: 64px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 }
 
