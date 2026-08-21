@@ -329,7 +329,7 @@ button {
 }
 
 .footer-crowd {
-  height: 480px;
+  height: 380px;
 }
 
 @media (max-width: 860px) {
@@ -374,7 +374,7 @@ button {
   position: relative;
   background: #000000;
   color: #f3f1ea;
-  padding: 120px clamp(20px, 3vw, 48px) 32px;
+  padding: 64px clamp(20px, 3vw, 48px) 32px;
   overflow: hidden;
 }
 
@@ -389,7 +389,7 @@ button {
 
 .footer-collab-heading {
   font-family: var(--font-figura);
-  font-size: 10.8vw;
+  font-size: clamp(2.2rem, 8vw, 8.4rem);
   line-height: 0.92;
   letter-spacing: -0.015em;
   text-transform: uppercase;
