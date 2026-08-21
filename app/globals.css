@@ -385,7 +385,7 @@ button {
   position: relative;
   background: var(--bg);
   color: var(--text);
-  padding: 170px clamp(20px, 3vw, 48px) 48px;
+  padding: 96px clamp(20px, 3vw, 48px) 48px;
   overflow: hidden;
 }
 
