@@ -66,9 +66,18 @@ export default function Lanyard({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // The canvas can mount before its container's layout (aspect-ratio, grid
+  // track sizing) has settled, freezing it at a stale measured size since no
+  // further resize occurs. Nudge a remeasure once layout has flushed.
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
   return (
     <div className="lanyard-wrapper">
       <Canvas
+        resize={{ debounce: 0 }}
         camera={{ position, fov }}
         dpr={[1, isMobile ? 1.5 : 2]}
         gl={{ alpha: transparent }}
