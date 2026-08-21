@@ -244,8 +244,12 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
     const init = () => {
       // Narrow (mobile) viewports get smaller figures than the desktop strip,
       // but a similar density — too few peeps left wide gaps of empty black
-      // between small clumps instead of a continuous crowd line.
-      const compact = canvas.clientWidth < 700;
+      // between small clumps instead of a continuous crowd line. This threshold
+      // must match the .footer-crowd CSS breakpoint (globals.css) — otherwise,
+      // in the gap between the two breakpoints, the container shrinks to its
+      // short mobile height while figures are still sized for the tall desktop
+      // stage, so every figure overflows the same way and clamps to one flat line.
+      const compact = canvas.clientWidth < 860;
       isCompact = compact;
       const effectiveDensity = compact ? Math.min(density, 2.2) : density;
       const effectivePeepHeight = compact ? Math.min(peepHeight, 70) : peepHeight;
