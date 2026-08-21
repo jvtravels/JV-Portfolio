@@ -374,8 +374,9 @@ button {
   position: relative;
   background: #000000;
   color: #f3f1ea;
-  padding: 64px clamp(20px, 3vw, 48px) 32px;
+  padding: 64px var(--page-px) 32px;
   overflow: hidden;
+  container-type: inline-size;
 }
 
 .footer-collab-figures {
@@ -389,7 +390,7 @@ button {
 
 .footer-collab-heading {
   font-family: var(--font-figura);
-  font-size: clamp(2.2rem, 8vw, 8.4rem);
+  font-size: clamp(2.2rem, 10.8cqw, 9rem);
   line-height: 0.92;
   letter-spacing: -0.015em;
   text-transform: uppercase;
@@ -420,7 +421,7 @@ button {
 
 @media (max-width: 860px) {
   .footer-collab {
-    padding: 40px 20px 24px;
+    padding: 40px var(--page-px) 24px;
   }
   .footer-collab-heading {
     font-size: clamp(1.8rem, 10.5vw, 3.2rem);
