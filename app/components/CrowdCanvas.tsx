@@ -49,14 +49,19 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
     const stage = { width: 0, height: 0 };
     let isCompact = false;
 
+    const BOB_AMPLITUDE = 10;
+
     const resetPeep = ({ peep }: { peep: Peep }) => {
       const direction = Math.random() > 0.5 ? 1 : -1;
       const maxDrop = isCompact ? 0 : 40;
       const offsetY = maxDrop - 90 * (gsap.parseEase("power2.in") as (v: number) => number)(Math.random());
       // Clamp so a peep's full height always fits inside the stage — otherwise
-      // the canvas's overflow:hidden chops heads (top) or feet (bottom) off,
-      // which is most visible on the short mobile strip.
-      const startY = Math.min(Math.max(stage.height - peep.height + offsetY, 0), stage.height - peep.height);
+      // the canvas's overflow:hidden chops heads (top) or feet (bottom) off.
+      // The lower bound also reserves BOB_AMPLITUDE of headroom, since the walk
+      // cycle lifts each peep by that much on every step (see normalWalk) — without
+      // the margin, that lift pushes the head above y=0 and clips it mid-stride.
+      const maxY = stage.height - peep.height;
+      const startY = Math.min(Math.max(stage.height - peep.height + offsetY, BOB_AMPLITUDE), Math.max(maxY, BOB_AMPLITUDE));
       let startX: number;
       let endX: number;
 
@@ -89,7 +94,7 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
       const tl = gsap.timeline();
       tl.timeScale(randomRange(0.4, 0.9));
       tl.to(peep, { duration: xDuration, x: endX, ease: "none" }, 0);
-      tl.to(peep, { duration: yDuration, repeat: Math.round(xDuration / yDuration), yoyo: true, y: startY - 10 }, 0);
+      tl.to(peep, { duration: yDuration, repeat: Math.round(xDuration / yDuration), yoyo: true, y: startY - BOB_AMPLITUDE }, 0);
 
       return tl;
     };
