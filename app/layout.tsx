@@ -7,6 +7,7 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfa
 const schibstedGrotesk = Schibsted_Grotesk({ subsets: ["latin"], variable: "--font-sans" });
 const gloock = Gloock({ subsets: ["latin"], weight: "400", variable: "--font-gloock" });
 const figura = localFont({ src: "../public/fonts/FIGURA-ExtraBold.otf", variable: "--font-figura" });
+const niven = localFont({ src: "../public/Niven-Bold.otf", variable: "--font-niven" });
 import SmoothScroll from "./components/SmoothScroll";
 import CustomCursor from "./components/CustomCursor";
 import RevealObserver from "./components/RevealObserver";
@@ -33,7 +34,7 @@ const THEME_INIT_SCRIPT = `
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${schibstedGrotesk.variable} ${playfair.variable} ${gloock.variable} ${figura.variable}`}>
+    <html lang="en" className={`${schibstedGrotesk.variable} ${playfair.variable} ${gloock.variable} ${figura.variable} ${niven.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>

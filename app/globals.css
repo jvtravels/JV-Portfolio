@@ -244,6 +244,15 @@ button {
 #testimonials .testimonial-header {
   margin-bottom: 40px;
 }
+
+#work h2,
+#articles h2,
+#faq h2,
+#process h2,
+#about-me h2,
+#testimonials h2 {
+  font-family: var(--font-niven);
+}
 #brands p.reveal {
   margin-bottom: 48px;
 }
