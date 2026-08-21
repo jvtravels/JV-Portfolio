@@ -374,7 +374,7 @@ button {
   position: relative;
   background: #000000;
   color: #f3f1ea;
-  padding: 140px clamp(20px, 3vw, 48px) 32px;
+  padding: 170px clamp(20px, 3vw, 48px) 48px;
   overflow: hidden;
   container-type: inline-size;
 }
@@ -385,12 +385,13 @@ button {
 
 .footer-collab-figures img {
   position: absolute;
+  top: 0;
   pointer-events: none;
 }
 
 .footer-collab-heading {
   font-family: var(--font-figura);
-  font-size: clamp(2.2rem, 10.8cqw, 9rem);
+  font-size: clamp(2.2rem, 10.8cqw, 15rem);
   line-height: 0.92;
   letter-spacing: -0.015em;
   text-transform: uppercase;
@@ -399,7 +400,7 @@ button {
 }
 
 .footer-collab-bottom-row {
-  margin-top: 32px;
+  margin-top: 40px;
 }
 
 .footer-collab-pill {
@@ -429,11 +430,11 @@ button {
     overflow-wrap: break-word;
   }
   .footer-collab-figures img {
-    top: -109% !important;
+    transform: translateY(calc(-100% + 14px)) !important;
   }
   .footer-collab-fox {
     right: 22% !important;
-    top: -7% !important;
+    transform: translateY(calc(-100% + 8px)) !important;
   }
   .footer-collab-bottom-row {
     margin-top: 64px;

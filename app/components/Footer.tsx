@@ -21,8 +21,8 @@ export default function Footer() {
     <footer style={{ position: "relative" }}>
       <div className="footer-collab">
         <div className="reveal footer-collab-figures">
-          <img src="/Man.png" alt="" style={{ width: "clamp(70px, 6.2vw, 120px)", height: "auto", right: "38%", top: "-112%" }} />
-          <img src="/Fox.png" alt="" className="footer-collab-fox" style={{ width: "clamp(45px, 4vw, 74px)", height: "auto", right: "33%", top: "-41%" }} />
+          <img src="/Man.png" alt="" style={{ width: "clamp(55px, 4.6vw, 90px)", height: "auto", right: "41%", transform: "translateY(calc(-100% + 22px))" }} />
+          <img src="/Fox.png" alt="" className="footer-collab-fox" style={{ width: "clamp(35px, 3vw, 60px)", height: "auto", right: "31%", transform: "translateY(calc(-100% + 14px))" }} />
           <h2 className="footer-collab-heading">Let&apos;s Collaborate</h2>
         </div>
 
@@ -58,6 +58,17 @@ export default function Footer() {
         }}
       >
         <CrowdCanvas src="/images/peeps/all-peeps.png" rows={15} cols={7} scale={0.9} />
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 70,
+            background: "linear-gradient(to bottom, #000000, transparent)",
+            pointerEvents: "none",
+          }}
+        />
       </div>
     </footer>
   );
