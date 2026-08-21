@@ -374,7 +374,7 @@ button {
   position: relative;
   background: #000000;
   color: #f3f1ea;
-  padding: 64px var(--page-px) 32px;
+  padding: 64px clamp(20px, 3vw, 48px) 32px;
   overflow: hidden;
   container-type: inline-size;
 }
@@ -421,7 +421,7 @@ button {
 
 @media (max-width: 860px) {
   .footer-collab {
-    padding: 40px var(--page-px) 24px;
+    padding: 40px 20px 24px;
   }
   .footer-collab-heading {
     font-size: clamp(1.8rem, 10.5vw, 3.2rem);
