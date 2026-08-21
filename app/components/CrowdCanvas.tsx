@@ -219,7 +219,7 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, scale = 1 }: Cro
 
     const init = () => {
       const width = canvas.clientWidth;
-      effectiveScale = scale * (width < 640 ? 0.5 : width < 1024 ? 0.75 : 1);
+      effectiveScale = scale * (width < 640 ? 0.29 : width < 1024 ? 0.43 : 1);
 
       createPeeps();
       resize();
