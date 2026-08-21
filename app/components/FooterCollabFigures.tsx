@@ -28,24 +28,27 @@ export default function FooterCollabFigures() {
       const textNode = heading?.firstChild;
       if (!figures || !heading || !man || !fox || !manShadow || !foxShadow || !textNode) return;
 
-      const getCharCenterX = (index: number) => {
+      const getCharRect = (index: number) => {
         const range = document.createRange();
         range.setStart(textNode, index);
         range.setEnd(textNode, index + 1);
-        const rect = range.getBoundingClientRect();
-        return (rect.left + rect.right) / 2;
+        return range.getBoundingClientRect();
       };
 
       const figuresLeft = figures.getBoundingClientRect().left;
-      const aCenter = getCharCenterX(10) - figuresLeft; // first "a" in "Collaborate"
-      const bCenter = getCharCenterX(11) - figuresLeft; // "b" right after it
+      const aRect = getCharRect(10); // first "a" in "Collaborate"
+      const bRect = getCharRect(11); // "b" right after it
+      const aCenter = (aRect.left + aRect.right) / 2 - figuresLeft;
+      // The fox perches near the A/B seam, not B's own center — it sits on
+      // the left third of "b", right where "a" and "b" meet.
+      const foxAnchor = bRect.left - figuresLeft + bRect.width * 0.28;
 
       man.style.left = `${aCenter - man.offsetWidth / 2}px`;
       man.style.right = "auto";
       manShadow.style.left = `${aCenter}px`;
-      fox.style.left = `${bCenter - fox.offsetWidth / 2}px`;
+      fox.style.left = `${foxAnchor - fox.offsetWidth / 2}px`;
       fox.style.right = "auto";
-      foxShadow.style.left = `${bCenter}px`;
+      foxShadow.style.left = `${foxAnchor}px`;
     };
 
     align();
@@ -63,7 +66,7 @@ export default function FooterCollabFigures() {
         ref={manRef}
         src="/Man.png"
         alt=""
-        style={{ width: "clamp(64px, 5.4vw, 106px)", height: "auto", transform: "translateY(calc(-100% + 36px))" }}
+        style={{ width: "clamp(64px, 5.4vw, 106px)", height: "auto", transform: "translateY(calc(-100% + 32px))" }}
       />
       <div ref={foxShadowRef} className="footer-collab-shadow footer-collab-shadow-fox" />
       <img
@@ -71,7 +74,7 @@ export default function FooterCollabFigures() {
         src="/Fox.png"
         alt=""
         className="footer-collab-fox"
-        style={{ width: "clamp(40px, 3.5vw, 70px)", height: "auto", transform: "translateY(calc(-100% + 26px))" }}
+        style={{ width: "clamp(40px, 3.5vw, 70px)", height: "auto", transform: "translateY(calc(-100% + 32px))" }}
       />
       <h2 ref={headingRef} className="footer-collab-heading">Let&apos;s Collaborate</h2>
     </div>

@@ -391,7 +391,7 @@ button {
 
 .footer-collab-shadow {
   position: absolute;
-  top: 36px;
+  top: 32px;
   width: clamp(30px, 2.6vw, 46px);
   height: clamp(7px, 0.6vw, 11px);
   border-radius: 50%;
@@ -400,7 +400,7 @@ button {
   pointer-events: none;
 }
 .footer-collab-shadow-fox {
-  top: 26px;
+  top: 32px;
   width: clamp(22px, 1.8vw, 32px);
   height: clamp(5px, 0.4vw, 8px);
 }
@@ -448,16 +448,16 @@ button {
     overflow-wrap: break-word;
   }
   .footer-collab-figures img {
-    transform: translateY(calc(-100% + 24px)) !important;
+    transform: translateY(calc(-100% + 20px)) !important;
   }
   .footer-collab-fox {
-    transform: translateY(calc(-100% + 16px)) !important;
+    transform: translateY(calc(-100% + 20px)) !important;
   }
   .footer-collab-shadow {
-    top: 24px;
+    top: 20px;
   }
   .footer-collab-shadow-fox {
-    top: 16px;
+    top: 20px;
   }
   .footer-collab-bottom-row {
     margin-top: 64px;
