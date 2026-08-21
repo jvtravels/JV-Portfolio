@@ -51,12 +51,12 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
 
     const resetPeep = ({ peep }: { peep: Peep }) => {
       const direction = Math.random() > 0.5 ? 1 : -1;
-      // On the short mobile strip, a downward offset pushes a peep's feet past
-      // the container's bottom edge and overflow:hidden guillotines them —
-      // only let peeps shift upward (into the "back row") there, never down.
       const maxDrop = isCompact ? 0 : 40;
       const offsetY = maxDrop - 90 * (gsap.parseEase("power2.in") as (v: number) => number)(Math.random());
-      const startY = stage.height - peep.height + offsetY;
+      // Clamp so a peep's full height always fits inside the stage — otherwise
+      // the canvas's overflow:hidden chops heads (top) or feet (bottom) off,
+      // which is most visible on the short mobile strip.
+      const startY = Math.min(Math.max(stage.height - peep.height + offsetY, 0), stage.height - peep.height);
       let startX: number;
       let endX: number;
 
