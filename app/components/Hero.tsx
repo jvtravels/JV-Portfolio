@@ -19,7 +19,9 @@ export default function Hero() {
         color: "rgba(var(--fg-rgb), 1)",
         margin: 0,
       }}>
-        Intelligent by Design
+        Curious by Nature. Building
+        <br />
+        Through Design
       </h1>
 
       <p className="reveal reveal-delay-1" style={{
