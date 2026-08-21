@@ -329,12 +329,12 @@ button {
 }
 
 .footer-crowd {
-  height: 220px;
+  height: 300px;
 }
 
 @media (max-width: 860px) {
   .footer-crowd {
-    height: 130px;
+    height: 190px;
   }
 }
 

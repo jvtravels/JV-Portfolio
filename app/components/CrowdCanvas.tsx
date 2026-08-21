@@ -18,6 +18,8 @@ interface CrowdCanvasProps {
 type Peep = {
   image: CanvasImageSource;
   rect: number[];
+  baseWidth: number;
+  baseHeight: number;
   width: number;
   height: number;
   x: number;
@@ -53,13 +55,23 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
     // the upstream skiper39 sheet. In the reference, that cut is invisible
     // because the crowd is dense and multi-layered: heads and shoulders at
     // every depth overlap, so no single figure's edge is ever isolated
-    // against open background. Scattering peeps across the FULL stage height
-    // (not just a thin band near the bottom) is what creates that layered
-    // "photo of a crowd" look — combined with high density (see Footer's
-    // density prop) so there's always overlap to hide the cut in.
+    // against open background. A uniform random Y still reads as "one line"
+    // because every figure is the same size — depth (far = small/near the
+    // top, near = large/near the bottom) plus jitter is what actually breaks
+    // the crowd into the uneven, some-above-some-below layers in the
+    // reference, combined with high density (see Footer's density prop) so
+    // there's always overlap to hide the cut in.
     const resetPeep = ({ peep }: { peep: Peep }) => {
-      const maxY = Math.max(stage.height - peep.height, BOB_AMPLITUDE);
-      const startY = randomRange(BOB_AMPLITUDE, maxY);
+      const depth = Math.random();
+      const sizeScale = 0.65 + depth * 0.6;
+      peep.width = peep.baseWidth * sizeScale;
+      peep.height = peep.baseHeight * sizeScale;
+
+      const topBound = BOB_AMPLITUDE;
+      const bottomBound = Math.max(stage.height - peep.height, topBound);
+      const center = topBound + depth * (bottomBound - topBound);
+      const jitter = randomRange(-0.35, 0.35) * (bottomBound - topBound);
+      const startY = Math.min(bottomBound, Math.max(topBound, center + jitter));
       const direction = Math.random() > 0.5 ? 1 : -1;
       let startX: number;
       let endX: number;
@@ -118,6 +130,8 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
       const peep: Peep = {
         image,
         rect: [],
+        baseWidth: 0,
+        baseHeight: 0,
         width: 0,
         height: 0,
         x: 0,
@@ -127,8 +141,10 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
         walk: null,
         setRect(r) {
           peep.rect = r;
-          peep.width = r[2] * scale;
-          peep.height = r[3] * scale;
+          peep.baseWidth = r[2] * scale;
+          peep.baseHeight = r[3] * scale;
+          peep.width = peep.baseWidth;
+          peep.height = peep.baseHeight;
         },
         render(context) {
           context.save();
