@@ -129,42 +129,28 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, scale = 1 }: Cro
 
     const img = document.createElement("img");
 
-    // The sprite sheet has a fixed number of unique figures (rows*cols), but a
-    // fixed-size crowd thins out and leaves visible gaps on wide viewports —
-    // the footer spans the full page width, unlike the narrower demo container
-    // upstream was built for. Instances (how many are walking) scale with the
-    // stage width; they just cycle through the same unique sprite rects.
-    let spriteRects: number[][] = [];
     const allPeeps: Peep[] = [];
     const availablePeeps: Peep[] = [];
     const crowd: Peep[] = [];
-    const BASE_WIDTH = 1200;
 
-    const buildSpriteRects = () => {
+    const createPeeps = () => {
       const { naturalWidth: width, naturalHeight: height } = img;
       const total = rows * cols;
       const rectWidth = width / rows;
       const rectHeight = height / cols;
 
       for (let i = 0; i < total; i++) {
-        spriteRects.push([
-          (i % rows) * rectWidth,
-          ((i / rows) | 0) * rectHeight,
-          rectWidth,
-          rectHeight,
-        ]);
-      }
-    };
-
-    const buildPeepInstances = () => {
-      const instanceCount = Math.max(
-        spriteRects.length,
-        Math.round((spriteRects.length * stage.width) / BASE_WIDTH),
-      );
-
-      allPeeps.length = 0;
-      for (let i = 0; i < instanceCount; i++) {
-        allPeeps.push(createPeep({ image: img, rect: spriteRects[i % spriteRects.length] }));
+        allPeeps.push(
+          createPeep({
+            image: img,
+            rect: [
+              (i % rows) * rectWidth,
+              ((i / rows) | 0) * rectHeight,
+              rectWidth,
+              rectHeight,
+            ],
+          }),
+        );
       }
     };
 
@@ -219,8 +205,6 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, scale = 1 }: Cro
 
       crowd.length = 0;
       availablePeeps.length = 0;
-
-      buildPeepInstances();
       availablePeeps.push(...allPeeps);
 
       initCrowd();
@@ -230,7 +214,7 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, scale = 1 }: Cro
       const width = canvas.clientWidth;
       effectiveScale = scale * (width < 640 ? 0.5 : width < 1024 ? 0.75 : 1);
 
-      buildSpriteRects();
+      createPeeps();
       resize();
       gsap.ticker.add(render);
     };
