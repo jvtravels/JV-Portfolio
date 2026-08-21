@@ -1,4 +1,5 @@
 import CrowdCanvas from "@/app/components/CrowdCanvas";
+import FooterCollabFigures from "@/app/components/FooterCollabFigures";
 
 const RESUME_ICON = (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -20,11 +21,7 @@ export default function Footer() {
   return (
     <footer style={{ position: "relative" }}>
       <div className="footer-collab">
-        <div className="reveal footer-collab-figures">
-          <img src="/Man.png" alt="" style={{ width: "clamp(55px, 4.6vw, 90px)", height: "auto", right: "41%", transform: "translateY(calc(-100% + 22px))" }} />
-          <img src="/Fox.png" alt="" className="footer-collab-fox" style={{ width: "clamp(35px, 3vw, 60px)", height: "auto", right: "35%", transform: "translateY(calc(-100% + 14px))" }} />
-          <h2 className="footer-collab-heading">Let&apos;s Collaborate</h2>
-        </div>
+        <FooterCollabFigures />
 
         <div className="reveal footer-collab-bottom-row" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
           <span style={{ fontSize: 13, color: "rgba(243, 241, 234, 0.6)", letterSpacing: "-0.01em" }}>

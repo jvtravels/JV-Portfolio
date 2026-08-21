@@ -391,7 +391,7 @@ button {
 
 .footer-collab-heading {
   font-family: var(--font-figura);
-  font-size: clamp(2.2rem, 10.8cqw, 15rem);
+  font-size: clamp(2.2rem, 10.8cqw, 40rem);
   line-height: 0.92;
   letter-spacing: -0.015em;
   text-transform: uppercase;
@@ -435,7 +435,6 @@ button {
     transform: translateY(calc(-100% + 14px)) !important;
   }
   .footer-collab-fox {
-    right: 22% !important;
     transform: translateY(calc(-100% + 8px)) !important;
   }
   .footer-collab-bottom-row {
