@@ -73,14 +73,18 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
     };
 
     const normalWalk = ({ peep, props }: { peep: Peep; props: { startX: number; startY: number; endX: number } }) => {
-      const { startY, endX } = props;
-      const xDuration = 22;
+      const { startX, startY, endX } = props;
+      // Constant walking speed (px/sec) so the crossing time — and how visible
+      // the step bob is — scales with viewport width instead of always taking
+      // a fixed duration regardless of how far a peep actually has to travel.
+      const speed = 55;
+      const xDuration = Math.abs(endX - startX) / speed;
       const yDuration = 0.25;
 
       const tl = gsap.timeline();
       tl.timeScale(randomRange(0.4, 0.9));
       tl.to(peep, { duration: xDuration, x: endX, ease: "none" }, 0);
-      tl.to(peep, { duration: yDuration, repeat: xDuration / yDuration, yoyo: true, y: startY - 10 }, 0);
+      tl.to(peep, { duration: yDuration, repeat: Math.round(xDuration / yDuration), yoyo: true, y: startY - 10 }, 0);
 
       return tl;
     };
@@ -140,13 +144,13 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
     const availablePeeps: Peep[] = [];
     const crowd: Peep[] = [];
 
-    const createPeeps = () => {
+    const createPeeps = (effectiveDensity: number, effectivePeepHeight: number) => {
       const { naturalWidth: width, naturalHeight: height } = img;
       const unique = rows * cols;
-      const total = Math.round(unique * density);
+      const total = Math.round(unique * effectiveDensity);
       const rectWidth = width / rows;
       const rectHeight = height / cols;
-      const scale = peepHeight / rectHeight;
+      const scale = effectivePeepHeight / rectHeight;
       const tintedSheets = colors.map((color) => tintSheet(img, color));
 
       for (let i = 0; i < total; i++) {
@@ -223,7 +227,14 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, peepHeight = 90,
     };
 
     const init = () => {
-      createPeeps();
+      // Narrow (mobile) viewports get fewer, smaller figures — the same
+      // density/size tuned for a wide desktop strip packs into an
+      // illegible wall of heads on a phone-width canvas.
+      const compact = canvas.clientWidth < 700;
+      const effectiveDensity = compact ? Math.min(density, 1.3) : density;
+      const effectivePeepHeight = compact ? Math.min(peepHeight, 80) : peepHeight;
+
+      createPeeps(effectiveDensity, effectivePeepHeight);
       resize();
       gsap.ticker.add(render);
     };
