@@ -24,7 +24,7 @@ export default function Footer() {
         <FooterCollabFigures />
 
         <div className="reveal footer-collab-bottom-row" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
-          <span style={{ fontSize: 13, color: "rgba(243, 241, 234, 0.6)", letterSpacing: "-0.01em" }}>
+          <span style={{ fontSize: 13, color: "var(--text-muted)", letterSpacing: "-0.01em" }}>
             © {year} Jay Vyas
           </span>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
