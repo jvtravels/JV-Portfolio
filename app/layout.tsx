@@ -33,7 +33,7 @@ const THEME_INIT_SCRIPT = `
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${schibstedGrotesk.variable} ${playfair.variable} ${gloock.variable}`}>
+    <html lang="en" className={`${schibstedGrotesk.variable} ${playfair.variable} ${gloock.variable} ${figura.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
