@@ -178,8 +178,15 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7, scale = 1 }: Cro
     };
 
     const initCrowd = () => {
+      // A pure Math.random() start progress per peep clusters some together
+      // and leaves visible gaps elsewhere. Stratify instead: give each peep
+      // its own equal slice of the walk with a random offset inside it, so
+      // the crowd starts evenly spread across the width but still organic.
+      const total = availablePeeps.length;
+      let slot = 0;
       while (availablePeeps.length) {
-        addPeepToCrowd().walk?.progress(Math.random());
+        addPeepToCrowd().walk?.progress((slot + Math.random()) / total);
+        slot++;
       }
     };
 
