@@ -31,7 +31,7 @@ export default function Hero() {
         color: "rgba(var(--fg-rgb), 0.16)",
         margin: "-120px 0 0",
         transform: revealed ? "scale(1)" : "scale(0.7)",
-        transition: "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1)",
+        transition: "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1) 1.1s",
       }}>
         Curious by Nature. Building
         <br />
