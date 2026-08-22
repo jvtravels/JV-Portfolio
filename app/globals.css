@@ -584,26 +584,7 @@ html[data-theme="light"] .work-cover-light {
   }
 }
 
-/* Hero heading: dim base text with a bright overlay that wipes in
-   left-to-right via clip-path, synced to the intro loader's blinds. */
-.hero-heading-fill {
-  position: absolute;
-  inset: 0;
-  display: block;
-  color: rgba(var(--fg-rgb), 1);
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 1.1s cubic-bezier(0.65, 0, 0.35, 1);
-  pointer-events: none;
-}
-.hero-heading-fill.is-filled {
-  clip-path: inset(0 0 0 0);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .hero-heading-fill {
-    transition: none;
-    clip-path: inset(0 0 0 0);
-  }
   .hero-heading {
     transition: none !important;
     transform: scale(1) !important;
