@@ -4,12 +4,23 @@ import { useEffect, useState } from "react";
 
 export default function Hero() {
   const [revealed, setRevealed] = useState(false);
+  const [settled, setSettled] = useState(false);
 
   useEffect(() => {
     const onReveal = () => setRevealed(true);
     window.addEventListener("intro-reveal", onReveal);
     return () => window.removeEventListener("intro-reveal", onReveal);
   }, []);
+
+  useEffect(() => {
+    if (!revealed) return;
+    // Once the scale-up finishes, drop the transform entirely instead of
+    // leaving it at scale(1) — an active transform keeps the heading on its
+    // own compositing layer, which makes text fall back to grayscale
+    // anti-aliasing and look duller than the surrounding page.
+    const t = setTimeout(() => setSettled(true), 2200);
+    return () => clearTimeout(t);
+  }, [revealed]);
 
   return (
     <section className="section-px hero-section" style={{
@@ -30,8 +41,8 @@ export default function Hero() {
         letterSpacing: "-0.01em",
         color: "rgba(var(--fg-rgb), 0.16)",
         margin: "-120px 0 0",
-        transform: revealed ? "scale(1)" : "scale(0.7)",
-        transition: "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1) 1.1s",
+        transform: settled ? undefined : revealed ? "scale(1)" : "scale(0.7)",
+        transition: settled ? undefined : "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1) 1.1s",
       }}>
         Curious by Nature. Building
         <br />

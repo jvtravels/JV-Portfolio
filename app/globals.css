@@ -606,7 +606,7 @@ html[data-theme="light"] .work-cover-light {
   }
   .hero-heading {
     transition: none !important;
-    transform: scale(1) !important;
+    transform: none !important;
   }
 }
 
