@@ -29,7 +29,7 @@ export default function Hero() {
         lineHeight: 1,
         letterSpacing: "-0.01em",
         color: "rgba(var(--fg-rgb), 0.16)",
-        margin: "-60px 0 0",
+        margin: "-120px 0 0",
         transform: revealed ? "scale(1)" : "scale(0.7)",
         transition: "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1)",
       }}>
