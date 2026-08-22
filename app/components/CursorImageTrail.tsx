@@ -22,8 +22,8 @@ interface CursorImageTrailProps {
 
 export default function CursorImageTrail({
   images,
-  itemWidth = 150,
-  itemHeight = 106,
+  itemWidth = 260,
+  itemHeight = 184,
   distance = 80,
   visibleFor = 900,
 }: CursorImageTrailProps) {
@@ -93,8 +93,13 @@ export default function CursorImageTrail({
               top: item.y - itemHeight / 2,
               width: itemWidth,
               height: itemHeight,
-              borderRadius: 12,
+              borderRadius: 8,
               overflow: "hidden",
+              // Some source images (e.g. device mockups) have transparent
+              // padding around the content — without a backing color the
+              // rounded box edge disappears into the page background there,
+              // making the radius look inconsistent between images.
+              backgroundColor: "#0d0d0d",
               backgroundImage: `url(${item.image})`,
               backgroundSize: "cover",
               backgroundPosition: "center",

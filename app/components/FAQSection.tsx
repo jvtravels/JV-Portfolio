@@ -8,40 +8,17 @@ function FAQRow({
   faq,
   isOpen,
   onToggle,
-  showIllustration,
 }: {
   faq: (typeof FAQS)[number];
   isOpen: boolean;
   onToggle: () => void;
-  showIllustration?: boolean;
 }) {
   return (
     <div style={{
-      position: "relative",
       background: "var(--surface)",
       border: "1px solid var(--border)",
       borderRadius: 16,
     }}>
-      {showIllustration && (
-        <img
-          src="/faq.png"
-          alt=""
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            bottom: "100%",
-            left: 0,
-            width: 200,
-            height: "auto",
-            marginBottom: -16,
-            // The source art has a solid black background; screen-blending
-            // it drops the black to transparent so it sits on the page
-            // background instead of showing as a box in either theme.
-            mixBlendMode: "screen",
-            pointerEvents: "none",
-          }}
-        />
-      )}
       <button
         type="button"
         aria-expanded={isOpen}
@@ -134,25 +111,49 @@ export default function FAQSection() {
           }}>
             FAQ
           </span>
-          <h2 className="reveal" style={{
-            textAlign: "center",
-            fontSize: "clamp(24px, 7vw, 40px)",
-            fontWeight: 600,
-            letterSpacing: "-0.02em",
-            color: "var(--text)",
-            lineHeight: 1,
-            marginLeft: "auto",
-            marginRight: "auto",
-            maxWidth: 640,
-          }}>
-            Curious about how I work?
-          </h2>
+          <div
+            className="reveal"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
+              marginLeft: "auto",
+              marginRight: "auto",
+              maxWidth: 640,
+            }}
+          >
+            <img
+              src="/faq.png"
+              alt=""
+              aria-hidden="true"
+              style={{
+                height: "clamp(64px, 11vw, 96px)",
+                width: "auto",
+                marginBottom: -6,
+                // The source art has a solid black background; screen-blending
+                // it drops the black to transparent so it sits on the page
+                // background instead of showing as a box in either theme.
+                mixBlendMode: "screen",
+                pointerEvents: "none",
+              }}
+            />
+            <h2 style={{
+              fontSize: "clamp(24px, 7vw, 40px)",
+              fontWeight: 600,
+              letterSpacing: "-0.02em",
+              color: "var(--text)",
+              lineHeight: 1,
+            }}>
+              Curious about how I work?
+            </h2>
+          </div>
 
           <div
             className="reveal"
             style={{
               maxWidth: 720,
-              margin: "195px auto 0",
+              margin: "40px auto 0",
               display: "flex",
               flexDirection: "column",
               gap: 12,
@@ -164,7 +165,6 @@ export default function FAQSection() {
                 faq={faq}
                 isOpen={openIndex === i}
                 onToggle={() => setOpenIndex(openIndex === i ? null : i)}
-                showIllustration={i === 0}
               />
             ))}
           </div>

@@ -100,20 +100,14 @@ export default function ArticlesSection() {
                   />
                 </div>
                 <h3 style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: 8,
-                  fontSize: "clamp(18px, 6.5vw, 28px)",
+                  fontSize: 24,
                   fontWeight: 600,
                   letterSpacing: "-0.01em",
                   lineHeight: 1,
                   color: "var(--text)",
                   margin: "20px 0 12px",
                 }}>
-                  <span>{a.title}</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style={{ flexShrink: 0, marginTop: 8, opacity: 0.5 }}>
-                    <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                  {a.title}
                 </h3>
                 <p style={{
                   fontSize: 16,
