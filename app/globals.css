@@ -604,6 +604,10 @@ html[data-theme="light"] .work-cover-light {
     transition: none;
     clip-path: inset(0 0 0 0);
   }
+  .hero-heading {
+    transition: none !important;
+    transform: scale(1) !important;
+  }
 }
 
 /* Scroll reveal */

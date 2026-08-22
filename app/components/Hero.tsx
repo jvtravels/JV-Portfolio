@@ -30,6 +30,8 @@ export default function Hero() {
         letterSpacing: "-0.01em",
         color: "rgba(var(--fg-rgb), 0.16)",
         margin: "-60px 0 0",
+        transform: revealed ? "scale(1)" : "scale(1.06)",
+        transition: "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1)",
       }}>
         Curious by Nature. Building
         <br />
