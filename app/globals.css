@@ -590,6 +590,19 @@ html[data-theme="light"] .work-cover-light {
    copy under a bright overlay copy of the same glyphs leaves faint
    ghosting on descenders like "g" where the two renders don't line up
    pixel-for-pixel — a single render sidesteps that entirely.) */
+.hero-heading {
+  font-size: clamp(36px, 7vw, 90px);
+}
+
+/* Between tablet and small-laptop widths, 7vw runs wider than the line
+   "Curious by Nature. Building" has room for, forcing it to wrap and
+   pushing the heading to 3 lines instead of the intended 2. */
+@media (min-width: 861px) and (max-width: 1470px) {
+  .hero-heading {
+    font-size: clamp(36px, 5.5vw, 90px);
+  }
+}
+
 .hero-heading-fill {
   background-image: linear-gradient(
     to right,
