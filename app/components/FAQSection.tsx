@@ -63,16 +63,18 @@ function FAQRow({ faq, isOpen, onToggle }: { faq: (typeof FAQS)[number]; isOpen:
           transition: "max-height 0.3s ease",
         }}
       >
-        <p style={{
-          margin: 0,
-          padding: "0 24px 22px",
-          fontSize: 15,
-          lineHeight: 1.6,
-          color: "var(--text-muted)",
-          maxWidth: 640,
-        }}>
-          {faq.answer}
-        </p>
+        <div style={{ padding: "0 24px 22px", maxWidth: 640 }}>
+          {faq.answer.split("\n\n").map((paragraph, i) => (
+            <p key={i} style={{
+              margin: i === 0 ? 0 : "12px 0 0",
+              fontSize: 15,
+              lineHeight: 1.6,
+              color: "var(--text-muted)",
+            }}>
+              {paragraph}
+            </p>
+          ))}
+        </div>
       </div>
     </div>
   );

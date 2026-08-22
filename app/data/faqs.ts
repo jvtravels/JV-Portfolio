@@ -5,28 +5,23 @@ export type FAQ = {
 
 export const FAQS: FAQ[] = [
   {
-    question: "Who is Jay?",
+    question: "How do you work with founders, PMs, and engineers?",
     answer:
-      "I'm a product and brand designer who partners with founders and teams to turn early ideas into shipped, well-crafted digital products.",
+      "Mostly by talking early and often.\n\nI'm not a big fan of disappearing for two weeks and coming back with a grand reveal. I'd rather put rough thinking on the table, get challenged, challenge back, and figure it out together.\n\nIt usually leads to a better product and fewer surprises.",
   },
   {
-    question: "Why hire an independent designer instead of an agency?",
+    question: "What kind of team are you looking for next?",
     answer:
-      "You get direct access to the person doing the work, faster iteration, and pricing without agency overhead — with the same craft and rigor.",
+      "A team that cares about making something genuinely good.\n\nI like working with people who are curious, open to debate, close to the product, and comfortable figuring things out together.\n\nBonus points if the whiteboard gets used a lot.",
   },
   {
-    question: "Do you accept equity as part of compensation?",
+    question: "Where do you start when the problem is still unclear?",
     answer:
-      "For early-stage founders I'm excited about, yes — usually as a blend of cash and equity depending on stage and scope.",
+      "Definitely not with Figma.\n\nI usually start by asking a lot of questions, understanding how people actually work, and figuring out what matters versus what just sounds important.\n\nOnce that's clearer, the design part gets a lot easier.",
   },
   {
-    question: "What industries do you specialize in?",
+    question: "How do I use AI in my design process?",
     answer:
-      "Mostly SaaS, fintech, and consumer products, but I've worked across healthcare, developer tools, and marketplaces too.",
-  },
-  {
-    question: "What companies and brands have you worked with?",
-    answer:
-      "A mix of funded startups and independent founders — see the Work section above for selected case studies.",
+      "I use it to think faster, explore more directions, and prototype earlier. It helps me spend less time on repetitive work and more time making the decisions that actually shape the product.",
   },
 ];
