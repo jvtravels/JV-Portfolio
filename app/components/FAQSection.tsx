@@ -29,10 +29,11 @@ function FAQRow({
           aria-hidden="true"
           style={{
             position: "absolute",
-            top: -64,
-            left: -48,
-            width: 76,
+            bottom: "100%",
+            left: 0,
+            width: 200,
             height: "auto",
+            marginBottom: -16,
             // The source art has a solid black background; screen-blending
             // it drops the black to transparent so it sits on the page
             // background instead of showing as a box in either theme.
@@ -151,7 +152,7 @@ export default function FAQSection() {
             className="reveal"
             style={{
               maxWidth: 720,
-              margin: "0 auto",
+              margin: "145px auto 0",
               display: "flex",
               flexDirection: "column",
               gap: 12,
