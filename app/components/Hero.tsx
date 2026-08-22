@@ -42,7 +42,14 @@ export default function Hero() {
           letterSpacing: "-0.01em",
           margin: "-120px 0 0",
           transform: settled ? undefined : revealed ? "scale(1)" : "scale(0.7)",
-          transition: settled ? undefined : "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1) 1.1s",
+          // Inline `transition` fully overrides the CSS class's own
+          // `transition: background-position ...` (used for the text-fill
+          // wipe) rather than merging with it, so the fill's transition has
+          // to be re-declared here too or it snaps instantly instead of
+          // animating.
+          transition: settled
+            ? undefined
+            : "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1) 1.1s, background-position 1.1s cubic-bezier(0.65, 0, 0.35, 1)",
         }}
       >
         Curious by Nature. Building
