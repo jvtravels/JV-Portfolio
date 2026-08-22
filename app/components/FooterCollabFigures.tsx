@@ -14,6 +14,12 @@ export default function FooterCollabFigures() {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
   }, []);
 
+  // The cursor's label pill only reads data-cursor-label on mouseover, so
+  // nudge it to re-read after the attribute changes on click.
+  useEffect(() => {
+    window.dispatchEvent(new Event("cursor-label-refresh"));
+  }, [copied]);
+
   const handleClick = async () => {
     try {
       await navigator.clipboard.writeText("vyasjay85@gmail.com");
@@ -29,10 +35,10 @@ export default function FooterCollabFigures() {
     <button
       type="button"
       onClick={handleClick}
-      data-cursor-label={copied ? "Copied!" : "Copy Email"}
+      data-cursor-label={copied ? "Copied to clipboard" : "Copy Email"}
+      data-cursor-no-arrow={copied ? "" : undefined}
       aria-label="Copy email address vyasjay85@gmail.com"
       className="reveal footer-collab-figures footer-collab-figures-btn"
-      style={{ position: "relative" }}
     >
       <img
         src="/FooterCollabDark.png"
@@ -48,29 +54,6 @@ export default function FooterCollabFigures() {
         height={1020}
         className="footer-collab-img footer-collab-img-light"
       />
-      <span
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          top: -44,
-          left: "50%",
-          transform: `translateX(-50%) translateY(${copied ? "0" : "6px"})`,
-          padding: "8px 16px",
-          borderRadius: 999,
-          fontSize: 13,
-          fontWeight: 600,
-          letterSpacing: "-0.01em",
-          whiteSpace: "nowrap",
-          color: "var(--accent-text)",
-          background: "var(--accent)",
-          boxShadow: "0 12px 32px rgba(0, 0, 0, 0.28)",
-          opacity: copied ? 1 : 0,
-          transition: "opacity 0.2s ease, transform 0.2s ease",
-          pointerEvents: "none",
-        }}
-      >
-        Copied to clipboard
-      </span>
     </button>
   );
 }

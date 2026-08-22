@@ -60,12 +60,12 @@ export default function CustomCursor() {
     const TEXT = "p, h1, h2, h3, h4, h5, h6, span, li, blockquote";
     const LABEL = "[data-cursor-label]";
 
-    const onOver = (e: MouseEvent) => {
-      const t = e.target as Element;
+    const applyFor = (t: Element) => {
       const labelEl = t.closest(LABEL) as HTMLElement | null;
 
       if (labelEl) {
-        el.textContent = `${labelEl.getAttribute("data-cursor-label") || ""} →`;
+        const arrow = labelEl.hasAttribute("data-cursor-no-arrow") ? "" : " →";
+        el.textContent = `${labelEl.getAttribute("data-cursor-label") || ""}${arrow}`;
         el.style.width = "auto";
         el.style.height = "auto";
         el.style.padding = "14px 24px";
@@ -109,10 +109,20 @@ export default function CustomCursor() {
       }
     };
 
+    const onOver = (e: MouseEvent) => applyFor(e.target as Element);
+
+    // Lets a hovered element update its own cursor label (e.g. "Copied!"
+    // after a click) without waiting for a fresh mouseover event.
+    const onLabelRefresh = () => {
+      const t = document.elementFromPoint(tx, ty);
+      if (t) applyFor(t);
+    };
+
     document.addEventListener("mousemove", onMove);
     document.addEventListener("mouseover", onOver);
     document.documentElement.addEventListener("mouseleave", onLeave);
     document.documentElement.addEventListener("mouseenter", onEnter);
+    window.addEventListener("cursor-label-refresh", onLabelRefresh);
 
     return () => {
       cancelAnimationFrame(rafId);
@@ -121,6 +131,7 @@ export default function CustomCursor() {
       document.removeEventListener("mouseover", onOver);
       document.documentElement.removeEventListener("mouseleave", onLeave);
       document.documentElement.removeEventListener("mouseenter", onEnter);
+      window.removeEventListener("cursor-label-refresh", onLabelRefresh);
     };
   }, [mounted]);
 
