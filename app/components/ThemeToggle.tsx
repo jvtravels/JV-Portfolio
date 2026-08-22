@@ -28,6 +28,19 @@ const OPTIONS = [
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 
+  const handleClick = (value: (typeof OPTIONS)[number]["value"], e: React.MouseEvent<HTMLButtonElement>) => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!document.startViewTransition || prefersReducedMotion) {
+      setTheme(value);
+      return;
+    }
+
+    document.documentElement.style.setProperty("--theme-x", `${e.clientX}px`);
+    document.documentElement.style.setProperty("--theme-y", `${e.clientY}px`);
+    document.startViewTransition(() => setTheme(value));
+  };
+
   return (
     <div
       role="radiogroup"
@@ -55,7 +68,7 @@ export default function ThemeToggle() {
             role="radio"
             aria-checked={active}
             aria-label={opt.label}
-            onClick={() => setTheme(opt.value)}
+            onClick={(e) => handleClick(opt.value, e)}
             style={{
               width: 30,
               height: 30,
@@ -66,8 +79,10 @@ export default function ThemeToggle() {
               border: "none",
               background: active ? "var(--toggle-active-bg)" : "transparent",
               color: active ? "var(--toggle-icon-active)" : "var(--toggle-icon)",
+              boxShadow: active ? "0 0 0 2px var(--accent)" : "0 0 0 2px transparent",
+              transform: active ? "scale(1)" : "scale(0.94)",
               cursor: "pointer",
-              transition: "background 0.2s ease, color 0.2s ease",
+              transition: "background 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
             }}
           >
             {opt.icon}
