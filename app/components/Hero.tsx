@@ -32,26 +32,23 @@ export default function Hero() {
       textAlign: "center",
       background: "var(--bg)",
     }}>
-      <h1 className="hero-heading" style={{
-        position: "relative",
-        fontFamily: "var(--font-gloock)",
-        fontSize: "clamp(36px, 7vw, 90px)",
-        fontWeight: 400,
-        lineHeight: 1,
-        letterSpacing: "-0.01em",
-        color: "rgba(var(--fg-rgb), 0.16)",
-        margin: "-120px 0 0",
-        transform: settled ? undefined : revealed ? "scale(1)" : "scale(0.7)",
-        transition: settled ? undefined : "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1) 1.1s",
-      }}>
+      <h1
+        className={`hero-heading hero-heading-fill${revealed ? " is-filled" : ""}`}
+        style={{
+          position: "relative",
+          fontFamily: "var(--font-gloock)",
+          fontSize: "clamp(36px, 7vw, 90px)",
+          fontWeight: 400,
+          lineHeight: 1,
+          letterSpacing: "-0.01em",
+          margin: "-120px 0 0",
+          transform: settled ? undefined : revealed ? "scale(1)" : "scale(0.7)",
+          transition: settled ? undefined : "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1) 1.1s",
+        }}
+      >
         Curious by Nature. Building
         <br />
         Through Design
-        <span aria-hidden="true" className={`hero-heading-fill${revealed ? " is-filled" : ""}`}>
-          Curious by Nature. Building
-          <br />
-          Through Design
-        </span>
       </h1>
 
       <p style={{
