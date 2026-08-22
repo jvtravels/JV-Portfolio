@@ -4,13 +4,43 @@ import { useState } from "react";
 import { FAQS } from "@/app/data/faqs";
 import { DashedH, DashedV } from "@/app/components/DashedFrame";
 
-function FAQRow({ faq, isOpen, onToggle }: { faq: (typeof FAQS)[number]; isOpen: boolean; onToggle: () => void }) {
+function FAQRow({
+  faq,
+  isOpen,
+  onToggle,
+  showIllustration,
+}: {
+  faq: (typeof FAQS)[number];
+  isOpen: boolean;
+  onToggle: () => void;
+  showIllustration?: boolean;
+}) {
   return (
     <div style={{
+      position: "relative",
       background: "var(--surface)",
       border: "1px solid var(--border)",
       borderRadius: 16,
     }}>
+      {showIllustration && (
+        <img
+          src="/faq.png"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            top: -64,
+            left: -48,
+            width: 76,
+            height: "auto",
+            // The source art has a solid black background; screen-blending
+            // it drops the black to transparent so it sits on the page
+            // background instead of showing as a box in either theme.
+            mixBlendMode: "screen",
+            pointerEvents: "none",
+          }}
+        />
+      )}
       <button
         type="button"
         aria-expanded={isOpen}
@@ -133,6 +163,7 @@ export default function FAQSection() {
                 faq={faq}
                 isOpen={openIndex === i}
                 onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+                showIllustration={i === 0}
               />
             ))}
           </div>
