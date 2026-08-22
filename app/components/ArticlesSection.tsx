@@ -38,7 +38,7 @@ export default function ArticlesSection() {
             marginRight: "auto",
             maxWidth: 640,
           }}>
-            I like sharing my experience &amp; knowledge with others
+            I like sharing my experience, knowledge with others
           </h2>
 
           {/* Cards */}
