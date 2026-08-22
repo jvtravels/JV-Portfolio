@@ -46,12 +46,16 @@ export default function IntroLoader() {
       return () => clearTimeout(t);
     } else {
       setBlindsOpen(true);
-      // Blinds are opening now, so the hero underneath is about to become
-      // visible — kick off its text-fill animation in sync.
-      window.dispatchEvent(new Event("intro-reveal"));
+      // The hero underneath only actually becomes visible once the yellow
+      // bands start their final opening sweep — kick off its text-fill
+      // animation then, not when the first blinds start (still covered).
+      const revealTimer = setTimeout(
+        () => window.dispatchEvent(new Event("intro-reveal")),
+        SWEEP_MS + YELLOW_HOLD_MS
+      );
       const yellowTimer = setTimeout(() => setYellowOpen(true), SWEEP_MS + YELLOW_HOLD_MS);
       const goneTimer = setTimeout(() => setGone(true), SWEEP_MS + YELLOW_HOLD_MS + SWEEP_MS + 60);
-      return () => { clearTimeout(yellowTimer); clearTimeout(goneTimer); };
+      return () => { clearTimeout(revealTimer); clearTimeout(yellowTimer); clearTimeout(goneTimer); };
     }
   }, [index, wordsDone]);
 
