@@ -34,12 +34,21 @@ export default function IntroLoader() {
 
   useEffect(() => { setMounted(true); }, []);
 
+  // Skip case (reduced motion / iframe): content is visible immediately,
+  // so tell the page to reveal right away instead of waiting on the blinds.
+  useEffect(() => {
+    if (gone) window.dispatchEvent(new Event("intro-reveal"));
+  }, [gone]);
+
   useEffect(() => {
     if (!wordsDone) {
       const t = setTimeout(() => setIndex(i => i + 1), WORD_DURATION);
       return () => clearTimeout(t);
     } else {
       setBlindsOpen(true);
+      // Blinds are opening now, so the hero underneath is about to become
+      // visible — kick off its text-fill animation in sync.
+      window.dispatchEvent(new Event("intro-reveal"));
       const yellowTimer = setTimeout(() => setYellowOpen(true), SWEEP_MS + YELLOW_HOLD_MS);
       const goneTimer = setTimeout(() => setGone(true), SWEEP_MS + YELLOW_HOLD_MS + SWEEP_MS + 60);
       return () => { clearTimeout(yellowTimer); clearTimeout(goneTimer); };

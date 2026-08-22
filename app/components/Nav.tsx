@@ -1,8 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Nav() {
+  const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    const onReveal = () => setRevealed(true);
+    window.addEventListener("intro-reveal", onReveal);
+    return () => window.removeEventListener("intro-reveal", onReveal);
+  }, []);
+
   return (
     <div style={{
       position: "fixed",
@@ -14,6 +23,9 @@ export default function Nav() {
       justifyContent: "center",
       pointerEvents: "none",
       padding: "0 16px",
+      opacity: revealed ? 1 : 0,
+      transform: revealed ? "translateY(0)" : "translateY(-12px)",
+      transition: "opacity 0.6s ease 0.6s, transform 0.6s ease 0.6s",
     }}>
       <nav style={{
         pointerEvents: "auto",
