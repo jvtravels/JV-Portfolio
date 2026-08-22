@@ -46,6 +46,7 @@ export default function Hero() {
         className={`hero-heading hero-heading-fill${revealed ? " is-filled" : ""}`}
         style={{
           position: "relative",
+          zIndex: 10,
           fontFamily: "var(--font-gloock)",
           fontWeight: 400,
           lineHeight: 1,
@@ -69,6 +70,7 @@ export default function Hero() {
 
       <p style={{
         position: "absolute",
+        zIndex: 10,
         left: "50%",
         bottom: "clamp(32px, 8vh, 96px)",
         transform: "translateX(-50%)",

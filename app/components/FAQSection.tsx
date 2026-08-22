@@ -31,7 +31,7 @@ function FAQRow({
             position: "absolute",
             bottom: "100%",
             left: 24,
-            width: 90,
+            width: 150,
             height: "auto",
             // Flush against the card's top edge — no negative margin, so the
             // character rests exactly on the border instead of clipping into
@@ -151,6 +151,7 @@ export default function FAQSection() {
             className="reveal"
             style={{
               maxWidth: 820,
+              marginTop: 128,
               marginLeft: "auto",
               marginRight: "auto",
               display: "flex",

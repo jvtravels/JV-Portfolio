@@ -22,8 +22,8 @@ interface CursorImageTrailProps {
 
 export default function CursorImageTrail({
   images,
-  itemWidth = 260,
-  itemHeight = 184,
+  itemWidth = 340,
+  itemHeight = 240,
   distance = 80,
   visibleFor = 900,
 }: CursorImageTrailProps) {
@@ -77,7 +77,7 @@ export default function CursorImageTrail({
     <div
       ref={containerRef}
       aria-hidden="true"
-      style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}
+      style={{ position: "absolute", inset: 0, zIndex: 5, pointerEvents: "none" }}
     >
       <AnimatePresence>
         {trail.map((item) => (
