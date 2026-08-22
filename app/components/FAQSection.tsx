@@ -150,7 +150,7 @@ export default function FAQSection() {
           <div
             className="reveal"
             style={{
-              maxWidth: 720,
+              maxWidth: 820,
               margin: "160px auto 0",
               display: "flex",
               flexDirection: "column",
