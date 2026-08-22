@@ -77,7 +77,7 @@ export default function CursorImageTrail({
     <div
       ref={containerRef}
       aria-hidden="true"
-      style={{ position: "absolute", inset: 0, zIndex: 5, pointerEvents: "none" }}
+      style={{ position: "absolute", inset: 0, zIndex: 20, pointerEvents: "none" }}
     >
       <AnimatePresence>
         {trail.map((item) => (
