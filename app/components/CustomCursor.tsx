@@ -65,18 +65,21 @@ export default function CustomCursor() {
       const labelEl = t.closest(LABEL) as HTMLElement | null;
 
       if (labelEl) {
-        el.textContent = labelEl.getAttribute("data-cursor-label") || "";
+        el.textContent = `${labelEl.getAttribute("data-cursor-label") || ""} →`;
         el.style.width = "auto";
         el.style.height = "auto";
-        el.style.padding = "12px 22px";
+        el.style.padding = "14px 24px";
         el.style.borderRadius = "999px";
         el.style.display = "flex";
         el.style.alignItems = "center";
+        el.style.gap = "8px";
         el.style.whiteSpace = "nowrap";
         el.style.fontSize = "13px";
-        el.style.fontWeight = "500";
+        el.style.fontWeight = "600";
         el.style.letterSpacing = "-0.01em";
-        el.style.color = "var(--bg)";
+        el.style.color = "var(--accent-text)";
+        el.style.background = "var(--accent)";
+        el.style.boxShadow = "0 12px 32px rgba(0, 0, 0, 0.28)";
         el.style.mixBlendMode = "normal";
         return;
       }
@@ -85,6 +88,8 @@ export default function CustomCursor() {
       el.style.padding = "0";
       el.style.display = "block";
       el.style.borderRadius = "50%";
+      el.style.background = "var(--cursor-color)";
+      el.style.boxShadow = "none";
 
       const isInteractive = t.closest(INTERACTIVE);
       const isText = t.closest(TEXT);
@@ -131,7 +136,7 @@ export default function CustomCursor() {
         zIndex: 2147483647,
         pointerEvents: "none",
         opacity: 0,
-        transition: "opacity 0.2s ease, width 0.2s ease, height 0.2s ease, padding 0.2s ease, border-radius 0.2s ease",
+        transition: "opacity 0.2s ease, width 0.2s ease, height 0.2s ease, padding 0.2s ease, border-radius 0.2s ease, background 0.2s ease, box-shadow 0.2s ease",
         width: 18,
         height: 18,
         justifyContent: "center",
