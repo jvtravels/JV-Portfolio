@@ -114,7 +114,7 @@ export default function FAQSection() {
             marginRight: "auto",
             maxWidth: 640,
           }}>
-            Frequently asked questions
+            Curious about how I work?
           </h2>
 
           <div
