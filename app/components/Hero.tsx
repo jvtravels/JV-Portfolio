@@ -28,14 +28,19 @@ export default function Hero() {
         fontWeight: 400,
         lineHeight: 1,
         letterSpacing: "-0.01em",
+        color: "rgba(var(--fg-rgb), 0.16)",
         margin: "-120px 0 0",
-        color: revealed ? "rgba(var(--fg-rgb), 1)" : "rgba(var(--fg-rgb), 0.16)",
         transform: revealed ? "scale(1)" : "scale(0.7)",
-        transition: "color 1.1s cubic-bezier(0.65, 0, 0.35, 1), transform 1.1s cubic-bezier(0.65, 0, 0.35, 1) 1.1s",
+        transition: "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1) 1.1s",
       }}>
         Curious by Nature. Building
         <br />
         Through Design
+        <span aria-hidden="true" className={`hero-heading-fill${revealed ? " is-filled" : ""}`}>
+          Curious by Nature. Building
+          <br />
+          Through Design
+        </span>
       </h1>
 
       <p style={{
