@@ -18,7 +18,7 @@ export default function Hero() {
         lineHeight: 1,
         letterSpacing: "-0.01em",
         color: "rgba(var(--fg-rgb), 1)",
-        margin: 0,
+        margin: "-60px 0 0",
       }}>
         Curious by Nature. Building
         <br />
