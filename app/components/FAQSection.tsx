@@ -152,7 +152,7 @@ export default function FAQSection() {
             className="reveal"
             style={{
               maxWidth: 720,
-              margin: "145px auto 0",
+              margin: "195px auto 0",
               display: "flex",
               flexDirection: "column",
               gap: 12,
