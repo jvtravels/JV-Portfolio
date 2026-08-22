@@ -13,7 +13,7 @@ export default function Hero() {
     }}>
       <h1 className="reveal" style={{
         fontFamily: "var(--font-gloock)",
-        fontSize: "clamp(32px, 6.4vw, 82px)",
+        fontSize: "clamp(36px, 7vw, 90px)",
         fontWeight: 400,
         lineHeight: 1,
         letterSpacing: "-0.01em",
