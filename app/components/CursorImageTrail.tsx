@@ -24,7 +24,7 @@ export default function CursorImageTrail({
   images,
   itemWidth = 340,
   itemHeight = 240,
-  distance = 80,
+  distance = 160,
   visibleFor = 900,
 }: CursorImageTrailProps) {
   const containerRef = useRef<HTMLDivElement>(null);
