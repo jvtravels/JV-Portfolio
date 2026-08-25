@@ -42,6 +42,17 @@ export default function Hero() {
       background: "var(--bg)",
     }}>
       <CursorImageTrail images={TRAIL_IMAGES} />
+
+      <div className="hero-mobile-grid" aria-hidden="true">
+        {TRAIL_IMAGES.slice(0, 4).map((img) => (
+          <div
+            key={img}
+            className="hero-mobile-grid-item"
+            style={{ backgroundImage: `url(${img})` }}
+          />
+        ))}
+      </div>
+
       <h1
         className={`hero-heading hero-heading-fill${revealed ? " is-filled" : ""}`}
         style={{
@@ -52,7 +63,6 @@ export default function Hero() {
           lineHeight: 1.75,
           padding: "0 0.2em 0.75em",
           letterSpacing: "-0.01em",
-          margin: "-120px 0 0",
           transform: settled ? undefined : revealed ? "scale(1)" : "scale(0.7)",
           // Inline `transition` fully overrides the CSS class's own
           // `transition: background-position ...` (used for the text-fill

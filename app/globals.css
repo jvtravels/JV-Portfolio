@@ -258,6 +258,10 @@ button {
   transform: translateX(-50%);
 }
 
+.hero-mobile-grid {
+  display: none;
+}
+
 #work h2.reveal {
   margin-bottom: 100px;
 }
@@ -301,6 +305,21 @@ button {
     bottom: auto;
     transform: none;
     margin-top: 32px;
+  }
+  .hero-mobile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: min(240px, 60vw);
+    margin: 0 auto 28px;
+  }
+  .hero-mobile-grid-item {
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    background-color: #0d0d0d;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--border);
   }
   .section-py {
     padding: 40px 0;
@@ -610,6 +629,7 @@ html[data-theme="light"] .work-cover-light {
   /* Below 861px, --page-px switches to a different (non-linear-with-vw)
      formula, so this clamp only needs to hold up to that point. */
   font-size: clamp(36px, 7vw, 63px);
+  margin: -120px 0 0;
 }
 
 /* Above 861px, --page-px tracks a flat 12vw (until it hits its own 260px
@@ -625,6 +645,12 @@ html[data-theme="light"] .work-cover-light {
 @media (min-width: 861px) {
   .hero-heading {
     font-size: clamp(20px, 3.7vw, 63px);
+  }
+}
+
+@media (max-width: 860px) {
+  .hero-heading {
+    margin-top: 0;
   }
 }
 
