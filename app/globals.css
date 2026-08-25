@@ -279,7 +279,8 @@ button {
 .testimonial-controls-mobile {
   display: none;
 }
-.testimonial-heading {
+.testimonial-heading,
+.section-heading {
   font-size: clamp(24px, 7vw, 32px);
 }
 
@@ -401,7 +402,8 @@ button {
   .testimonial-controls-mobile {
     display: flex;
   }
-  .testimonial-heading {
+  .testimonial-heading,
+  .section-heading {
     font-size: 20px;
   }
 }

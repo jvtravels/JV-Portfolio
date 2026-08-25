@@ -27,9 +27,8 @@ export default function ArticlesSection() {
           }}>
             Articles
           </span>
-          <h2 className="reveal" style={{
+          <h2 className="reveal section-heading" style={{
             textAlign: "center",
-            fontSize: "clamp(24px, 7vw, 32px)",
             fontWeight: 600,
             letterSpacing: "-0.02em",
             color: "var(--text)",

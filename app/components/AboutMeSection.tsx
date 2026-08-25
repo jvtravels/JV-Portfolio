@@ -32,8 +32,7 @@ export default function AboutMeSection() {
               About Me
             </span>
 
-            <h2 style={{
-              fontSize: "clamp(24px, 7vw, 32px)",
+            <h2 className="section-heading" style={{
               fontWeight: 600,
               letterSpacing: "-0.02em",
               color: "var(--text)",
