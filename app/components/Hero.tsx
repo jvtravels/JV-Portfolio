@@ -50,7 +50,7 @@ export default function Hero() {
           fontFamily: "var(--font-niven)",
           fontWeight: 400,
           lineHeight: 1.75,
-          paddingBottom: "0.15em",
+          padding: "0 0.2em 0.75em",
           letterSpacing: "-0.01em",
           margin: "-120px 0 0",
           transform: settled ? undefined : revealed ? "scale(1)" : "scale(0.7)",
