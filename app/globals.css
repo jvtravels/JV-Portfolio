@@ -258,7 +258,7 @@ button {
   transform: translateX(-50%);
 }
 
-.hero-mobile-grid {
+.hero-mobile-window {
   display: none;
 }
 
@@ -315,20 +315,23 @@ button {
     transform: none;
     margin-top: 32px;
   }
-  .hero-mobile-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    width: min(240px, 60vw);
-    margin: 0 auto 28px;
-  }
-  .hero-mobile-grid-item {
+  .hero-mobile-window {
+    display: block;
+    position: relative;
+    width: min(220px, 55vw);
     aspect-ratio: 1 / 1;
+    margin: 0 auto 28px;
     border-radius: 10px;
+    overflow: hidden;
     background-color: #0d0d0d;
+    border: 1px solid var(--border);
+  }
+  .hero-mobile-window-item {
+    position: absolute;
+    inset: 0;
     background-size: cover;
     background-position: center;
-    border: 1px solid var(--border);
+    transition: opacity 0.6s ease;
   }
   .section-py {
     padding: 40px 0;

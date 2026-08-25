@@ -14,11 +14,19 @@ const TRAIL_IMAGES = [
 export default function Hero() {
   const [revealed, setRevealed] = useState(false);
   const [settled, setSettled] = useState(false);
+  const [mobileImageIndex, setMobileImageIndex] = useState(0);
 
   useEffect(() => {
     const onReveal = () => setRevealed(true);
     window.addEventListener("intro-reveal", onReveal);
     return () => window.removeEventListener("intro-reveal", onReveal);
+  }, []);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setMobileImageIndex((i) => (i + 1) % TRAIL_IMAGES.length);
+    }, 1800);
+    return () => clearInterval(id);
   }, []);
 
   useEffect(() => {
@@ -43,12 +51,15 @@ export default function Hero() {
     }}>
       <CursorImageTrail images={TRAIL_IMAGES} />
 
-      <div className="hero-mobile-grid" aria-hidden="true">
-        {TRAIL_IMAGES.slice(0, 4).map((img) => (
+      <div className="hero-mobile-window" aria-hidden="true">
+        {TRAIL_IMAGES.map((img, i) => (
           <div
             key={img}
-            className="hero-mobile-grid-item"
-            style={{ backgroundImage: `url(${img})` }}
+            className="hero-mobile-window-item"
+            style={{
+              backgroundImage: `url(${img})`,
+              opacity: i === mobileImageIndex ? 1 : 0,
+            }}
           />
         ))}
       </div>
