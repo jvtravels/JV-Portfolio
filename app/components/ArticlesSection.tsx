@@ -100,7 +100,7 @@ export default function ArticlesSection() {
                   />
                 </div>
                 <h3 style={{
-                  fontSize: 24,
+                  fontSize: "clamp(17px, 4.5vw, 20px)",
                   fontWeight: 600,
                   letterSpacing: "-0.01em",
                   lineHeight: 1,
