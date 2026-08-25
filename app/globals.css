@@ -320,8 +320,8 @@ button {
   .hero-mobile-window {
     display: block;
     position: relative;
-    width: min(220px, 55vw);
-    aspect-ratio: 1 / 1;
+    width: min(280px, 78vw);
+    aspect-ratio: 4 / 3;
     margin: 0 auto 28px;
     border-radius: 10px;
     overflow: hidden;
@@ -351,7 +351,7 @@ button {
     gap: 32px;
   }
   .about-lanyard {
-    margin-top: -40px;
+    margin-top: -16px;
   }
   .articles-grid {
     grid-template-columns: 1fr;

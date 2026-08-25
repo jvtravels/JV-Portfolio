@@ -14,10 +14,27 @@ import RevealObserver from "./components/RevealObserver";
 import ScrollFadeBlur from "./components/ScrollFadeBlur";
 import { ThemeProvider } from "./components/ThemeProvider";
 import ThemeToggle from "./components/ThemeToggle";
+import { SITE_URL } from "./lib/site";
+
+const TITLE = "Jay Vyas — Designer";
+const DESCRIPTION = "Product design, brand identity and web design for ambitious companies.";
 
 export const metadata: Metadata = {
-  title: "Jay Vyas — Designer",
-  description: "Product design, brand identity and web design for ambitious companies.",
+  metadataBase: new URL(SITE_URL),
+  title: { default: TITLE, template: "%s — Jay Vyas" },
+  description: DESCRIPTION,
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/",
+    siteName: "Jay Vyas",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
 };
 
 const THEME_INIT_SCRIPT = `
