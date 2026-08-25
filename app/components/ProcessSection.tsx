@@ -55,7 +55,10 @@ export default function ProcessSection() {
             marginRight: "auto",
             maxWidth: 640,
           }}>
-            How I work when I own the product end-to-end
+            How I work when I own the product{" "}
+            <span style={{ whiteSpace: "nowrap" }}>
+              end<span style={{ fontFamily: "var(--font)" }}>-</span>to<span style={{ fontFamily: "var(--font)" }}>-</span>end
+            </span>
           </h2>
 
           <div className="steps-grid">

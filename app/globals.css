@@ -288,6 +288,9 @@ button {
 #brands p.reveal {
   margin-bottom: 48px;
 }
+.faq-list {
+  margin-top: 96px;
+}
 
 @media (max-width: 860px) {
   :root {
@@ -498,7 +501,7 @@ html[data-theme="light"] .footer-collab-img-light {
 
 @media (max-width: 860px) {
   .footer-collab {
-    padding: 100px 20px 24px;
+    padding: 56px 20px 24px;
   }
   .footer-collab-bottom-row {
     margin-top: 64px;

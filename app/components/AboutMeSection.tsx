@@ -39,7 +39,7 @@ export default function AboutMeSection() {
               color: "var(--text)",
               lineHeight: 1.75,
             }}>
-              I&apos;m Jay Vyas, the person you&apos;re looking for.
+              I<span style={{ fontFamily: "var(--font)" }}>&apos;</span>m Jay Vyas, the person you<span style={{ fontFamily: "var(--font)" }}>&apos;</span>re looking for.
             </h2>
 
             {[

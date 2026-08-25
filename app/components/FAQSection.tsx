@@ -31,7 +31,7 @@ function FAQRow({
             position: "absolute",
             bottom: "100%",
             left: 24,
-            width: 150,
+            width: 100,
             height: "auto",
             // Flush against the card's top edge — no negative margin, so the
             // character rests exactly on the border instead of clipping into
@@ -148,10 +148,9 @@ export default function FAQSection() {
           </h2>
 
           <div
-            className="reveal"
+            className="reveal faq-list"
             style={{
               maxWidth: 820,
-              marginTop: 64,
               marginLeft: "auto",
               marginRight: "auto",
               display: "flex",

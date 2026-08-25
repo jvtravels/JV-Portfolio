@@ -152,7 +152,7 @@ export default function WorkSection() {
             marginRight: "auto",
             maxWidth: 640,
           }}>
-            Selected work I&apos;ve shipped for founders and teams
+            Selected work I<span style={{ fontFamily: "var(--font)" }}>&apos;</span>ve shipped for founders and teams
           </h2>
 
           {/* Row 1 — small + large */}
