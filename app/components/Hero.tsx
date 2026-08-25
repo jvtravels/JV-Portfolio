@@ -49,7 +49,7 @@ export default function Hero() {
           zIndex: 10,
           fontFamily: "var(--font-niven)",
           fontWeight: 400,
-          lineHeight: 1.36,
+          lineHeight: 1.75,
           paddingBottom: "0.15em",
           letterSpacing: "-0.01em",
           margin: "-120px 0 0",
