@@ -62,7 +62,6 @@ export default function ArticlesSection() {
                 style={{
                   position: "relative",
                   display: "block",
-                  padding: 24,
                   overflow: "hidden",
                 } as React.CSSProperties}
               >

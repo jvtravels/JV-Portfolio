@@ -240,6 +240,7 @@ button {
 }
 .articles-card {
   border-right: 1px solid var(--border);
+  padding: 24px;
 }
 .articles-card:last-child {
   border-right: none;
@@ -361,11 +362,12 @@ button {
   }
   .steps-card {
     min-height: 0;
-    padding: 24px;
+    padding: 20px;
   }
   .articles-card {
     border-right: none;
     border-bottom: 1px solid var(--border);
+    padding: 18px;
   }
   .articles-card:last-child {
     border-bottom: none;
@@ -385,7 +387,7 @@ button {
     margin-bottom: 32px;
   }
   #testimonials .testimonial-card {
-    padding: 24px 20px 20px;
+    padding: 20px 16px 16px;
   }
   #testimonials .testimonial-eyebrow {
     text-align: center;
