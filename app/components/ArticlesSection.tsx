@@ -29,7 +29,7 @@ export default function ArticlesSection() {
           </span>
           <h2 className="reveal" style={{
             textAlign: "center",
-            fontSize: "clamp(24px, 7vw, 40px)",
+            fontSize: "clamp(24px, 7vw, 32px)",
             fontWeight: 600,
             letterSpacing: "-0.02em",
             color: "var(--text)",
