@@ -81,7 +81,7 @@ export default function Hero() {
         textTransform: "uppercase",
         color: "var(--text-muted)",
         lineHeight: 1.8,
-        maxWidth: 460,
+        maxWidth: 560,
         opacity: revealed ? 1 : 0,
         transition: "opacity 0.7s ease 0.9s",
       }}>
