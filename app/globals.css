@@ -674,6 +674,7 @@ html[data-theme="light"] .work-cover-light {
 @media (max-width: 860px) {
   .hero-heading {
     margin-top: 0;
+    font-size: 24px;
   }
 }
 
