@@ -397,6 +397,7 @@ button {
 
 .footer-crowd {
   height: 420px;
+  margin-top: 40px;
 }
 
 @media (max-width: 860px) {
@@ -479,6 +480,7 @@ html[data-theme="light"] .footer-collab-img-light {
    so pull the row up to close the gap that leaves — scaled with viewport
    width since the image is full-bleed and its whitespace scales with it. */
 .footer-collab-bottom-row {
+  align-items: center;
   margin-top: clamp(-24px, calc(-2.2vw + 24px), 8px);
 }
 
@@ -504,10 +506,13 @@ html[data-theme="light"] .footer-collab-img-light {
     padding: 56px 20px 24px;
   }
   .footer-collab-bottom-row {
-    margin-top: 64px;
+    margin-top: 28px;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+  .footer-crowd {
+    margin-top: 16px;
   }
 }
 

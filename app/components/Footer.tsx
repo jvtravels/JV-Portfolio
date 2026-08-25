@@ -23,7 +23,7 @@ export default function Footer() {
       <div className="footer-collab">
         <FooterCollabFigures />
 
-        <div className="reveal footer-collab-bottom-row" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+        <div className="reveal footer-collab-bottom-row" style={{ display: "flex", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
           <span style={{ fontSize: 13, color: "var(--text-muted)", letterSpacing: "-0.01em" }}>
             © {year} Jay Vyas
           </span>
@@ -55,7 +55,6 @@ export default function Footer() {
         style={{
           position: "relative",
           width: "100%",
-          marginTop: 40,
           overflow: "hidden",
         }}
       >
