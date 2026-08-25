@@ -25,10 +25,11 @@ export default function BrandsSection() {
         <div className="section-px">
           <p className="reveal" style={{
             textAlign: "center",
-            fontSize: "clamp(15px, 4vw, 20px)",
+            fontSize: 11,
             fontWeight: 500,
-            letterSpacing: "0.04em",
-            color: "var(--text)",
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            color: "var(--text-muted)",
           }}>
             Brands I have worked with
           </p>
