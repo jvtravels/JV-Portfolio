@@ -50,7 +50,7 @@ export default function ProcessSection() {
             fontWeight: 600,
             letterSpacing: "-0.02em",
             color: "var(--text)",
-            lineHeight: 1,
+            lineHeight: 1.75,
             marginLeft: "auto",
             marginRight: "auto",
             maxWidth: 640,

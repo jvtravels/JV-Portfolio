@@ -250,6 +250,14 @@ button {
   padding-top: 120px;
 }
 
+.hero-subhead {
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  bottom: clamp(32px, 8vh, 96px);
+  transform: translateX(-50%);
+}
+
 #work h2.reveal {
   margin-bottom: 100px;
 }
@@ -285,6 +293,14 @@ button {
   .hero-section {
     min-height: 72vh;
     padding-top: 96px;
+    padding-bottom: 48px;
+  }
+  .hero-subhead {
+    position: static;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    margin-top: 32px;
   }
   .section-py {
     padding: 40px 0;
@@ -591,24 +607,24 @@ html[data-theme="light"] .work-cover-light {
    ghosting on descenders like "g" where the two renders don't line up
    pixel-for-pixel — a single render sidesteps that entirely.) */
 .hero-heading {
-  /* Max cap of 90px let "Curious by Nature. Building" wrap onto 2 lines at
-     wide viewports (measured largest-fitting size ~67px at 1728px width) —
-     capped at 63px with a few px of safety margin so it always stays on 1
-     line, keeping the heading's intended 2-line layout intact. */
+  /* Below 861px, --page-px switches to a different (non-linear-with-vw)
+     formula, so this clamp only needs to hold up to that point. */
   font-size: clamp(36px, 7vw, 63px);
 }
 
-/* Between tablet and small-laptop widths, 7vw runs wider than the line
-   "Curious by Nature. Building" has room for, forcing it to wrap and
-   pushing the heading to 3 lines instead of the intended 2. A flat vw
-   value (rather than a fixed px cap) tracks --page-px's own vw-based
-   scaling, so the fit holds across the whole range instead of just the
-   one width it was eyeballed against — a fixed 44px cap fit at 1200px
-   but was too large at the range's narrow end (861px), still wrapping
-   to 3 lines there. */
-@media (min-width: 861px) and (max-width: 1470px) {
+/* Above 861px, --page-px tracks a flat 12vw (until it hits its own 260px
+   cap past ~2167px), which makes the available width a fixed fraction of
+   the viewport — so a flat vw value for font-size (rather than a fixed px
+   cap) keeps "Curious by Nature. Building" fitting on one line at every
+   width in between, not just the width it was eyeballed against. A fixed
+   44px cap fit at 1200px but wrapped to 3 lines at 861px; a fixed 63px
+   cap (the old clamp ceiling) fit at 1728px but wrapped to 3 lines as low
+   as ~1600px. 3.7vw crosses 63px at ~1703px, right where flat 63px starts
+   fitting on its own (~1618px) — so clamping 3.7vw at 63px carries the
+   one-line guarantee all the way up without a gap. */
+@media (min-width: 861px) {
   .hero-heading {
-    font-size: 3.7vw;
+    font-size: clamp(20px, 3.7vw, 63px);
   }
 }
 

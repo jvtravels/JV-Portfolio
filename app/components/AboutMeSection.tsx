@@ -37,7 +37,7 @@ export default function AboutMeSection() {
               fontWeight: 600,
               letterSpacing: "-0.02em",
               color: "var(--text)",
-              lineHeight: 1,
+              lineHeight: 1.75,
             }}>
               I&apos;m Jay Vyas, the person you&apos;re looking for.
             </h2>

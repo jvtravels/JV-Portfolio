@@ -69,12 +69,7 @@ export default function Hero() {
         Through Design
       </h1>
 
-      <p style={{
-        position: "absolute",
-        zIndex: 10,
-        left: "50%",
-        bottom: "clamp(32px, 8vh, 96px)",
-        transform: "translateX(-50%)",
+      <p className="hero-subhead" style={{
         fontSize: 12,
         fontWeight: 500,
         letterSpacing: "0.08em",
