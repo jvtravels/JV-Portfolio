@@ -146,7 +146,7 @@ export default function WorkSection() {
             fontWeight: 600,
             letterSpacing: "-0.02em",
             color: "var(--text)",
-            lineHeight: "56px",
+            lineHeight: 1.75,
             marginLeft: "auto",
             marginRight: "auto",
             maxWidth: 640,
