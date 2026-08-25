@@ -591,7 +591,11 @@ html[data-theme="light"] .work-cover-light {
    ghosting on descenders like "g" where the two renders don't line up
    pixel-for-pixel — a single render sidesteps that entirely.) */
 .hero-heading {
-  font-size: clamp(36px, 7vw, 90px);
+  /* Max cap of 90px let "Curious by Nature. Building" wrap onto 2 lines at
+     wide viewports (measured largest-fitting size ~67px at 1728px width) —
+     capped at 63px with a few px of safety margin so it always stays on 1
+     line, keeping the heading's intended 2-line layout intact. */
+  font-size: clamp(36px, 7vw, 63px);
 }
 
 /* Between tablet and small-laptop widths, 7vw runs wider than the line
@@ -599,7 +603,9 @@ html[data-theme="light"] .work-cover-light {
    pushing the heading to 3 lines instead of the intended 2. */
 @media (min-width: 861px) and (max-width: 1470px) {
   .hero-heading {
-    font-size: clamp(36px, 5.5vw, 90px);
+    /* Measured largest-fitting size ~47px at 1200px width; capped at 44px
+       for safety margin. */
+    font-size: clamp(36px, 5.5vw, 44px);
   }
 }
 

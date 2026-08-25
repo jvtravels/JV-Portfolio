@@ -47,10 +47,10 @@ export default function Hero() {
         style={{
           position: "relative",
           zIndex: 10,
-          fontFamily: "var(--font-gloock)",
+          fontFamily: "var(--font-niven)",
           fontWeight: 400,
-          lineHeight: 1.08,
-          paddingBottom: "0.08em",
+          lineHeight: 1.36,
+          paddingBottom: "0.15em",
           letterSpacing: "-0.01em",
           margin: "-120px 0 0",
           transform: settled ? undefined : revealed ? "scale(1)" : "scale(0.7)",
