@@ -97,6 +97,48 @@ export default function TestimonialsSection() {
   const prev = () => setIndex((i) => Math.max(0, i - 1));
   const next = () => setIndex((i) => Math.min(maxIndex, i + 1));
 
+  const controls = (
+    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <span style={{ fontSize: 13, color: "var(--text-muted)", letterSpacing: "-0.01em" }}>
+        {index + 1} / {maxIndex + 1}
+      </span>
+      <div style={{ display: "flex", gap: 8 }}>
+        {[
+          { ch: "‹", label: "Previous testimonial", action: prev, disabled: index === 0 },
+          { ch: "›", label: "Next testimonial", action: next, disabled: index === maxIndex },
+        ].map(({ ch, label, action, disabled }) => (
+          <button
+            key={ch}
+            onClick={action}
+            aria-label={label}
+            disabled={disabled}
+            style={{
+              width: 48,
+              height: 48,
+              borderRadius: "50%",
+              border: "none",
+              background: "none",
+              color: disabled ? "rgba(var(--fg-rgb),0.18)" : "rgba(var(--fg-rgb),0.75)",
+              fontSize: 20,
+              cursor: disabled ? "not-allowed" : "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "color 0.2s ease",
+              userSelect: "none",
+            }}
+            onMouseEnter={(e) => { if (!disabled) e.currentTarget.style.color = "var(--text)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = disabled ? "rgba(var(--fg-rgb),0.18)" : "rgba(var(--fg-rgb),0.75)"; }}
+            onFocus={(e) => { if (!disabled) e.currentTarget.style.color = "var(--text)"; }}
+            onBlur={(e) => { e.currentTarget.style.color = disabled ? "rgba(var(--fg-rgb),0.18)" : "rgba(var(--fg-rgb),0.75)"; }}
+          >
+            {ch}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <section id="testimonials">
 
@@ -136,45 +178,7 @@ export default function TestimonialsSection() {
             }}>
               Words from founders
             </h2>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <span style={{ fontSize: 13, color: "var(--text-muted)", letterSpacing: "-0.01em" }}>
-                {index + 1} / {maxIndex + 1}
-              </span>
-              <div style={{ display: "flex", gap: 8 }}>
-                {[
-                  { ch: "‹", label: "Previous testimonial", action: prev, disabled: index === 0 },
-                  { ch: "›", label: "Next testimonial", action: next, disabled: index === maxIndex },
-                ].map(({ ch, label, action, disabled }) => (
-                  <button
-                    key={ch}
-                    onClick={action}
-                    aria-label={label}
-                    disabled={disabled}
-                    style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: "50%",
-                      border: "none",
-                      background: "none",
-                      color: disabled ? "rgba(var(--fg-rgb),0.18)" : "rgba(var(--fg-rgb),0.75)",
-                      fontSize: 20,
-                      cursor: disabled ? "not-allowed" : "pointer",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      transition: "color 0.2s ease",
-                      userSelect: "none",
-                    }}
-                    onMouseEnter={(e) => { if (!disabled) e.currentTarget.style.color = "var(--text)"; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.color = disabled ? "rgba(var(--fg-rgb),0.18)" : "rgba(var(--fg-rgb),0.75)"; }}
-                    onFocus={(e) => { if (!disabled) e.currentTarget.style.color = "var(--text)"; }}
-                    onBlur={(e) => { e.currentTarget.style.color = disabled ? "rgba(var(--fg-rgb),0.18)" : "rgba(var(--fg-rgb),0.75)"; }}
-                  >
-                    {ch}
-                  </button>
-                ))}
-              </div>
-            </div>
+            <div className="testimonial-controls-desktop">{controls}</div>
           </div>
 
           {/* Cards */}
@@ -310,6 +314,10 @@ export default function TestimonialsSection() {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="testimonial-controls-mobile" style={{ justifyContent: "center", marginTop: 20 }}>
+            {controls}
           </div>
         </div>
       </div>
