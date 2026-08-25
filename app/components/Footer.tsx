@@ -28,7 +28,12 @@ export default function Footer() {
             © {year} Jay Vyas
           </span>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <a href="/resume.pdf" className="footer-collab-pill">
+            <a
+              href="https://drive.google.com/file/d/1apdueNk5xNAENAHFU1iyUvFsGGfLh9YA/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-collab-pill"
+            >
               {RESUME_ICON}
               Resume
             </a>
