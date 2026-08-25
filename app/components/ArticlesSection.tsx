@@ -110,7 +110,7 @@ export default function ArticlesSection() {
                   {a.title}
                 </h3>
                 <p style={{
-                  fontSize: 16,
+                  fontSize: 15,
                   fontWeight: 400,
                   color: "var(--text-muted)",
                   lineHeight: "24px",

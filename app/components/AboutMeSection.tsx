@@ -48,10 +48,10 @@ export default function AboutMeSection() {
               "I care about making complex products feel clear, coherent, and useful.",
             ].map((line, i) => (
               <p key={i} style={{
-                fontSize: 16,
+                fontSize: 15,
                 fontWeight: 400,
                 color: "rgba(var(--fg-rgb),0.7)",
-                lineHeight: "26px",
+                lineHeight: "24px",
                 letterSpacing: "-0.01em",
                 margin: "0 0 16px",
               }}>
