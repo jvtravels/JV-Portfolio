@@ -33,7 +33,7 @@ export default function Footer() {
               Resume
             </a>
             <a
-              href="https://www.linkedin.com/in/"
+              href="https://www.linkedin.com/in/jayvyasdesign/"
               target="_blank"
               rel="noopener noreferrer"
               className="footer-collab-pill"
