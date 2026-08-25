@@ -121,7 +121,7 @@ export default function TestimonialsSection() {
             letterSpacing: "0.14em",
             textTransform: "uppercase",
             color: "var(--text-muted)",
-            marginBottom: 7,
+            marginBottom: 16,
           }}>
             Testimonial
           </span>

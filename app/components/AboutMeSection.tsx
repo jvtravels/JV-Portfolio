@@ -27,7 +27,7 @@ export default function AboutMeSection() {
               letterSpacing: "0.14em",
               textTransform: "uppercase",
               color: "var(--text-muted)",
-              marginBottom: 8,
+              marginBottom: 16,
             }}>
               About Me
             </span>
