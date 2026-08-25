@@ -86,8 +86,7 @@ export default function Hero() {
         }}
       >
         Curious by Nature. Building
-        <br />
-        Through Design
+        <br className="hero-break" /> Through Design
       </h1>
 
       <p className="hero-subhead" style={{
