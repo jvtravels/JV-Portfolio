@@ -10,7 +10,7 @@ const TESTIMONIALS = [
     highlight: "Anyone who lands on this page will now expect these characteristics from us; which creates the frame for us to offer premium services.",
     name: "Vanshil Patel",
     role: "Founder at Nousoft",
-    avatar: "https://i.pravatar.cc/80?img=13",
+    avatar: "/Testimonial-Person/P1.png",
     logo: "/Testimonial-logo/T1.png",
   },
   {
@@ -18,7 +18,7 @@ const TESTIMONIALS = [
     highlight: "He worked fast, was extremely adaptive and we could reach him for any quick iterations needed.",
     name: "Johnathan Sanjay",
     role: "Product Manager at Tempo",
-    avatar: "https://i.pravatar.cc/80?img=33",
+    avatar: "/Testimonial-Person/P2.png",
     logo: "/Testimonial-logo/T2.png",
   },
   {
@@ -26,7 +26,7 @@ const TESTIMONIALS = [
     highlight: "He picked up on the tone we'd already established and carried it forward without needing much direction from us.",
     name: "Naren Lokwani",
     role: "CEO at Frshr Technologies",
-    avatar: "https://i.pravatar.cc/80?img=52",
+    avatar: "/Testimonial-Person/P3.jpeg",
     logo: "/Testimonial-logo/T3.png",
   },
   {
@@ -34,7 +34,7 @@ const TESTIMONIALS = [
     highlight: "He always listens and understands what the client is looking for and explores all possibilities to make sure the client is satisfied. 10/10 recommend working with him — if you don’t, then more for me!",
     name: "Samuel Darwin",
     role: "CEO at Joy Technologies",
-    avatar: "https://i.pravatar.cc/80?img=7",
+    avatar: "/Testimonial-Person/P4.jpeg",
     logo: "/Testimonial-logo/T4.png",
   },
   {
@@ -42,7 +42,7 @@ const TESTIMONIALS = [
     highlight: "He brought great ideas to the table and was super easy to work with throughout the process. Would definitely work with him again!",
     name: "Nikhil Ranka",
     role: "Co-founder at Catalyst IQ",
-    avatar: "https://i.pravatar.cc/80?img=15",
+    avatar: "/Testimonial-Person/P5.jpeg",
     logo: "/Testimonial-logo/T5.png",
   },
   {
@@ -50,7 +50,7 @@ const TESTIMONIALS = [
     highlight: "He worked efficiently and thoughtfully to help us recreate our website, was responsive and collaborative, and produced excellent work at a fraction of the cost and time.",
     name: "Riddhi Keralia",
     role: "Founder at Unpause",
-    avatar: "https://i.pravatar.cc/80?img=68",
+    avatar: "/Testimonial-Person/P6.jpeg",
     logo: "/Testimonial-logo/T6.png",
   },
   {
@@ -58,7 +58,7 @@ const TESTIMONIALS = [
     highlight: "He was thoughtful about the details and easy to work with from start to finish.",
     name: "Thuy-an Nguyen",
     role: "CPO at Dynachrg",
-    avatar: "https://i.pravatar.cc/80?img=45",
+    avatar: "/Testimonial-Person/P7.webp",
     logo: "/Testimonial-logo/T7.png",
   },
   {
@@ -66,7 +66,7 @@ const TESTIMONIALS = [
     highlight: "He moved quickly without cutting corners, and the final result felt polished from day one.",
     name: "Nihar Tanna",
     role: "Founder at Two Words Studio",
-    avatar: "https://i.pravatar.cc/80?img=22",
+    avatar: "/Testimonial-Person/P8.jpeg",
     logo: "/Testimonial-logo/T8.png",
   },
 ];
