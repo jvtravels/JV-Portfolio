@@ -147,7 +147,7 @@ export const PROJECTS: Project[] = [
     year: "2026",
     images: ["/Work/PAYG-dark.png"],
     coverDark: "/Work/PAYG-dark.png",
-    coverLight: "/Work/PAYG-light.png",
+    coverLight: "/Work/PAYG-dark.png",
     userGroups: [
       { num: "01", title: "Placeholder audience", bullets: ["Placeholder — to be replaced with real audience insight"] },
     ],
