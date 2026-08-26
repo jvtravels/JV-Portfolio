@@ -111,6 +111,8 @@ function WorkItem({ project, size }: { project: (typeof PROJECTS)[number]; size:
         lineHeight: 1,
         color: "var(--text)",
         margin: "0 0 8px",
+        filter: project.comingSoon ? "blur(6px)" : undefined,
+        userSelect: project.comingSoon ? "none" : undefined,
       }}>
         {project.title}
       </h3>
@@ -121,6 +123,8 @@ function WorkItem({ project, size }: { project: (typeof PROJECTS)[number]; size:
         letterSpacing: "0.1em",
         textTransform: "uppercase",
         color: "var(--text-muted)",
+        filter: project.comingSoon ? "blur(6px)" : undefined,
+        userSelect: project.comingSoon ? "none" : undefined,
       }}>
         {project.tags.join(" + ")}
       </span>
