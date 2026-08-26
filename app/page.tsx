@@ -23,7 +23,8 @@ export default function Home() {
         <WorkSection />
         <AboutMeSection />
         <TestimonialsSection />
-        <ProcessSection />
+        {/* Hidden for now — HireStepX process section */}
+        {/* <ProcessSection /> */}
         <ArticlesSection />
         <FAQSection />
       </main>
