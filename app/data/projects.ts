@@ -108,8 +108,6 @@ export const PROJECTS: Project[] = [
     liveUrl: "#",
     year: "2026",
     images: ["/Work/EVES-dark.png"],
-    coverDark: "/Work/EVES-dark.png",
-    coverLight: "/Work/EVES-light.png",
     userGroups: [
       { num: "01", title: "Placeholder audience", bullets: ["Placeholder — to be replaced with real audience insight"] },
     ],

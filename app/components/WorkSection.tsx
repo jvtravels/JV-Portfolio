@@ -6,7 +6,7 @@ import { DashedH, DashedV } from "@/app/components/DashedFrame";
 
 const ITEMS = [
   { project: PROJECTS[0], size: "small" as const },
-  { project: PROJECTS[4], size: "large" as const },
+  { project: PROJECTS[1], size: "large" as const },
   { project: PROJECTS[5], size: "large" as const },
   { project: PROJECTS[3], size: "small" as const },
 ];
