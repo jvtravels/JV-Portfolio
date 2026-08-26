@@ -25,7 +25,7 @@ const STEPS = [
 
 export default function ProcessSection() {
   return (
-    <section id="process">
+    <section id="process" className="process-section">
       <div className="section-py" style={{ position: "relative" }}>
         <DashedH style={{ bottom: 0, left: 0, right: 0 }} />
         <DashedV style={{ top: 0, bottom: 0, left: "var(--frame-inset)" }} />

@@ -251,6 +251,16 @@ button {
   padding-top: 120px;
 }
 
+.process-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.process-section > .section-py {
+  width: 100%;
+}
+
 .hero-subhead {
   position: absolute;
   z-index: 10;
