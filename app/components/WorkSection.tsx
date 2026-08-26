@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { PROJECTS } from "@/app/data/projects";
 import { DashedH, DashedV } from "@/app/components/DashedFrame";
@@ -13,24 +12,9 @@ const ITEMS = [
 ];
 
 function WorkItem({ project, size }: { project: (typeof PROJECTS)[number]; size: "small" | "large" }) {
-  const trackCursor = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    e.currentTarget.style.setProperty("--cx", `${e.clientX - rect.left}px`);
-    e.currentTarget.style.setProperty("--cy", `${e.clientY - rect.top}px`);
-  };
-
   return (
-    <Link
-      href={`/work/${project.slug}`}
-      className="reveal"
-      style={{ display: "block", textDecoration: "none" }}
-      onFocus={(e) => e.currentTarget.style.setProperty("--reveal", "1")}
-      onBlur={(e) => e.currentTarget.style.setProperty("--reveal", "0")}
-    >
+    <div className="reveal" style={{ display: "block" }}>
       <div
-        onMouseEnter={(e) => { trackCursor(e); e.currentTarget.style.setProperty("--reveal", "1"); }}
-        onMouseMove={trackCursor}
-        onMouseLeave={(e) => e.currentTarget.style.setProperty("--reveal", "0")}
         style={{
           position: "relative",
           overflow: "hidden",
@@ -71,29 +55,6 @@ function WorkItem({ project, size }: { project: (typeof PROJECTS)[number]; size:
             />
           )}
         </div>
-        {/* Cursor-follow arrow badge */}
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: 88,
-            height: 88,
-            borderRadius: "50%",
-            border: "1.5px solid rgba(255,255,255,0.92)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            transform: "translate(calc(var(--cx, 50%) - 44px), calc(var(--cy, 50%) - 44px)) scale(var(--reveal, 0))",
-            opacity: "var(--reveal, 0)",
-            transition: "opacity 0.25s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
-            pointerEvents: "none",
-          } as React.CSSProperties}
-        >
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M7 17L17 7M9 7h8v8" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
       </div>
       <h3 style={{
         fontSize: "clamp(17px, 4.5vw, 20px)",
@@ -115,7 +76,7 @@ function WorkItem({ project, size }: { project: (typeof PROJECTS)[number]; size:
       }}>
         {project.tags.join(" + ")}
       </span>
-    </Link>
+    </div>
   );
 }
 
