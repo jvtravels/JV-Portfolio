@@ -31,6 +31,7 @@ export interface Project {
   images: string[];
   coverDark?: string;
   coverLight?: string;
+  comingSoon?: boolean;
   userGroups: UserGroup[];
   hmwQuestion: string;
   brandNote: string;
@@ -186,6 +187,7 @@ export const PROJECTS: Project[] = [
     liveSite: "cypher.build",
     liveUrl: "https://cypher.build",
     year: "2024",
+    comingSoon: true,
     images: ["/Work/P4.avif", ...["fynz6BBRInDRcNAbR3yxF6bBpXM","6Rp81LAufsCTmiSLdaZ4r0ONk","KGmmFz02BG6G7gU5DSsQvZyAns","N4kMZRWkDBbqycFllX3fgDfNBE","37jFAEJjlvkZ0UzGaV6uQWxOw"].map(FU)],
     userGroups: [
       { num: "01", title: "E-commerce Leaders", bullets: ["Running high-volume Shopify and DTC stores", "Need analytics that connect data to revenue decisions", "Compare Cypher against in-house data teams"] },

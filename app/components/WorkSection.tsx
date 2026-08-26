@@ -32,7 +32,13 @@ function WorkItem({ project, size }: { project: (typeof PROJECTS)[number]; size:
                 draggable={false}
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="work-cover-dark"
-                style={{ objectFit: "cover", objectPosition: "top", transition: "opacity 0.2s ease" }}
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "top",
+                  transition: "opacity 0.2s ease",
+                  filter: project.comingSoon ? "blur(22px)" : undefined,
+                  transform: project.comingSoon ? "scale(1.1)" : undefined,
+                }}
               />
               <Image
                 src={project.coverLight}
@@ -41,7 +47,16 @@ function WorkItem({ project, size }: { project: (typeof PROJECTS)[number]; size:
                 draggable={false}
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="work-cover-light"
-                style={{ objectFit: "cover", objectPosition: "top", position: "absolute", top: 0, left: 0, transition: "opacity 0.2s ease" }}
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "top",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  transition: "opacity 0.2s ease",
+                  filter: project.comingSoon ? "blur(22px)" : undefined,
+                  transform: project.comingSoon ? "scale(1.1)" : undefined,
+                }}
               />
             </>
           ) : (
@@ -51,8 +66,41 @@ function WorkItem({ project, size }: { project: (typeof PROJECTS)[number]; size:
               fill
               draggable={false}
               sizes="(max-width: 768px) 100vw, 50vw"
-              style={{ objectFit: "cover" }}
+              style={{
+                objectFit: "cover",
+                filter: project.comingSoon ? "blur(22px)" : undefined,
+                transform: project.comingSoon ? "scale(1.1)" : undefined,
+              }}
             />
+          )}
+          {project.comingSoon && (
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "rgba(0, 0, 0, 0.25)",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 11,
+                  fontWeight: 600,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "#fff",
+                  padding: "8px 16px",
+                  borderRadius: 999,
+                  border: "1px solid rgba(255, 255, 255, 0.4)",
+                  backdropFilter: "blur(6px)",
+                  WebkitBackdropFilter: "blur(6px)",
+                }}
+              >
+                Coming soon
+              </span>
+            </div>
           )}
         </div>
       </div>
