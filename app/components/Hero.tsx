@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import CursorImageTrail from "./CursorImageTrail";
 
-const TRAIL_IMAGES = Array.from({ length: 26 }, (_, i) => `/Hero%20Gallery/H${i + 1}.png`);
+const TRAIL_IMAGES = Array.from({ length: 26 }, (_, i) => `/Hero%20Gallery/H${i + 1}.jpg`);
 
 export default function Hero() {
   const [revealed, setRevealed] = useState(false);
