@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getProjectBySlug, PLACEHOLDER_SLUGS } from "@/app/data/projects";
+import { getProjectBySlug, INDEXABLE_SLUGS } from "@/app/data/projects";
 import { SITE_URL } from "@/app/lib/site";
 import CaseStudyClient from "./CaseStudyClient";
 
@@ -9,13 +9,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   if (!project) return {};
 
   const description = project.description.split("\n\n")[0];
-  const isPlaceholder = PLACEHOLDER_SLUGS.includes(project.slug);
+  const isIndexable = INDEXABLE_SLUGS.includes(project.slug);
 
   return {
     title: project.title,
     description,
     alternates: { canonical: `${SITE_URL}/work/${project.slug}` },
-    robots: isPlaceholder ? { index: false, follow: false } : undefined,
+    robots: isIndexable ? undefined : { index: false, follow: false },
     openGraph: {
       title: project.title,
       description,
@@ -36,11 +36,11 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   const project = getProjectBySlug(params.slug);
   if (!project) notFound();
 
-  const isPlaceholder = PLACEHOLDER_SLUGS.includes(project.slug);
+  const isIndexable = INDEXABLE_SLUGS.includes(project.slug);
 
   return (
     <>
-      {!isPlaceholder && (
+      {isIndexable && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
