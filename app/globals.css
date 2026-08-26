@@ -232,18 +232,20 @@ button {
   justify-content: flex-end;
 }
 
-/* Articles section: 3-up grid, collapses to one column on narrow screens */
+/* Articles section: 3-up grid, collapses to one column on narrow screens.
+   align-items: start + a bordered card per item (instead of one shared
+   bordered grid) so each card's height hugs its own text instead of
+   stretching to match the tallest card in the row. */
 .articles-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--border);
+  align-items: start;
+  gap: 24px;
 }
 .articles-card {
-  border-right: 1px solid var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
   padding: 24px;
-}
-.articles-card:last-child {
-  border-right: none;
 }
 
 .hero-section {
@@ -366,6 +368,7 @@ button {
   }
   .articles-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
   .steps-grid {
     grid-template-columns: 1fr;
@@ -376,12 +379,7 @@ button {
     padding: 20px;
   }
   .articles-card {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
     padding: 18px;
-  }
-  .articles-card:last-child {
-    border-bottom: none;
   }
   #work h2.reveal {
     margin-bottom: 32px;
@@ -444,13 +442,6 @@ button {
 @media (max-width: 1100px) {
   .articles-grid {
     grid-template-columns: 1fr;
-  }
-  .articles-card {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-  .articles-card:last-child {
-    border-bottom: none;
   }
 }
 
