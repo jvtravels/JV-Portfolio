@@ -516,11 +516,12 @@ html[data-theme="light"] .footer-collab-img-light {
   color: var(--text);
   font-size: 13px;
   letter-spacing: -0.01em;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 .footer-collab-pill:hover {
   background: var(--surface);
-  border-color: rgba(var(--fg-rgb), 0.5);
+  border-color: #f7b538;
+  color: #f7b538;
 }
 
 @media (max-width: 860px) {
