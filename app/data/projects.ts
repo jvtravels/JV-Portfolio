@@ -364,3 +364,6 @@ export const PROJECTS: Project[] = [
 export function getProjectBySlug(slug: string): Project | undefined {
   return PROJECTS.find(p => p.slug === slug);
 }
+
+// Case studies with placeholder content, excluded from the sitemap and marked noindex until written.
+export const PLACEHOLDER_SLUGS = ["tempo", "eves", "payg"];
