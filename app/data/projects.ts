@@ -81,8 +81,8 @@ export const PROJECTS: Project[] = [
   {
     slug: "eves",
     shortTitle: "EVES",
-    title: "EVES — Simplifying the systems behind EV charging",
-    tags: ["Product Design", "Enterprise SaaS", "Design System"],
+    title: "EVES — Electric Vehicle Energy Solution",
+    tags: ["Product Design", "SaaS"],
     description: "Placeholder description — to be replaced with real case-study content.",
     whatIs: "Placeholder — to be replaced with real case-study content.",
     timeline: "Placeholder",
