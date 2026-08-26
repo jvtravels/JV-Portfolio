@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Playfair_Display, Schibsted_Grotesk, Gloock } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ThemeToggle />
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-S8TQ7ZT0M7" />
     </html>
   );
 }
