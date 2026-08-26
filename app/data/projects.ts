@@ -119,8 +119,8 @@ export const PROJECTS: Project[] = [
   {
     slug: "payg",
     shortTitle: "PAYG",
-    title: "PAYG — Designing the fastest path from charger to charging",
-    tags: ["0→1 Product Design", "Mobile UX", "EV Charging"],
+    title: "DynaChrg PAYG - Pay as you go",
+    tags: ["Mobile UX Design"],
     description: "Placeholder description — to be replaced with real case-study content.",
     whatIs: "Placeholder — to be replaced with real case-study content.",
     timeline: "Placeholder",
