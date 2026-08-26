@@ -30,7 +30,7 @@ export default function CursorImageTrail({
   const containerRef = useRef<HTMLDivElement>(null);
   const [trail, setTrail] = useState<TrailItem[]>([]);
   const lastPos = useRef<{ x: number; y: number } | null>(null);
-  const nextIndex = useRef(0);
+  const lastIndex = useRef(-1);
   const nextId = useRef(0);
 
   useEffect(() => {
@@ -60,8 +60,13 @@ export default function CursorImageTrail({
       lastPos.current = { x, y };
 
       const id = nextId.current++;
-      const image = images[nextIndex.current % images.length];
-      nextIndex.current++;
+      // Pick a random image, avoiding an immediate repeat of the last one.
+      let index = Math.floor(Math.random() * images.length);
+      if (images.length > 1 && index === lastIndex.current) {
+        index = (index + 1) % images.length;
+      }
+      lastIndex.current = index;
+      const image = images[index];
 
       setTrail((t) => [...t, { id, x, y, image }]);
       setTimeout(() => {

@@ -3,13 +3,7 @@
 import { useEffect, useState } from "react";
 import CursorImageTrail from "./CursorImageTrail";
 
-const TRAIL_IMAGES = [
-  "/Work/Tempo-dark.png",
-  "/Work/P1.avif",
-  "/Work/P2.avif",
-  "/Work/P3.avif",
-  "/Work/P4.avif",
-];
+const TRAIL_IMAGES = Array.from({ length: 26 }, (_, i) => `/Hero%20Gallery/H${i + 1}.png`);
 
 export default function Hero() {
   const [revealed, setRevealed] = useState(false);
@@ -49,7 +43,7 @@ export default function Hero() {
       textAlign: "center",
       background: "var(--bg)",
     }}>
-      <CursorImageTrail images={TRAIL_IMAGES} />
+      <CursorImageTrail images={TRAIL_IMAGES} distance={280} />
 
       <div className="hero-mobile-window" aria-hidden="true">
         {TRAIL_IMAGES.map((img, i) => (
