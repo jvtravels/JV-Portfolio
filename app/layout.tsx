@@ -42,9 +42,7 @@ const THEME_INIT_SCRIPT = `
 (function () {
   try {
     var stored = localStorage.getItem("theme");
-    var resolved = stored === "light" || stored === "dark"
-      ? stored
-      : window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    var resolved = stored === "light" || stored === "dark" ? stored : "dark";
     document.documentElement.setAttribute("data-theme", resolved);
   } catch (e) {}
 })();

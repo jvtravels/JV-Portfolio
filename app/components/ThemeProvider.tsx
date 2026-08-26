@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
-type Theme = "light" | "dark" | "system";
+type Theme = "light" | "dark";
 
 type ThemeContextValue = {
   theme: Theme;
@@ -14,37 +14,16 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 const STORAGE_KEY = "theme";
 
-function getSystemTheme(): "light" | "dark" {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-}
-
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("dark");
-  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY) as Theme | null;
-    const initial = stored ?? "system";
-    setThemeState(initial);
-    setResolvedTheme(initial === "system" ? getSystemTheme() : initial);
+    setThemeState(stored === "light" ? "light" : "dark");
   }, []);
 
   useEffect(() => {
-    const resolved = theme === "system" ? getSystemTheme() : theme;
-    setResolvedTheme(resolved);
-    document.documentElement.setAttribute("data-theme", resolved);
-  }, [theme]);
-
-  useEffect(() => {
-    if (theme !== "system") return;
-    const media = window.matchMedia("(prefers-color-scheme: dark)");
-    const onChange = () => {
-      const resolved = getSystemTheme();
-      setResolvedTheme(resolved);
-      document.documentElement.setAttribute("data-theme", resolved);
-    };
-    media.addEventListener("change", onChange);
-    return () => media.removeEventListener("change", onChange);
+    document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   const setTheme = (next: Theme) => {
@@ -52,7 +31,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     window.localStorage.setItem(STORAGE_KEY, next);
   };
 
-  const value = useMemo(() => ({ theme, resolvedTheme, setTheme }), [theme, resolvedTheme]);
+  const value = useMemo(() => ({ theme, resolvedTheme: theme, setTheme }), [theme]);
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
