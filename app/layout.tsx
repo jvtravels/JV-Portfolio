@@ -17,7 +17,7 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import ThemeToggle from "./components/ThemeToggle";
 import { SITE_URL } from "./lib/site";
 
-const TITLE = "Jay Vyas — Designer";
+const TITLE = "Jay Vyas — Senior Product Designer";
 const DESCRIPTION = "Product design, brand identity and web design for ambitious companies.";
 
 export const metadata: Metadata = {
