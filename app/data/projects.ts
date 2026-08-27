@@ -361,6 +361,43 @@ export const PROJECTS: Project[] = [
     hmwQuestion: "How might we make Cluster feel like the obvious choice for Shopify brands before they've even booked a demo?",
     brandNote: "The logo and identity were built to own a visual space that no other A/B testing tool occupies. Subtle Shopify UI references created instant familiarity. Outcome data from real stores led the narrative — numbers before features, always. The CTA architecture was designed entirely around demo bookings as the single conversion goal.",
   },
+  {
+    slug: "kayu-bali",
+    shortTitle: "KAYU Bali",
+    title: "KAYU Bali — Designing a digital home for sculptural objects",
+    tags: ["E-commerce", "Art & Objects", "Web Design", "Art Direction"],
+    description: "Placeholder description — to be replaced with real case-study content.",
+    whatIs: "Placeholder — to be replaced with real case-study content.",
+    timeline: "Placeholder",
+    problem: "Placeholder problem statement — to be replaced with real case-study content.",
+    tldrDecisions: [
+      "Placeholder — real product decisions to be added",
+      "Placeholder — real product decisions to be added",
+      "Placeholder — real product decisions to be added",
+    ],
+    solution: "Placeholder solution summary — to be replaced with real case-study content.",
+    results: "Placeholder results summary — to be replaced with real case-study content.",
+    metrics: [
+      { value: "—", label: "Placeholder metric" },
+      { value: "—", label: "Placeholder metric" },
+      { value: "—", label: "Placeholder metric" },
+    ],
+    learningsList: [
+      "Placeholder learning — to be replaced with real case-study content.",
+    ],
+    industry: "Art & Objects",
+    role: "Web Design, Art Direction",
+    liveSite: "kayu-bali.com",
+    liveUrl: "https://kayu-bali.com/",
+    year: "2026",
+    comingSoon: true,
+    images: ["/Work/P1.avif"],
+    userGroups: [
+      { num: "01", title: "Placeholder audience", bullets: ["Placeholder — to be replaced with real audience insight"] },
+    ],
+    hmwQuestion: "Placeholder HMW question — to be replaced with real case-study content.",
+    brandNote: "Placeholder brand note — to be replaced with real case-study content.",
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
