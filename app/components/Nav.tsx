@@ -1,16 +1,21 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Nav() {
-  const [revealed, setRevealed] = useState(false);
+  // IntroLoader (which dispatches "intro-reveal") only renders on the homepage,
+  // so only gate visibility on that event there — every other page reveals immediately.
+  const isHome = usePathname() === "/";
+  const [revealed, setRevealed] = useState(!isHome);
 
   useEffect(() => {
+    if (!isHome) return;
     const onReveal = () => setRevealed(true);
     window.addEventListener("intro-reveal", onReveal);
     return () => window.removeEventListener("intro-reveal", onReveal);
-  }, []);
+  }, [isHome]);
 
   return (
     <header style={{
