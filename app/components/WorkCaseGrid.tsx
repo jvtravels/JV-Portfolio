@@ -81,20 +81,32 @@ function WorkCaseRow({ project, index }: { project: Project; index: number }) {
 
   return (
     <div className="work-case-row">
-      <h2
-        style={{
-          fontFamily: "var(--font-playfair)",
-          fontSize: "clamp(22px, 3.4vw, 30px)",
-          fontWeight: 600,
-          letterSpacing: "-0.01em",
-          color: "var(--text)",
-          margin: "0 0 24px",
-          filter: project.comingSoon ? "blur(6px)" : undefined,
-          userSelect: project.comingSoon ? "none" : undefined,
-        }}
-      >
-        {project.title}
-      </h2>
+      <div className="work-case-header">
+        <h2
+          style={{
+            fontFamily: "var(--font-playfair)",
+            fontSize: "clamp(22px, 3.4vw, 30px)",
+            fontWeight: 600,
+            letterSpacing: "-0.01em",
+            color: "var(--text)",
+            margin: 0,
+            filter: project.comingSoon ? "blur(6px)" : undefined,
+            userSelect: project.comingSoon ? "none" : undefined,
+          }}
+        >
+          {project.title}
+        </h2>
+
+        {!project.comingSoon && (
+          <div className="work-case-tags work-case-tags--header">
+            {project.tags.map((tag) => (
+              <span key={tag} className="work-case-tag">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
 
       <div className="work-case-media">
         <div className={`work-case-hero${hasThemeCover ? " single" : ""}`}>
@@ -166,16 +178,7 @@ function WorkCaseRow({ project, index }: { project: Project; index: number }) {
           </span>
         </div>
       ) : (
-        <>
-          <div className="work-case-tags">
-            {project.tags.map((tag) => (
-              <span key={tag} className="work-case-tag">
-                {tag}
-              </span>
-            ))}
-          </div>
-          {hasDescription && <p className="work-case-desc">{project.description}</p>}
-        </>
+        hasDescription && <p className="work-case-desc">{project.description}</p>
       )}
     </div>
   );
