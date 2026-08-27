@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { bootPathname } from "./PageTransition";
 
 const WORDS = [
   "HELLO",
@@ -31,12 +32,15 @@ export default function IntroLoader() {
   const [blindsOpen, setBlindsOpen] = useState(false);
   const [yellowOpen, setYellowOpen] = useState(false);
   // Skip in canvas/iframe context (Tempo storyboard viewport), for users who prefer
-  // reduced motion, and on repeat in-app visits to the homepage.
+  // reduced motion, on repeat in-app visits to the homepage, and when the site was
+  // entered on some other page and only routed to "/" via client-side nav (e.g. the
+  // Back link from /work) — that should show just the curtain, not the intro replay.
   const [gone, setGone] = useState(() =>
     typeof window !== "undefined" &&
     (window.self !== window.top ||
       window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-      hasPlayedThisSession)
+      hasPlayedThisSession ||
+      bootPathname !== "/")
   );
 
   const wordsDone = index >= WORDS.length;

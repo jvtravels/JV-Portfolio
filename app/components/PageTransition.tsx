@@ -12,6 +12,12 @@ const HOLD_MS = 150;
 
 type Phase = "idle" | "closing" | "closed" | "opening";
 
+// Captured once, at the moment this (always-mounted, root-layout) module first
+// evaluates on a real page load — i.e. the URL the browser actually navigated
+// to. Lets IntroLoader tell "site entered on some other page, then routed to
+// home via SPA nav" apart from "home was actually (re)loaded".
+export const bootPathname = typeof window !== "undefined" ? window.location.pathname : null;
+
 export default function PageTransition() {
   const pathname = usePathname();
   const router = useRouter();
