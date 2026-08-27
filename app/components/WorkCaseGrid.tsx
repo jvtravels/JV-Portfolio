@@ -164,7 +164,7 @@ function WorkCaseRow({ project, index }: { project: Project; index: number }) {
   );
 
   return (
-    <div className="work-case-row">
+    <div className="work-case-row reveal">
       {project.comingSoon ? (
         cardContent
       ) : (
