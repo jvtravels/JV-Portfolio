@@ -229,7 +229,7 @@ export const PROJECTS: Project[] = [
     liveSite: "tryspecter.com",
     liveUrl: "https://tryspecter.com",
     year: "2023",
-    images: ["/Work/Dono/D1.mp4", "/Work/Dono/D2.jpg", "/Work/Dono/D3.jpg", "/Work/Dono/D4.jpg", "/Work/Dono/D5.jpg", ...["llpPFKiavhuWjCVIVCR4usx9kLI"].map(FU), "/Work/Dono/D7.jpg"],
+    images: ["/Work/Dono/D1.mp4", "/Work/Dono/D2.jpg", "/Work/Dono/D3.jpg", "/Work/Dono/D4.jpg", "/Work/Dono/D5.jpg", "/Work/Dono/D6.jpg", "/Work/Dono/D7.jpg"],
     userGroups: [
       { num: "01", title: "Product Managers", bullets: ["Need visibility into user behaviour across every touchpoint", "Want actionable insights, not raw metric exports", "Compare tools based on how fast they can surface answers"] },
       { num: "02", title: "Growth Engineers", bullets: ["Building funnels and attribution models", "Need tracking that captures what standard tools miss", "Judge platforms by how quickly they can get to production"] },
