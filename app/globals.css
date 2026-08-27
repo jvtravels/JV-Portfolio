@@ -216,6 +216,23 @@ button {
 .work-case-filmstrip-item {
   flex: 0 0 160px;
 }
+.work-case-feature-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 0.9fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "a b c e" "a d d e";
+  gap: 12px;
+  aspect-ratio: 2.3 / 1;
+  margin-top: 12px;
+}
+.work-case-feature-cell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+}
 .work-case-tags {
   display: flex;
   flex-wrap: wrap;
@@ -411,6 +428,16 @@ button {
   }
   .work-case-filmstrip-item {
     flex-basis: 120px;
+  }
+  .work-case-feature-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-template-areas: "a" "b" "c" "d" "e";
+    aspect-ratio: auto;
+  }
+  .work-case-feature-cell {
+    height: auto;
+    aspect-ratio: 4 / 3;
   }
   .about-grid {
     grid-template-columns: minmax(0, 1fr);

@@ -42,9 +42,30 @@ function CaseImage({
   );
 }
 
+function FeatureGrid({ images }: { images: string[] }) {
+  const areas = ["a", "b", "c", "d", "e"];
+  return (
+    <div className="work-case-feature-grid">
+      {images.map((src, i) => (
+        <div key={i} className="work-case-feature-cell" style={{ gridArea: areas[i] }}>
+          <Image
+            src={src}
+            alt=""
+            fill
+            draggable={false}
+            sizes="(max-width: 768px) 100vw, 40vw"
+            style={{ objectFit: "cover", objectPosition: "top" }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function WorkCaseRow({ project, first }: { project: Project; first: boolean }) {
   const hasThemeCover = Boolean(project.coverDark && project.coverLight);
   const filmstrip = hasThemeCover ? [] : project.images.slice(2);
+  const useFeatureGrid = first && filmstrip.length >= 5;
   const hasDescription = !project.description.startsWith("Placeholder");
 
   return (
@@ -126,14 +147,18 @@ function WorkCaseRow({ project, first }: { project: Project; first: boolean }) {
         )}
       </div>
 
-      {filmstrip.length > 0 && (
-        <div className="work-case-filmstrip">
-          {filmstrip.map((src, i) => (
-            <div key={i} className="work-case-filmstrip-item">
-              <CaseImage src={src} aspectRatio="1 / 1" blur={project.comingSoon} />
-            </div>
-          ))}
-        </div>
+      {useFeatureGrid ? (
+        <FeatureGrid images={filmstrip.slice(0, 5)} />
+      ) : (
+        filmstrip.length > 0 && (
+          <div className="work-case-filmstrip">
+            {filmstrip.map((src, i) => (
+              <div key={i} className="work-case-filmstrip-item">
+                <CaseImage src={src} aspectRatio="1 / 1" blur={project.comingSoon} />
+              </div>
+            ))}
+          </div>
+        )
       )}
 
       {project.comingSoon ? (
