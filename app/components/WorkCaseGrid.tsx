@@ -187,7 +187,18 @@ function WorkCaseRow({ project, index }: { project: Project; index: number }) {
 
   return (
     <div className="work-case-row reveal">
-      {cardContent}
+      {project.externalLink ? (
+        <a
+          href={project.externalLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="work-case-link"
+        >
+          {cardContent}
+        </a>
+      ) : (
+        cardContent
+      )}
 
       {project.comingSoon ? (
         <div style={{ marginTop: 24 }}>

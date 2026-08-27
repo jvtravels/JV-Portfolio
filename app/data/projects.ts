@@ -32,6 +32,7 @@ export interface Project {
   coverDark?: string;
   coverLight?: string;
   comingSoon?: boolean;
+  externalLink?: string;
   userGroups: UserGroup[];
   hmwQuestion: string;
   brandNote: string;
@@ -270,6 +271,7 @@ export const PROJECTS: Project[] = [
     liveSite: "thesignal.so",
     liveUrl: "https://thesignal.so",
     year: "2024",
+    externalLink: "https://kayu-bali.com/",
     images: ["/Work/Kayu/K1.mp4", ...["Ki97QAhosBVwFWkAhgeLUQVGqkE"].map(FU), "/Work/Kayu/K3.jpg", ...["rBVG2OpUTvd9RD7s6g2vPHxJvM","zew92AlsAUgaxe9dU1MxdOzpdTY","3nwiqOKR0QQkRa09CvFF9GWDyW4","TN2YjyIUOgX4a7wk896aHTe9GoI"].map(FU)],
     userGroups: [
       { num: "01", title: "AI Professionals", bullets: ["Working in ML, research, or product at AI companies", "Read newsletters to stay ahead without drowning in noise", "Share content with colleagues — brand visibility matters"] },
