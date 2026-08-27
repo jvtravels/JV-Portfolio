@@ -157,12 +157,29 @@ function WorkCaseRow({ project, index }: { project: Project; index: number }) {
             ) : (
               <>
                 <CaseImage src={project.images[0]} className="work-case-hero-media" blur={project.comingSoon} />
-                {project.images[1] && (
-                  <CaseImage
-                    src={project.images[1]}
-                    className="work-case-hero-media work-case-hero-media--secondary"
-                    blur={project.comingSoon}
-                  />
+                {project.secondaryStack ? (
+                  <div className="work-case-hero-media work-case-hero-media--secondary work-case-hero-stack">
+                    {project.secondaryStack.map((src, i) => (
+                      <div key={i} className="work-case-hero-stack-item">
+                        <Image
+                          src={src}
+                          alt=""
+                          fill
+                          draggable={false}
+                          sizes="(max-width: 768px) 100vw, 20vw"
+                          style={{ objectFit: "cover", objectPosition: "center" }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  project.images[1] && (
+                    <CaseImage
+                      src={project.images[1]}
+                      className="work-case-hero-media work-case-hero-media--secondary"
+                      blur={project.comingSoon}
+                    />
+                  )
                 )}
               </>
             )}
