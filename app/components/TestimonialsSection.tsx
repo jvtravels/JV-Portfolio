@@ -30,8 +30,8 @@ const TESTIMONIALS = [
     logo: "/Testimonial-logo/T3.png",
   },
   {
-    quote: "Working with Jay over the last few months has been a blast. He’s quick, responsive and very collaborative.",
-    highlight: "He always listens and understands what the client is looking for and explores all possibilities to make sure the client is satisfied. 10/10 recommend working with him — if you don’t, then more for me!",
+    quote: "With Jay, I never felt like I had to over-explain everything. We could discuss the goal, what we were trying to achieve, and he'd quickly get to the core of it.",
+    highlight: "He brought structure to messy ideas and kept pushing toward something practical that we could actually ship.",
     name: "Samuel Darwin",
     role: "CEO at Joy Technologies",
     avatar: "/Testimonial-Person/P4.jpeg",
