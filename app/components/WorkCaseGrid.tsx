@@ -189,6 +189,7 @@ export default function WorkCaseGrid({ projects }: { projects: Project[] }) {
     <>
       {projects.map((project, i) => (
         <section key={project.slug} className="section-py" style={{ position: "relative" }}>
+          {i === 0 && <DashedH style={{ top: 0, left: 0, right: 0 }} />}
           <DashedH style={{ bottom: 0, left: 0, right: 0 }} />
           <DashedV style={{ top: 0, bottom: 0, left: "var(--frame-inset)" }} />
           <DashedV style={{ top: 0, bottom: 0, right: "var(--frame-inset)" }} />
