@@ -287,8 +287,8 @@ export const PROJECTS: Project[] = [
   {
     slug: "calldesk",
     shortTitle: "Calldesk",
-    title: "Calldesk — Web design for AI-powered call automation platform",
-    tags: ["Web Design", "Development", "Branding"],
+    title: "BoldAir — Designing travel with a little more attitude",
+    tags: ["Pitch Deck", "Storytelling", "Art Direction"],
     description: "Enterprise teams looking at AI call automation need to quickly understand how it works and why it can be trusted. The website guides users through the product in a clear, straightforward way, making the value of automation easy to grasp from the first visit.\n\nNew website helped Calldesk present itself as a serious enterprise solution and support conversion among large clients.",
     whatIs: "Calldesk is an AI-powered call automation platform that handles inbound customer service calls at scale. Enterprise teams use it to automate repetitive call flows without sacrificing the quality of the customer experience.",
     timeline: "11 weeks",
