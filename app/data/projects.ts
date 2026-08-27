@@ -275,7 +275,7 @@ export const PROJECTS: Project[] = [
     year: "2024",
     externalLink: "https://kayu-bali.com/",
     secondaryStack: ["/Work/Kayu/K2.jpg", "/Work/Kayu/K4.jpg"],
-    images: ["/Work/Kayu/K1.mp4", ...["Ki97QAhosBVwFWkAhgeLUQVGqkE"].map(FU), "/Work/Kayu/K3.jpg", ...["rBVG2OpUTvd9RD7s6g2vPHxJvM","zew92AlsAUgaxe9dU1MxdOzpdTY","3nwiqOKR0QQkRa09CvFF9GWDyW4","TN2YjyIUOgX4a7wk896aHTe9GoI"].map(FU)],
+    images: ["/Work/Kayu/K1.mp4", ...["Ki97QAhosBVwFWkAhgeLUQVGqkE"].map(FU), "/Work/Kayu/K3.jpg", ...["rBVG2OpUTvd9RD7s6g2vPHxJvM","zew92AlsAUgaxe9dU1MxdOzpdTY"].map(FU), "/Work/Kayu/K5.jpg", "/Work/Kayu/K6.jpg"],
     userGroups: [
       { num: "01", title: "AI Professionals", bullets: ["Working in ML, research, or product at AI companies", "Read newsletters to stay ahead without drowning in noise", "Share content with colleagues — brand visibility matters"] },
       { num: "02", title: "Tech Leaders", bullets: ["CTOs, VPs of Engineering, and technical founders", "Need curated signal, not volume", "Partners like Microsoft and Anthropic validate credibility instantly"] },
