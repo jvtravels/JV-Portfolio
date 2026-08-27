@@ -5,7 +5,7 @@ import Hero from "./components/Hero";
 import WorkSection from "./components/WorkSection";
 import AboutMeSection from "./components/AboutMeSection";
 import TestimonialsSection from "./components/TestimonialsSection";
-import ProcessSection from "./components/ProcessSection";
+import HireStepXSection from "./components/HireStepXSection";
 import ArticlesSection from "./components/ArticlesSection";
 import FAQSection from "./components/FAQSection";
 import BrandsSection from "./components/BrandsSection";
@@ -23,8 +23,7 @@ export default function Home() {
         <WorkSection />
         <AboutMeSection />
         <TestimonialsSection />
-        {/* Hidden for now — HireStepX process section */}
-        {/* <ProcessSection /> */}
+        <HireStepXSection />
         <ArticlesSection />
         <FAQSection />
       </main>
