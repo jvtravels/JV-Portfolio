@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
-import BrandsSection from "@/app/components/BrandsSection";
 import WorkCaseGrid from "@/app/components/WorkCaseGrid";
 import { DashedV } from "@/app/components/DashedFrame";
 import { PROJECTS, HOMEPAGE_PROJECT_SLUGS } from "@/app/data/projects";
@@ -21,8 +20,6 @@ export default function AllWorkPage() {
     <>
       <Nav />
       <main id="main-content" style={{ paddingTop: 120 }}>
-        <BrandsSection />
-
         {/* Work — one row per project, replicating the reference site's project-list pattern */}
         <section className="section-py" style={{ position: "relative" }}>
           <DashedV style={{ top: 0, bottom: 0, left: "var(--frame-inset)" }} />
