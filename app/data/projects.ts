@@ -367,5 +367,9 @@ export function getProjectBySlug(slug: string): Project | undefined {
   return PROJECTS.find(p => p.slug === slug);
 }
 
+// Slugs of the 4 projects already shown on the homepage's Work section —
+// used to keep /work limited to the projects not already on display there.
+export const HOMEPAGE_PROJECT_SLUGS = PROJECTS.slice(0, 4).map(p => p.slug);
+
 // Only these case studies are included in the sitemap and indexed; all other slugs are noindex.
 export const INDEXABLE_SLUGS = ["tempo", "eves", "payg"];

@@ -68,7 +68,7 @@ function WorkCaseRow({ project, first }: { project: Project; first: boolean }) {
       >
         <h2
           style={{
-            fontFamily: "var(--font-niven)",
+            fontFamily: "var(--font-playfair)",
             fontSize: "clamp(22px, 3.4vw, 30px)",
             fontWeight: 600,
             letterSpacing: "-0.01em",
@@ -169,10 +169,10 @@ function WorkCaseRow({ project, first }: { project: Project; first: boolean }) {
   );
 }
 
-export default function WorkCaseGrid() {
+export default function WorkCaseGrid({ projects }: { projects: Project[] }) {
   return (
     <div>
-      {PROJECTS.map((project, i) => (
+      {projects.map((project, i) => (
         <WorkCaseRow key={project.slug} project={project} first={i === 0} />
       ))}
     </div>
