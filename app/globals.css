@@ -296,12 +296,6 @@ button {
     flex-direction: column;
   }
 }
-.work-case-link .work-case-hero-media img {
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.work-case-link:hover .work-case-hero-media img {
-  transform: scale(1.03);
-}
 .work-case-header {
   display: flex;
   align-items: center;
