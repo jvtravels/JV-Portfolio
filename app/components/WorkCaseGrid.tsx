@@ -25,7 +25,9 @@ function CaseImage({
       className={className}
       style={
         className
-          ? undefined
+          ? isVideo
+            ? { background: "#F7FFFF" }
+            : undefined
           : {
               position: "relative",
               width: "100%",
