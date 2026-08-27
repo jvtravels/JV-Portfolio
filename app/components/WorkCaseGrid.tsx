@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { PROJECTS } from "@/app/data/projects";
 import { DashedH, DashedV } from "@/app/components/DashedFrame";
 
@@ -79,86 +80,98 @@ function WorkCaseRow({ project, index }: { project: Project; index: number }) {
   const variant = FEATURE_GRID_VARIANTS[index % FEATURE_GRID_VARIANTS.length];
   const hasDescription = !project.description.startsWith("Placeholder");
 
-  return (
-    <div className="work-case-row">
-      <div className="work-case-header">
-        <h2
-          style={{
-            fontFamily: "var(--font-playfair)",
-            fontSize: "clamp(22px, 3.4vw, 30px)",
-            fontWeight: 600,
-            letterSpacing: "-0.01em",
-            color: "var(--text)",
-            margin: 0,
-            filter: project.comingSoon ? "blur(6px)" : undefined,
-            userSelect: project.comingSoon ? "none" : undefined,
-          }}
-        >
-          {project.title}
-        </h2>
+  const cardContent = (
+    <>
+        <div className="work-case-header">
+          <h2
+            style={{
+              fontFamily: "var(--font-playfair)",
+              fontSize: "clamp(22px, 3.4vw, 30px)",
+              fontWeight: 600,
+              letterSpacing: "-0.01em",
+              color: "var(--text)",
+              margin: 0,
+              filter: project.comingSoon ? "blur(6px)" : undefined,
+              userSelect: project.comingSoon ? "none" : undefined,
+            }}
+          >
+            {project.title}
+          </h2>
 
-        {!project.comingSoon && (
-          <div className="work-case-tags work-case-tags--header">
-            {project.tags.map((tag) => (
-              <span key={tag} className="work-case-tag">
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
-      </div>
-
-      <div className="work-case-media">
-        <div className={`work-case-hero${hasThemeCover ? " single" : ""}`}>
-          {hasThemeCover ? (
-            <div className="work-case-hero-media">
-              <Image
-                src={project.coverDark!}
-                alt=""
-                fill
-                draggable={false}
-                sizes="(max-width: 768px) 100vw, 60vw"
-                className="work-cover-dark"
-                style={{ objectFit: "cover", objectPosition: "top", borderRadius: 8, transition: "opacity 0.2s ease" }}
-              />
-              <Image
-                src={project.coverLight!}
-                alt=""
-                fill
-                draggable={false}
-                sizes="(max-width: 768px) 100vw, 60vw"
-                className="work-cover-light"
-                style={{ objectFit: "cover", objectPosition: "top", borderRadius: 8, position: "absolute", top: 0, left: 0, transition: "opacity 0.2s ease" }}
-              />
+          {!project.comingSoon && (
+            <div className="work-case-tags work-case-tags--header">
+              {project.tags.map((tag) => (
+                <span key={tag} className="work-case-tag">
+                  {tag}
+                </span>
+              ))}
             </div>
-          ) : (
-            <>
-              <CaseImage src={project.images[0]} className="work-case-hero-media" blur={project.comingSoon} />
-              {project.images[1] && (
-                <CaseImage
-                  src={project.images[1]}
-                  className="work-case-hero-media work-case-hero-media--secondary"
-                  blur={project.comingSoon}
-                />
-              )}
-            </>
           )}
         </div>
 
-        {useFeatureGrid ? (
-          <FeatureGrid images={filmstrip.slice(0, variant === "v4" ? 4 : 5)} variant={variant} />
-        ) : (
-          filmstrip.length > 0 && (
-            <div className="work-case-filmstrip">
-              {filmstrip.map((src, i) => (
-                <div key={i} className="work-case-filmstrip-item">
-                  <CaseImage src={src} aspectRatio="1 / 1" blur={project.comingSoon} />
-                </div>
-              ))}
-            </div>
-          )
-        )}
-      </div>
+        <div className="work-case-media">
+          <div className={`work-case-hero${hasThemeCover ? " single" : ""}`}>
+            {hasThemeCover ? (
+              <div className="work-case-hero-media">
+                <Image
+                  src={project.coverDark!}
+                  alt=""
+                  fill
+                  draggable={false}
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  className="work-cover-dark"
+                  style={{ objectFit: "cover", objectPosition: "top", borderRadius: 8, transition: "opacity 0.2s ease" }}
+                />
+                <Image
+                  src={project.coverLight!}
+                  alt=""
+                  fill
+                  draggable={false}
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  className="work-cover-light"
+                  style={{ objectFit: "cover", objectPosition: "top", borderRadius: 8, position: "absolute", top: 0, left: 0, transition: "opacity 0.2s ease" }}
+                />
+              </div>
+            ) : (
+              <>
+                <CaseImage src={project.images[0]} className="work-case-hero-media" blur={project.comingSoon} />
+                {project.images[1] && (
+                  <CaseImage
+                    src={project.images[1]}
+                    className="work-case-hero-media work-case-hero-media--secondary"
+                    blur={project.comingSoon}
+                  />
+                )}
+              </>
+            )}
+          </div>
+
+          {useFeatureGrid ? (
+            <FeatureGrid images={filmstrip.slice(0, variant === "v4" ? 4 : 5)} variant={variant} />
+          ) : (
+            filmstrip.length > 0 && (
+              <div className="work-case-filmstrip">
+                {filmstrip.map((src, i) => (
+                  <div key={i} className="work-case-filmstrip-item">
+                    <CaseImage src={src} aspectRatio="1 / 1" blur={project.comingSoon} />
+                  </div>
+                ))}
+              </div>
+            )
+          )}
+        </div>
+    </>
+  );
+
+  return (
+    <div className="work-case-row">
+      {project.comingSoon ? (
+        cardContent
+      ) : (
+        <Link href={`/work/${project.slug}`} className="work-case-link" data-cursor-label="View Project">
+          {cardContent}
+        </Link>
+      )}
 
       {project.comingSoon ? (
         <div style={{ marginTop: 24 }}>
