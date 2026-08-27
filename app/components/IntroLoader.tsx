@@ -24,10 +24,14 @@ export default function IntroLoader() {
   const [index, setIndex] = useState(0);
   const [blindsOpen, setBlindsOpen] = useState(false);
   const [yellowOpen, setYellowOpen] = useState(false);
-  // Skip in canvas/iframe context (Tempo storyboard viewport) and for users who prefer reduced motion
+  // Skip in canvas/iframe context (Tempo storyboard viewport), for users who prefer
+  // reduced motion, and on repeat visits to the homepage within the same session
+  // (e.g. navigating back from /work) — the intro should only play once per session.
   const [gone, setGone] = useState(() =>
     typeof window !== "undefined" &&
-    (window.self !== window.top || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+    (window.self !== window.top ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      sessionStorage.getItem("intro-shown") === "1")
   );
 
   const wordsDone = index >= WORDS.length;
@@ -54,7 +58,10 @@ export default function IntroLoader() {
         SWEEP_MS + YELLOW_HOLD_MS
       );
       const yellowTimer = setTimeout(() => setYellowOpen(true), SWEEP_MS + YELLOW_HOLD_MS);
-      const goneTimer = setTimeout(() => setGone(true), SWEEP_MS + YELLOW_HOLD_MS + SWEEP_MS + 60);
+      const goneTimer = setTimeout(() => {
+        sessionStorage.setItem("intro-shown", "1");
+        setGone(true);
+      }, SWEEP_MS + YELLOW_HOLD_MS + SWEEP_MS + 60);
       return () => { clearTimeout(revealTimer); clearTimeout(yellowTimer); clearTimeout(goneTimer); };
     }
   }, [index, wordsDone]);
