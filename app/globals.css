@@ -254,7 +254,7 @@ button {
   font-size: 15px;
   line-height: 1.65;
   color: var(--text-dim);
-  max-width: 720px;
+  max-width: 100%;
   white-space: pre-line;
 }
 .work-case-row:last-child {
