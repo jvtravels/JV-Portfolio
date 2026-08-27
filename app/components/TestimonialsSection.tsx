@@ -6,8 +6,8 @@ import { DashedH, DashedV } from "@/app/components/DashedFrame";
 
 const TESTIMONIALS = [
   {
-    quote: "Jay is as much an artist as he is a web designer. He was able to communicate authority, attention to detail, a clean user experience, and clarity.",
-    highlight: "Anyone who lands on this page will now expect these characteristics from us; which creates the frame for us to offer premium services.",
+    quote: "Jay was someone I could discuss an idea with, not just hand a design task to. He would understand what we were trying to build, ask questions, and point out things we had missed.",
+    highlight: "Many times, the final solution was better because of those discussions. I really valued that about working with him.",
     name: "Vanshil Patel",
     role: "Founder at Nousoft",
     avatar: "/Testimonial-Person/P1.png",
