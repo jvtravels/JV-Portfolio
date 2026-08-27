@@ -48,7 +48,8 @@ function CaseImage({
             inset: "5%",
             width: "90%",
             height: "90%",
-            objectFit: "contain",
+            objectFit: "cover",
+            objectPosition: "center",
             filter: blur ? "blur(22px)" : undefined,
             transform: blur ? "scale(1.1)" : undefined,
           }}
