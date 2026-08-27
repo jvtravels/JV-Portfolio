@@ -168,7 +168,7 @@ function WorkCaseRow({ project, index }: { project: Project; index: number }) {
       {project.comingSoon ? (
         cardContent
       ) : (
-        <Link href={`/work/${project.slug}`} className="work-case-link" data-cursor-label="View Project">
+        <Link href={`/work/${project.slug}`} className="work-case-link">
           {cardContent}
         </Link>
       )}
