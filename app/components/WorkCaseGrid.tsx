@@ -76,10 +76,10 @@ function CaseImage({
 
 const FEATURE_GRID_VARIANTS = ["v1", "v2", "v3", "v4"] as const;
 
-function FeatureGrid({ images, variant }: { images: string[]; variant: (typeof FEATURE_GRID_VARIANTS)[number] }) {
+function FeatureGrid({ images, variant, trio }: { images: string[]; variant: (typeof FEATURE_GRID_VARIANTS)[number]; trio?: boolean }) {
   const areas = ["a", "b", "c", "d", "e"];
   return (
-    <div className={`work-case-feature-grid work-case-feature-grid--${variant}`}>
+    <div className={`work-case-feature-grid work-case-feature-grid--${trio ? "trio" : variant}`}>
       {images.map((src, i) => (
         <div key={i} className="work-case-feature-cell" style={{ gridArea: areas[i] }}>
           <Image
@@ -99,7 +99,8 @@ function FeatureGrid({ images, variant }: { images: string[]; variant: (typeof F
 function WorkCaseRow({ project, index }: { project: Project; index: number }) {
   const hasThemeCover = Boolean(project.coverDark && project.coverLight);
   const filmstrip = hasThemeCover ? [] : project.images.slice(2);
-  const useFeatureGrid = filmstrip.length >= 4;
+  const useFeatureGrid = filmstrip.length >= 4 || filmstrip.length === 3;
+  const trio = filmstrip.length === 3;
   const variant = FEATURE_GRID_VARIANTS[index % FEATURE_GRID_VARIANTS.length];
 
   const cardContent = (
@@ -186,7 +187,7 @@ function WorkCaseRow({ project, index }: { project: Project; index: number }) {
           </div>
 
           {useFeatureGrid ? (
-            <FeatureGrid images={filmstrip.slice(0, variant === "v4" ? 4 : 5)} variant={variant} />
+            <FeatureGrid images={trio ? filmstrip : filmstrip.slice(0, variant === "v4" ? 4 : 5)} variant={variant} trio={trio} />
           ) : (
             filmstrip.length > 0 && (
               <div className="work-case-filmstrip">
