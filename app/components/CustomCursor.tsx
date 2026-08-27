@@ -1,18 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
 import { createPortal } from "react-dom";
 
 export default function CustomCursor() {
-  const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
-    if (!mounted || pathname === "/work") return;
+    if (!mounted) return;
     const el = cursorRef.current;
     if (!el) return;
 
@@ -135,9 +133,9 @@ export default function CustomCursor() {
       document.documentElement.removeEventListener("mouseenter", onEnter);
       window.removeEventListener("cursor-label-refresh", onLabelRefresh);
     };
-  }, [mounted, pathname]);
+  }, [mounted]);
 
-  if (!mounted || pathname === "/work") return null;
+  if (!mounted) return null;
 
   return createPortal(
     <div
