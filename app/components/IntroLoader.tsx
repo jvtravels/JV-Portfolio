@@ -19,19 +19,24 @@ const BAND_STAGGER = 0.045;
 const YELLOW_HOLD_MS = 300;
 const SWEEP_MS = (BAND_COUNT - 1) * BAND_STAGGER * 1000 + BAND_DURATION * 1000;
 
+// Module-scoped (not sessionStorage) so it resets on every real page load/reload
+// but stays true across client-side route changes back to "/" within the same
+// JS session (e.g. clicking Back from /work) — the intro should replay on an
+// actual reload, just not on an in-app navigation back to the homepage.
+let hasPlayedThisSession = false;
+
 export default function IntroLoader() {
   const [mounted, setMounted] = useState(false);
   const [index, setIndex] = useState(0);
   const [blindsOpen, setBlindsOpen] = useState(false);
   const [yellowOpen, setYellowOpen] = useState(false);
   // Skip in canvas/iframe context (Tempo storyboard viewport), for users who prefer
-  // reduced motion, and on repeat visits to the homepage within the same session
-  // (e.g. navigating back from /work) — the intro should only play once per session.
+  // reduced motion, and on repeat in-app visits to the homepage.
   const [gone, setGone] = useState(() =>
     typeof window !== "undefined" &&
     (window.self !== window.top ||
       window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-      sessionStorage.getItem("intro-shown") === "1")
+      hasPlayedThisSession)
   );
 
   const wordsDone = index >= WORDS.length;
@@ -59,7 +64,7 @@ export default function IntroLoader() {
       );
       const yellowTimer = setTimeout(() => setYellowOpen(true), SWEEP_MS + YELLOW_HOLD_MS);
       const goneTimer = setTimeout(() => {
-        sessionStorage.setItem("intro-shown", "1");
+        hasPlayedThisSession = true;
         setGone(true);
       }, SWEEP_MS + YELLOW_HOLD_MS + SWEEP_MS + 60);
       return () => { clearTimeout(revealTimer); clearTimeout(yellowTimer); clearTimeout(goneTimer); };

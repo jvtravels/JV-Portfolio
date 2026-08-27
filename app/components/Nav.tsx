@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -46,7 +47,7 @@ export default function Nav() {
         maxWidth: "calc(100vw - 32px)",
       }}>
         {/* Left: avatar + name */}
-        <a href="/" data-no-transition style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", flexShrink: 0 }}>
+        <Link href="/" data-no-transition style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", flexShrink: 0 }}>
           <Image
             src="/JV.png"
             alt="Jay Vyas"
@@ -70,7 +71,7 @@ export default function Nav() {
           }}>
             Jay Vyas
           </span>
-        </a>
+        </Link>
 
         {/* Right: availability dot + email */}
         <a
