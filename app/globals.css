@@ -218,12 +218,32 @@ button {
 }
 .work-case-feature-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 0.9fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: "a b c e" "a d d e";
   gap: 12px;
   aspect-ratio: 2.3 / 1;
   margin-top: 12px;
+}
+.work-case-feature-grid--v1 {
+  grid-template-columns: 1.6fr 1fr 1fr 0.9fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "a b c e" "a d d e";
+}
+.work-case-feature-grid--v2 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "a a b c" "a a d e";
+  aspect-ratio: 2.2 / 1;
+}
+.work-case-feature-grid--v3 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "b c a a" "d e a a";
+  aspect-ratio: 2.2 / 1;
+}
+.work-case-feature-grid--v4 {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "a a b" "c c d";
+  aspect-ratio: 2.4 / 1;
 }
 .work-case-feature-cell {
   position: relative;
@@ -429,7 +449,11 @@ button {
   .work-case-filmstrip-item {
     flex-basis: 120px;
   }
-  .work-case-feature-grid {
+  .work-case-feature-grid,
+  .work-case-feature-grid--v1,
+  .work-case-feature-grid--v2,
+  .work-case-feature-grid--v3,
+  .work-case-feature-grid--v4 {
     grid-template-columns: 1fr;
     grid-template-rows: none;
     grid-template-areas: "a" "b" "c" "d" "e";

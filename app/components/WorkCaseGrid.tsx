@@ -42,10 +42,12 @@ function CaseImage({
   );
 }
 
-function FeatureGrid({ images }: { images: string[] }) {
+const FEATURE_GRID_VARIANTS = ["v1", "v2", "v3", "v4"] as const;
+
+function FeatureGrid({ images, variant }: { images: string[]; variant: (typeof FEATURE_GRID_VARIANTS)[number] }) {
   const areas = ["a", "b", "c", "d", "e"];
   return (
-    <div className="work-case-feature-grid">
+    <div className={`work-case-feature-grid work-case-feature-grid--${variant}`}>
       {images.map((src, i) => (
         <div key={i} className="work-case-feature-cell" style={{ gridArea: areas[i] }}>
           <Image
@@ -62,10 +64,11 @@ function FeatureGrid({ images }: { images: string[] }) {
   );
 }
 
-function WorkCaseRow({ project, first }: { project: Project; first: boolean }) {
+function WorkCaseRow({ project, first, index }: { project: Project; first: boolean; index: number }) {
   const hasThemeCover = Boolean(project.coverDark && project.coverLight);
   const filmstrip = hasThemeCover ? [] : project.images.slice(2);
-  const useFeatureGrid = first && filmstrip.length >= 5;
+  const useFeatureGrid = filmstrip.length >= 4;
+  const variant = FEATURE_GRID_VARIANTS[index % FEATURE_GRID_VARIANTS.length];
   const hasDescription = !project.description.startsWith("Placeholder");
 
   return (
@@ -125,7 +128,7 @@ function WorkCaseRow({ project, first }: { project: Project; first: boolean }) {
       </div>
 
       {useFeatureGrid ? (
-        <FeatureGrid images={filmstrip.slice(0, 5)} />
+        <FeatureGrid images={filmstrip.slice(0, variant === "v4" ? 4 : 5)} variant={variant} />
       ) : (
         filmstrip.length > 0 && (
           <div className="work-case-filmstrip">
@@ -175,7 +178,7 @@ export default function WorkCaseGrid({ projects }: { projects: Project[] }) {
   return (
     <div>
       {projects.map((project, i) => (
-        <WorkCaseRow key={project.slug} project={project} first={i === 0} />
+        <WorkCaseRow key={project.slug} project={project} first={i === 0} index={i} />
       ))}
     </div>
   );
