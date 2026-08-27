@@ -25,7 +25,7 @@ export default function AllWorkPage() {
         style={{
           position: "fixed",
           top: 28,
-          left: "var(--frame-inset)",
+          left: 20,
           zIndex: 150,
           display: "inline-flex",
           alignItems: "center",
@@ -33,9 +33,12 @@ export default function AllWorkPage() {
           fontSize: 13,
           color: "rgba(var(--fg-rgb),0.32)",
           textDecoration: "none",
+          padding: "8px 12px 8px 10px",
+          borderRadius: 999,
         }}
       >
-        ← Back
+        <span className="work-back-arrow">←</span>
+        Back
       </Link>
       <main id="main-content" style={{ paddingTop: 120 }}>
         <WorkCaseGrid projects={otherProjects} />

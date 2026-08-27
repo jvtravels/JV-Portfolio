@@ -269,10 +269,19 @@ button {
   background: var(--surface);
 }
 .work-back {
-  transition: color 0.2s ease;
+  transition: color 0.25s ease, background 0.25s ease;
+  background: transparent;
 }
 .work-back:hover {
-  color: rgba(var(--fg-rgb), 0.65) !important;
+  color: rgba(var(--fg-rgb), 0.9) !important;
+  background: rgba(var(--fg-rgb), 0.06);
+}
+.work-back-arrow {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.work-back:hover .work-back-arrow {
+  transform: translateX(-4px);
 }
 .work-case-header {
   display: flex;
