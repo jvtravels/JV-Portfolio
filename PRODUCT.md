@@ -10,7 +10,7 @@ Two audiences, weighted equally: (1) startup founders and small teams evaluating
 
 ## Product Purpose
 
-A personal design portfolio for Jay Vyas, Senior Product Designer. The site itself is the product: it exists to demonstrate design craft directly (not just describe it), showcase shipped work (Enroute Health, Tractorbeam, Axilon, Cypher, etc.), build trust through brand logos and testimonials, and convert visitors into an inbound project inquiry or hiring conversation via the "Start a Project" CTA.
+A personal design portfolio for Jay Vyas, Senior Product Designer. The site itself is the product: it exists to demonstrate design craft directly (not just describe it), showcase shipped work (Tempo, EVES, DynaChrg PAYG, Cypher, Specter, The Signal, Calldesk, Cluster), build trust through brand logos and testimonials, and convert visitors into an inbound project inquiry or hiring conversation via the "Start a Project" CTA.
 
 ## Brand Personality
 

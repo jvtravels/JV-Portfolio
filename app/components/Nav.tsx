@@ -13,7 +13,7 @@ export default function Nav() {
   }, []);
 
   return (
-    <div style={{
+    <header style={{
       position: "fixed",
       top: 20,
       left: 0,
@@ -108,6 +108,6 @@ export default function Nav() {
           </span>
         </a>
       </nav>
-    </div>
+    </header>
   );
 }

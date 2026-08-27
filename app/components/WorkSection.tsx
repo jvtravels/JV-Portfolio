@@ -81,7 +81,7 @@ function WorkItem({ project, size }: { project: (typeof PROJECTS)[number]; size:
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                background: "rgba(0, 0, 0, 0.25)",
+                background: "rgba(0, 0, 0, 0.45)",
               }}
             >
               <span
@@ -93,6 +93,7 @@ function WorkItem({ project, size }: { project: (typeof PROJECTS)[number]; size:
                   color: "#fff",
                   padding: "8px 16px",
                   borderRadius: 999,
+                  background: "rgba(10, 10, 10, 0.92)",
                   border: "1px solid rgba(255, 255, 255, 0.4)",
                   backdropFilter: "blur(6px)",
                   WebkitBackdropFilter: "blur(6px)",

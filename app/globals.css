@@ -40,8 +40,8 @@ html[data-theme="light"] {
   --bg: #ffffff;
   --fg-rgb: 0, 0, 0;
   --text: #0a0a0a;
-  --text-dim: rgba(var(--fg-rgb), 0.6);
-  --text-muted: rgba(var(--fg-rgb), 0.52);
+  --text-dim: rgba(var(--fg-rgb), 0.68);
+  --text-muted: rgba(var(--fg-rgb), 0.62);
   --border: rgba(var(--fg-rgb), 0.1);
   --surface: rgba(var(--fg-rgb), 0.035);
   --cursor-color: #0a0a0a;

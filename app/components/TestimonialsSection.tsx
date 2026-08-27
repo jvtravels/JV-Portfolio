@@ -99,7 +99,10 @@ export default function TestimonialsSection() {
 
   const controls = (
     <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-      <span style={{ fontSize: 13, color: "var(--text-muted)", letterSpacing: "-0.01em" }}>
+      <span
+        aria-live="polite"
+        style={{ fontSize: 13, color: "var(--text-muted)", letterSpacing: "-0.01em" }}
+      >
         {index + 1} / {maxIndex + 1}
       </span>
       <div style={{ display: "flex", gap: 8 }}>
