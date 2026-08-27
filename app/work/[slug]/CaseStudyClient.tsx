@@ -189,7 +189,7 @@ export default function CaseStudyClient({ slug }: { slug: string }) {
           {/* ── Sidebar ── */}
           <aside className="cs-aside">
             <div className="cs-aside-inner">
-              <Link href="/" className="cs-back" data-no-transition>← Back</Link>
+              <Link href="/" className="cs-back">← Back</Link>
               <LineSidebar
                 items={TOC.map(t => t.label)}
                 activeIndex={TOC.findIndex(t => t.id === active)}

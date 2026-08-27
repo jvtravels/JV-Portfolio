@@ -47,7 +47,7 @@ export default function Nav() {
         maxWidth: "calc(100vw - 32px)",
       }}>
         {/* Left: avatar + name */}
-        <Link href="/" data-no-transition style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", flexShrink: 0 }}>
+        <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", flexShrink: 0 }}>
           <Image
             src="/JV.png"
             alt="Jay Vyas"

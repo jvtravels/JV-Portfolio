@@ -22,7 +22,6 @@ export default function AllWorkPage() {
       <Link
         href="/"
         className="work-back"
-        data-no-transition
         style={{
           position: "fixed",
           top: 28,
