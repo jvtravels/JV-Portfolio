@@ -30,7 +30,7 @@ export default function PageTransition() {
       const anchor = (e.target as HTMLElement)?.closest("a");
       if (!anchor) return;
       const href = anchor.getAttribute("href");
-      if (!href || href.startsWith("#") || anchor.target === "_blank" || anchor.hasAttribute("download")) return;
+      if (!href || href.startsWith("#") || anchor.target === "_blank" || anchor.hasAttribute("download") || anchor.hasAttribute("data-no-transition")) return;
 
       let url: URL;
       try {
