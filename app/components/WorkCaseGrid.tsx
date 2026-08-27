@@ -46,9 +46,9 @@ function CaseImage({
           playsInline
           style={{
             position: "absolute",
-            inset: "5%",
-            width: "90%",
-            height: "90%",
+            inset: 0,
+            width: "100%",
+            height: "100%",
             objectFit: "cover",
             objectPosition: "center",
             filter: blur ? "blur(22px)" : undefined,
