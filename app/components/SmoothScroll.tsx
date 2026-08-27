@@ -1,9 +1,18 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 
+let activeLenis: Lenis | null = null;
+
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    activeLenis?.scrollTo(0, { immediate: true });
+  }, [pathname]);
+
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -12,6 +21,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
+    activeLenis = lenis;
 
     let id = 0;
 
@@ -36,6 +46,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       cancelAnimationFrame(id);
       document.removeEventListener("visibilitychange", onVisibilityChange);
       lenis.destroy();
+      if (activeLenis === lenis) activeLenis = null;
     };
   }, []);
 

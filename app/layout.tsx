@@ -10,6 +10,7 @@ const gloock = Gloock({ subsets: ["latin"], weight: "400", variable: "--font-glo
 const figura = localFont({ src: "../public/fonts/FIGURA-ExtraBold.otf", variable: "--font-figura" });
 const niven = localFont({ src: "../public/Agraham.otf", variable: "--font-niven" });
 import SmoothScroll from "./components/SmoothScroll";
+import PageTransition from "./components/PageTransition";
 import CustomCursor from "./components/CustomCursor";
 import RevealObserver from "./components/RevealObserver";
 import ScrollFadeBlur from "./components/ScrollFadeBlur";
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <RevealObserver />
           <ScrollFadeBlur />
           <SmoothScroll>{children}</SmoothScroll>
+          <PageTransition />
           <ThemeToggle />
         </ThemeProvider>
       </body>
