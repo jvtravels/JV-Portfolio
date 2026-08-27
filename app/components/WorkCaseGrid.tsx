@@ -18,6 +18,8 @@ function CaseImage({
   className?: string;
   blur?: boolean;
 }) {
+  const isVideo = src.endsWith(".mp4");
+
   return (
     <div
       className={className}
@@ -34,19 +36,39 @@ function CaseImage({
             }
       }
     >
-      <Image
-        src={src}
-        alt=""
-        fill
-        draggable={false}
-        sizes="(max-width: 768px) 100vw, 60vw"
-        style={{
-          objectFit: "cover",
-          objectPosition: "top",
-          filter: blur ? "blur(22px)" : undefined,
-          transform: blur ? "scale(1.1)" : undefined,
-        }}
-      />
+      {isVideo ? (
+        <video
+          src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "top",
+            filter: blur ? "blur(22px)" : undefined,
+            transform: blur ? "scale(1.1)" : undefined,
+          }}
+        />
+      ) : (
+        <Image
+          src={src}
+          alt=""
+          fill
+          draggable={false}
+          sizes="(max-width: 768px) 100vw, 60vw"
+          style={{
+            objectFit: "cover",
+            objectPosition: "top",
+            filter: blur ? "blur(22px)" : undefined,
+            transform: blur ? "scale(1.1)" : undefined,
+          }}
+        />
+      )}
     </div>
   );
 }

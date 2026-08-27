@@ -229,7 +229,7 @@ export const PROJECTS: Project[] = [
     liveSite: "tryspecter.com",
     liveUrl: "https://tryspecter.com",
     year: "2023",
-    images: [FU("SmtK9KZcrkUYMWnYkTcyKhB5Q"), "/Work/Dono/D2.jpg", ...["FQOAlhyOGYWJ7x5J4e2J9Jbs9U","neuUpQrIkDzTa5K3UeIaCujuzA","iVSTiCKZ2BuXeIXgxYAQHA4wL0","g32wH391Oxlix9zigqdOuBibQ","llpPFKiavhuWjCVIVCR4usx9kLI"].map(FU)],
+    images: ["/Work/Dono/D1.mp4", "/Work/Dono/D2.jpg", ...["FQOAlhyOGYWJ7x5J4e2J9Jbs9U","neuUpQrIkDzTa5K3UeIaCujuzA","iVSTiCKZ2BuXeIXgxYAQHA4wL0","g32wH391Oxlix9zigqdOuBibQ","llpPFKiavhuWjCVIVCR4usx9kLI"].map(FU)],
     userGroups: [
       { num: "01", title: "Product Managers", bullets: ["Need visibility into user behaviour across every touchpoint", "Want actionable insights, not raw metric exports", "Compare tools based on how fast they can surface answers"] },
       { num: "02", title: "Growth Engineers", bullets: ["Building funnels and attribution models", "Need tracking that captures what standard tools miss", "Judge platforms by how quickly they can get to production"] },
