@@ -358,7 +358,7 @@ button {
 /* HireStepX section: display heading + a 2-up stats row on top of a 3-up
    findings row, both collapsing to one column on narrow screens. */
 .hirestepx-heading {
-  font-size: clamp(32px, 5vw, 52px);
+  font-size: clamp(24px, 7vw, 32px);
   line-height: 1.3;
   margin: 0 0 48px;
 }
