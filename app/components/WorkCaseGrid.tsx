@@ -11,11 +11,13 @@ function CaseImage({
   aspectRatio,
   className,
   blur,
+  videoInset,
 }: {
   src: string;
   aspectRatio?: string;
   className?: string;
   blur?: boolean;
+  videoInset?: string;
 }) {
   const isVideo = src.endsWith(".mp4");
 
@@ -46,9 +48,9 @@ function CaseImage({
           playsInline
           style={{
             position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
+            inset: videoInset ?? 0,
+            width: videoInset ? `calc(100% - ${videoInset} * 2)` : "100%",
+            height: videoInset ? `calc(100% - ${videoInset} * 2)` : "100%",
             objectFit: "cover",
             objectPosition: "center",
             filter: blur ? "blur(22px)" : undefined,
@@ -157,7 +159,12 @@ function WorkCaseRow({ project, index }: { project: Project; index: number }) {
               </div>
             ) : (
               <>
-                <CaseImage src={project.images[0]} className="work-case-hero-media" blur={project.comingSoon} />
+                <CaseImage
+                  src={project.images[0]}
+                  className="work-case-hero-media"
+                  blur={project.comingSoon}
+                  videoInset={project.slug === "specter" ? "5%" : undefined}
+                />
                 {project.secondaryStack ? (
                   <div className="work-case-hero-media work-case-hero-media--secondary work-case-hero-stack">
                     {project.secondaryStack.map((src, i) => (
