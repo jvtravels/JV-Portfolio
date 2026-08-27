@@ -89,7 +89,7 @@ function FeatureGrid({ images, variant }: { images: string[]; variant: (typeof F
             fill
             draggable={false}
             sizes="(max-width: 768px) 100vw, 40vw"
-            style={{ objectFit: "cover", objectPosition: src.endsWith("/Work/Dono/D3.jpg") ? "center" : "top" }}
+            style={{ objectFit: "cover", objectPosition: src.endsWith("/Work/Dono/D3.jpg") || src.startsWith("/Work/Kayu/") ? "center" : "top" }}
           />
         </div>
       ))}
