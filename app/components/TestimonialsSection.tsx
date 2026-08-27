@@ -22,8 +22,8 @@ const TESTIMONIALS = [
     logo: "/Testimonial-logo/T2.png",
   },
   {
-    quote: "Jay was refreshing to work with, he integrated well into our landing page work, emulating the style I had already set perfectly.",
-    highlight: "He picked up on the tone we'd already established and carried it forward without needing much direction from us.",
+    quote: "There were quite a few times when we started with a messy problem rather than a clear brief. Jay was good at bringing structure to that — figuring out what actually mattered, cutting through the extra noise, and getting us to a direction we could move on.",
+    highlight: "I always appreciated that he didn't need everything perfectly defined before he could add value.",
     name: "Naren Lokwani",
     role: "CEO at Frshr Technologies",
     avatar: "/Testimonial-Person/P3.jpeg",
