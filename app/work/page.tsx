@@ -60,7 +60,6 @@ export default function AllWorkPage() {
 
         {/* Work — one row per project, replicating the reference site's project-list pattern */}
         <section className="section-py" style={{ position: "relative" }}>
-          <DashedH style={{ bottom: 0, left: 0, right: 0 }} />
           <DashedV style={{ top: 0, bottom: 0, left: "var(--frame-inset)" }} />
           <DashedV style={{ top: 0, bottom: 0, right: "var(--frame-inset)" }} />
 
