@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { PROJECTS } from "@/app/data/projects";
 import { DashedH, DashedV } from "@/app/components/DashedFrame";
 
@@ -188,13 +187,7 @@ function WorkCaseRow({ project, index }: { project: Project; index: number }) {
 
   return (
     <div className="work-case-row reveal">
-      {project.comingSoon ? (
-        cardContent
-      ) : (
-        <Link href={`/work/${project.slug}`} className="work-case-link">
-          {cardContent}
-        </Link>
-      )}
+      {cardContent}
 
       {project.comingSoon ? (
         <div style={{ marginTop: 24 }}>
