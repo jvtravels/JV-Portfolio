@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { PROJECTS } from "@/app/data/projects";
 import { DashedH, DashedV } from "@/app/components/DashedFrame";
 
@@ -11,7 +12,7 @@ const ITEMS = [
   { project: PROJECTS[3], size: "small" as const },
 ];
 
-function WorkItem({ project, size }: { project: (typeof PROJECTS)[number]; size: "small" | "large" }) {
+export function WorkItem({ project, size }: { project: (typeof PROJECTS)[number]; size: "small" | "large" }) {
   return (
     <div className="reveal" style={{ display: "block" }}>
       <div
@@ -178,6 +179,31 @@ export default function WorkSection() {
           <div className="work-row work-row-b">
             <WorkItem project={ITEMS[2].project} size={ITEMS[2].size} />
             <WorkItem project={ITEMS[3].project} size={ITEMS[3].size} />
+          </div>
+
+          <div style={{ display: "flex", justifyContent: "center", marginTop: 48 }}>
+            <Link
+              href="/work"
+              aria-label="View all work"
+              className="btn-primary"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                minHeight: 48,
+                fontSize: 12,
+                fontWeight: 500,
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+                padding: "0 20px",
+                borderRadius: 2,
+                boxSizing: "border-box",
+              }}
+            >
+              <span className="btn-primary-label">View All Work</span>
+              <span className="btn-primary-fill" aria-hidden="true">
+                <span className="btn-primary-label">View All Work</span>
+              </span>
+            </Link>
           </div>
         </div>
       </div>

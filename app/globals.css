@@ -198,6 +198,14 @@ button {
   grid-template-columns: 1.25fr 0.75fr;
 }
 
+/* All-work index page: uniform 2-up grid, collapses to one column */
+.work-index-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 64px;
+  row-gap: 96px;
+}
+
 /* About Me section: photo + copy, collapses to one column.
    minmax(0, ...) instead of a bare fr: a bare fr track's minimum is "auto",
    which lets the lanyard's aspect-ratio box dictate the track's width and
@@ -358,6 +366,11 @@ button {
     grid-template-columns: 1fr;
     gap: 48px;
     margin-bottom: 48px;
+  }
+  .work-index-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    row-gap: 48px;
   }
   .about-grid {
     grid-template-columns: minmax(0, 1fr);
