@@ -8,22 +8,29 @@ type Project = (typeof PROJECTS)[number];
 function CaseImage({
   src,
   aspectRatio,
+  className,
   blur,
 }: {
   src: string;
-  aspectRatio: string;
+  aspectRatio?: string;
+  className?: string;
   blur?: boolean;
 }) {
   return (
     <div
-      style={{
-        position: "relative",
-        width: "100%",
-        aspectRatio,
-        borderRadius: 8,
-        overflow: "hidden",
-        background: "var(--surface)",
-      }}
+      className={className}
+      style={
+        className
+          ? undefined
+          : {
+              position: "relative",
+              width: "100%",
+              aspectRatio,
+              borderRadius: 8,
+              overflow: "hidden",
+              background: "var(--surface)",
+            }
+      }
     >
       <Image
         src={src}
@@ -95,51 +102,57 @@ function WorkCaseRow({ project, first, index }: { project: Project; first: boole
         {project.title}
       </h2>
 
-      <div className={`work-case-hero${hasThemeCover ? " single" : ""}`}>
-        {hasThemeCover ? (
-          <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9" }}>
-            <Image
-              src={project.coverDark!}
-              alt=""
-              fill
-              draggable={false}
-              sizes="(max-width: 768px) 100vw, 60vw"
-              className="work-cover-dark"
-              style={{ objectFit: "cover", objectPosition: "top", borderRadius: 8, transition: "opacity 0.2s ease" }}
-            />
-            <Image
-              src={project.coverLight!}
-              alt=""
-              fill
-              draggable={false}
-              sizes="(max-width: 768px) 100vw, 60vw"
-              className="work-cover-light"
-              style={{ objectFit: "cover", objectPosition: "top", borderRadius: 8, position: "absolute", top: 0, left: 0, transition: "opacity 0.2s ease" }}
-            />
-          </div>
+      <div className="work-case-media">
+        <div className={`work-case-hero${hasThemeCover ? " single" : ""}`}>
+          {hasThemeCover ? (
+            <div className="work-case-hero-media">
+              <Image
+                src={project.coverDark!}
+                alt=""
+                fill
+                draggable={false}
+                sizes="(max-width: 768px) 100vw, 60vw"
+                className="work-cover-dark"
+                style={{ objectFit: "cover", objectPosition: "top", borderRadius: 8, transition: "opacity 0.2s ease" }}
+              />
+              <Image
+                src={project.coverLight!}
+                alt=""
+                fill
+                draggable={false}
+                sizes="(max-width: 768px) 100vw, 60vw"
+                className="work-cover-light"
+                style={{ objectFit: "cover", objectPosition: "top", borderRadius: 8, position: "absolute", top: 0, left: 0, transition: "opacity 0.2s ease" }}
+              />
+            </div>
+          ) : (
+            <>
+              <CaseImage src={project.images[0]} className="work-case-hero-media" blur={project.comingSoon} />
+              {project.images[1] && (
+                <CaseImage
+                  src={project.images[1]}
+                  className="work-case-hero-media work-case-hero-media--secondary"
+                  blur={project.comingSoon}
+                />
+              )}
+            </>
+          )}
+        </div>
+
+        {useFeatureGrid ? (
+          <FeatureGrid images={filmstrip.slice(0, variant === "v4" ? 4 : 5)} variant={variant} />
         ) : (
-          <>
-            <CaseImage src={project.images[0]} aspectRatio="16 / 10" blur={project.comingSoon} />
-            {project.images[1] && (
-              <CaseImage src={project.images[1]} aspectRatio="4 / 5" blur={project.comingSoon} />
-            )}
-          </>
+          filmstrip.length > 0 && (
+            <div className="work-case-filmstrip">
+              {filmstrip.map((src, i) => (
+                <div key={i} className="work-case-filmstrip-item">
+                  <CaseImage src={src} aspectRatio="1 / 1" blur={project.comingSoon} />
+                </div>
+              ))}
+            </div>
+          )
         )}
       </div>
-
-      {useFeatureGrid ? (
-        <FeatureGrid images={filmstrip.slice(0, variant === "v4" ? 4 : 5)} variant={variant} />
-      ) : (
-        filmstrip.length > 0 && (
-          <div className="work-case-filmstrip">
-            {filmstrip.map((src, i) => (
-              <div key={i} className="work-case-filmstrip-item">
-                <CaseImage src={src} aspectRatio="1 / 1" blur={project.comingSoon} />
-              </div>
-            ))}
-          </div>
-        )
-      )}
 
       {project.comingSoon ? (
         <div style={{ marginTop: 24 }}>

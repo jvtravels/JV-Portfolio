@@ -207,6 +207,21 @@ button {
 .work-case-hero.single {
   grid-template-columns: 1fr;
 }
+.work-case-media {
+  display: flex;
+  flex-direction: column;
+}
+.work-case-hero-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.work-case-hero-media--secondary {
+  aspect-ratio: 4 / 5;
+}
 .work-case-filmstrip {
   display: flex;
   gap: 12px;
@@ -520,6 +535,47 @@ button {
   .testimonial-heading,
   .section-heading {
     font-size: 20px;
+  }
+}
+
+/* All-work index page: fit each project row within one viewport on desktop */
+@media (min-width: 861px) {
+  .work-case-row {
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .work-case-media {
+    flex: 1;
+    min-height: 0;
+    justify-content: center;
+    gap: 12px;
+  }
+  .work-case-hero {
+    flex: 1;
+    min-height: 0;
+  }
+  .work-case-hero-media {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+  .work-case-hero-media--secondary {
+    aspect-ratio: auto;
+  }
+  .work-case-feature-grid,
+  .work-case-feature-grid--v1,
+  .work-case-feature-grid--v2,
+  .work-case-feature-grid--v3,
+  .work-case-feature-grid--v4 {
+    flex: 0 0 38%;
+    aspect-ratio: auto;
+  }
+  .work-case-filmstrip {
+    flex: 0 0 auto;
+  }
+  .work-case-filmstrip-item {
+    height: 100%;
   }
 }
 
