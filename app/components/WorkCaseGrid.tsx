@@ -82,7 +82,6 @@ function WorkCaseRow({ project, first, index }: { project: Project; first: boole
     <div
       className="work-case-row"
       style={{
-        borderTop: "1px solid var(--border)",
         paddingTop: 40,
         marginTop: first ? 40 : 0,
       }}
