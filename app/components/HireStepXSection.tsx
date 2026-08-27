@@ -94,7 +94,11 @@ export default function HireStepXSection() {
                       color: "var(--text)",
                       marginBottom: 8,
                     }}>
-                      {stat.value}
+                      {stat.value.split(" ").map((word, i) => (
+                        <span key={i} style={{ display: "block" }}>
+                          {word}
+                        </span>
+                      ))}
                     </span>
                     <span style={{
                       display: "block",
