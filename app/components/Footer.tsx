@@ -29,7 +29,7 @@ export default function Footer() {
           </span>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <a
-              href="https://drive.google.com/file/d/1apdueNk5xNAENAHFU1iyUvFsGGfLh9YA/view?usp=sharing"
+              href="https://drive.google.com/file/d/1J2lPpabTxdKxoUUazPvgwFhygzeg47T6/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="footer-collab-pill"
