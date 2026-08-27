@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
 import WorkCaseGrid from "@/app/components/WorkCaseGrid";
-import { DashedV } from "@/app/components/DashedFrame";
 import { PROJECTS, HOMEPAGE_PROJECT_SLUGS } from "@/app/data/projects";
 import { SITE_URL } from "@/app/lib/site";
 
@@ -20,15 +19,7 @@ export default function AllWorkPage() {
     <>
       <Nav />
       <main id="main-content" style={{ paddingTop: 120 }}>
-        {/* Work — one row per project, replicating the reference site's project-list pattern */}
-        <section className="section-py" style={{ position: "relative" }}>
-          <DashedV style={{ top: 0, bottom: 0, left: "var(--frame-inset)" }} />
-          <DashedV style={{ top: 0, bottom: 0, right: "var(--frame-inset)" }} />
-
-          <div className="section-px">
-            <WorkCaseGrid projects={otherProjects} />
-          </div>
-        </section>
+        <WorkCaseGrid projects={otherProjects} />
       </main>
       <Footer />
     </>

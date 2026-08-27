@@ -292,10 +292,6 @@ button {
   max-width: 100%;
   white-space: pre-line;
 }
-.work-case-row:last-child {
-  padding-bottom: 40px;
-}
-
 /* About Me section: photo + copy, collapses to one column.
    minmax(0, ...) instead of a bare fr: a bare fr track's minimum is "auto",
    which lets the lanyard's aspect-ratio box dictate the track's width and
@@ -541,7 +537,7 @@ button {
 /* All-work index page: fit each project row within one viewport on desktop */
 @media (min-width: 861px) {
   .work-case-row {
-    height: 100svh;
+    height: calc(100svh - 128px);
     display: flex;
     flex-direction: column;
     justify-content: center;

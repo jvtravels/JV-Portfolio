@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { PROJECTS } from "@/app/data/projects";
+import { DashedH, DashedV } from "@/app/components/DashedFrame";
 
 type Project = (typeof PROJECTS)[number];
 
@@ -71,7 +72,7 @@ function FeatureGrid({ images, variant }: { images: string[]; variant: (typeof F
   );
 }
 
-function WorkCaseRow({ project, first, index }: { project: Project; first: boolean; index: number }) {
+function WorkCaseRow({ project, index }: { project: Project; index: number }) {
   const hasThemeCover = Boolean(project.coverDark && project.coverLight);
   const filmstrip = hasThemeCover ? [] : project.images.slice(2);
   const useFeatureGrid = filmstrip.length >= 4;
@@ -79,13 +80,7 @@ function WorkCaseRow({ project, first, index }: { project: Project; first: boole
   const hasDescription = !project.description.startsWith("Placeholder");
 
   return (
-    <div
-      className="work-case-row"
-      style={{
-        paddingTop: 40,
-        marginTop: first ? 40 : 0,
-      }}
-    >
+    <div className="work-case-row">
       <h2
         style={{
           fontFamily: "var(--font-playfair)",
@@ -188,10 +183,17 @@ function WorkCaseRow({ project, first, index }: { project: Project; first: boole
 
 export default function WorkCaseGrid({ projects }: { projects: Project[] }) {
   return (
-    <div>
+    <>
       {projects.map((project, i) => (
-        <WorkCaseRow key={project.slug} project={project} first={i === 0} index={i} />
+        <section key={project.slug} className="section-py" style={{ position: "relative" }}>
+          <DashedH style={{ bottom: 0, left: 0, right: 0 }} />
+          <DashedV style={{ top: 0, bottom: 0, left: "var(--frame-inset)" }} />
+          <DashedV style={{ top: 0, bottom: 0, right: "var(--frame-inset)" }} />
+          <div className="section-px">
+            <WorkCaseRow project={project} index={i} />
+          </div>
+        </section>
       ))}
-    </div>
+    </>
   );
 }
