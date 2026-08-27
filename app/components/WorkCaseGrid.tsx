@@ -77,43 +77,20 @@ function WorkCaseRow({ project, first }: { project: Project; first: boolean }) {
         marginTop: first ? 40 : 0,
       }}
     >
-      <div
+      <h2
         style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "baseline",
-          flexWrap: "wrap",
-          gap: 12,
-          marginBottom: 24,
+          fontFamily: "var(--font-playfair)",
+          fontSize: "clamp(22px, 3.4vw, 30px)",
+          fontWeight: 600,
+          letterSpacing: "-0.01em",
+          color: "var(--text)",
+          margin: "0 0 24px",
+          filter: project.comingSoon ? "blur(6px)" : undefined,
+          userSelect: project.comingSoon ? "none" : undefined,
         }}
       >
-        <h2
-          style={{
-            fontFamily: "var(--font-playfair)",
-            fontSize: "clamp(22px, 3.4vw, 30px)",
-            fontWeight: 600,
-            letterSpacing: "-0.01em",
-            color: "var(--text)",
-            margin: 0,
-            filter: project.comingSoon ? "blur(6px)" : undefined,
-            userSelect: project.comingSoon ? "none" : undefined,
-          }}
-        >
-          {project.title}
-        </h2>
-        <span
-          style={{
-            fontSize: 12,
-            fontWeight: 500,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "var(--text-muted)",
-            whiteSpace: "nowrap",
-          }}
-        >
-          {project.year}
-        </span>
-      </div>
+        {project.title}
+      </h2>
 
       <div className={`work-case-hero${hasThemeCover ? " single" : ""}`}>
         {hasThemeCover ? (
