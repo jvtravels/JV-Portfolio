@@ -268,6 +268,12 @@ button {
   overflow: hidden;
   background: var(--surface);
 }
+.work-back {
+  transition: color 0.2s ease;
+}
+.work-back:hover {
+  color: rgba(var(--fg-rgb), 0.65) !important;
+}
 .work-case-header {
   display: flex;
   align-items: center;

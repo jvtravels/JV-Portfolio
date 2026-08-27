@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
 import WorkCaseGrid from "@/app/components/WorkCaseGrid";
@@ -18,6 +19,24 @@ export default function AllWorkPage() {
   return (
     <>
       <Nav />
+      <Link
+        href="/"
+        className="work-back"
+        style={{
+          position: "fixed",
+          top: 28,
+          left: "var(--frame-inset)",
+          zIndex: 150,
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 6,
+          fontSize: 13,
+          color: "rgba(var(--fg-rgb),0.32)",
+          textDecoration: "none",
+        }}
+      >
+        ← Back
+      </Link>
       <main id="main-content" style={{ paddingTop: 120 }}>
         <WorkCaseGrid projects={otherProjects} />
       </main>
