@@ -100,7 +100,6 @@ function WorkCaseRow({ project, index }: { project: Project; index: number }) {
   const filmstrip = hasThemeCover ? [] : project.images.slice(2);
   const useFeatureGrid = filmstrip.length >= 4;
   const variant = FEATURE_GRID_VARIANTS[index % FEATURE_GRID_VARIANTS.length];
-  const hasDescription = !project.description.startsWith("Placeholder");
 
   const cardContent = (
     <>
@@ -212,9 +211,7 @@ function WorkCaseRow({ project, index }: { project: Project; index: number }) {
             Coming soon
           </span>
         </div>
-      ) : (
-        hasDescription && <p className="work-case-desc">{project.description}</p>
-      )}
+      ) : null}
     </div>
   );
 }
