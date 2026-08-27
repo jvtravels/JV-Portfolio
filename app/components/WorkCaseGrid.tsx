@@ -163,7 +163,7 @@ function WorkCaseRow({ project, index }: { project: Project; index: number }) {
                   src={project.images[0]}
                   className="work-case-hero-media"
                   blur={project.comingSoon}
-                  videoInset={project.slug === "specter" ? "5%" : undefined}
+                  videoInset={project.slug === "specter" ? "3%" : undefined}
                 />
                 {project.secondaryStack ? (
                   <div className="work-case-hero-media work-case-hero-media--secondary work-case-hero-stack">
