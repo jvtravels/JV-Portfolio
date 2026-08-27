@@ -14,8 +14,8 @@ const TESTIMONIALS = [
     logo: "/Testimonial-logo/T1.png",
   },
   {
-    quote: "Jay was very creative and dependable in helping us establish a new brand identity and website for Calldesk.",
-    highlight: "He worked fast, was extremely adaptive and we could reach him for any quick iterations needed.",
+    quote: "A lot of our conversations started with something pretty rough — an idea, a problem, or just a direction we wanted to explore. He was good at helping us make sense of it, asking questions, and pointing out when something wasn't quite working.",
+    highlight: "We'd go back and forth a bit, and usually end up somewhere much clearer.",
     name: "Johnathan Sanjay",
     role: "Product Manager at Tempo",
     avatar: "/Testimonial-Person/P2.png",
