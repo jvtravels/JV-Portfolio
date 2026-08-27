@@ -38,8 +38,8 @@ const TESTIMONIALS = [
     logo: "/Testimonial-logo/T4.png",
   },
   {
-    quote: "Jay designed our new site and absolutely nailed it.",
-    highlight: "He brought great ideas to the table and was super easy to work with throughout the process. Would definitely work with him again!",
+    quote: "Jay had a very steady way of working. He listened carefully, understood the context quickly, and didn't overcomplicate things.",
+    highlight: "You could trust him to move the work forward without creating unnecessary back-and-forth.",
     name: "Nikhil Ranka",
     role: "Co-founder at Catalyst IQ",
     avatar: "/Testimonial-Person/P5.jpeg",
