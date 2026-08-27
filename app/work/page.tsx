@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
-import { WorkItem } from "@/app/components/WorkSection";
+import WorkCaseGrid from "@/app/components/WorkCaseGrid";
 import { DashedH, DashedV } from "@/app/components/DashedFrame";
-import { PROJECTS } from "@/app/data/projects";
 import { SITE_URL } from "@/app/lib/site";
 
 export const metadata: Metadata = {
@@ -51,11 +50,7 @@ export default function AllWorkPage() {
               Everything I<span style={{ fontFamily: "var(--font)" }}>&apos;</span>ve shipped for founders and teams
             </h1>
 
-            <div className="work-index-grid">
-              {PROJECTS.map((project) => (
-                <WorkItem key={project.slug} project={project} size="large" />
-              ))}
-            </div>
+            <WorkCaseGrid />
           </div>
         </section>
       </main>
