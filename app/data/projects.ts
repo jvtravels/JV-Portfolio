@@ -316,7 +316,7 @@ export const PROJECTS: Project[] = [
     liveSite: "calldesk.ai",
     liveUrl: "https://calldesk.ai",
     year: "2023",
-    images: ["/Work/BoldAir/B1.png", "/Work/BoldAir/B2.png"].concat(["MhU890cqYObCfX1KRm47xlLIUmw","PW4fgszPdl29jJXd8UG6GxiIoOM","zxjF0itWDo6PeEOPaLx14AY0oX8","PpiIWmDONPNnVVD3egtvMkqkhCE","Z0DRdmk8aN84QUaAD7VJdQxRgFo"].map(FU)),
+    images: ["/Work/BoldAir/B1.png", "/Work/BoldAir/B2.png", "/Work/BoldAir/B3.png", "/Work/BoldAir/B4.png", "/Work/BoldAir/B5.png"].concat(["PpiIWmDONPNnVVD3egtvMkqkhCE","Z0DRdmk8aN84QUaAD7VJdQxRgFo"].map(FU)),
     userGroups: [
       { num: "01", title: "Enterprise IT Leaders", bullets: ["Evaluating AI call automation for large-scale deployment", "Need security and integration context before any demo", "Judge vendors by how professional their web presence looks"] },
       { num: "02", title: "Contact Centre Managers", bullets: ["Handling thousands of inbound calls monthly", "Need to see proof that AI can handle their specific call types", "Look for case studies and volume data before engaging"] },
