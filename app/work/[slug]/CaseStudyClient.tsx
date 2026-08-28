@@ -144,7 +144,7 @@ export default function CaseStudyClient({ slug }: { slug: string }) {
         .cs-flow-row:first-of-type { border-top: 1px solid rgba(var(--fg-rgb),0.05); }
         .cs-flow-num { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: rgba(var(--fg-rgb),0.25); padding-top: 2px; }
         .cs-img-gap { margin: 0 0 40px; }
-        .cs-img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+        .cs-img-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 16px; }
         .cs-img-grid img { width: 100%; border-radius: 7px; border: 1px solid rgba(var(--fg-rgb),0.06); display: block; }
 
         /* Brand Identity */
