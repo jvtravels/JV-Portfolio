@@ -357,7 +357,7 @@ export const PROJECTS: Project[] = [
     liveSite: "getcluster.ai",
     liveUrl: "https://getcluster.ai",
     year: "2024",
-    images: ["/Work/Vegetable/V1.png", "/Work/Vegetable/V2.png", ...["vc8ysRIsGrKvnzWLnCEdsnx8h1Y","m5O2FSwwz3gv6SsvbGwPVwAr4J0"].map(FU)],
+    images: ["/Work/Vegetable/V1.png", "/Work/Vegetable/V2.png", ...["vc8ysRIsGrKvnzWLnCEdsnx8h1Y","2a15y9rH5xgAUisETtEZknPXyA","m5O2FSwwz3gv6SsvbGwPVwAr4J0"].map(FU)],
     userGroups: [
       { num: "01", title: "Shopify Brand Owners", bullets: ["Running 7–8 figure stores and scaling aggressively", "Need A/B testing that's fast to set up and easy to read", "Compare tools by how quickly they can show revenue impact"] },
       { num: "02", title: "E-commerce Growth Managers", bullets: ["Running continuous experiments across CRO and paid channels", "Need a tool that surfaces statistical significance without a data analyst", "Evaluate platforms by how well they integrate with existing stack"] },
