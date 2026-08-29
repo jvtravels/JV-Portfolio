@@ -184,7 +184,7 @@ export default function WorkSection() {
           <div style={{ display: "flex", justifyContent: "center", marginTop: 48 }}>
             <Link
               href="/work"
-              aria-label="View all work"
+              aria-label="More fun stuff"
               className="btn-primary"
               style={{
                 display: "flex",
@@ -199,9 +199,9 @@ export default function WorkSection() {
                 boxSizing: "border-box",
               }}
             >
-              <span className="btn-primary-label">View All Work</span>
+              <span className="btn-primary-label">More Fun Stuff</span>
               <span className="btn-primary-fill" aria-hidden="true">
-                <span className="btn-primary-label">View All Work</span>
+                <span className="btn-primary-label">More Fun Stuff</span>
               </span>
             </Link>
           </div>
