@@ -327,9 +327,9 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "cluster",
-    shortTitle: "Cluster",
-    title: "Cluster — Website and visual identity for AI A/B testing platform",
-    tags: ["Web Design", "Development", "Branding", "Logo"],
+    shortTitle: "Vegetable + Butcher",
+    title: "Vegetable + Butcher — Turning a closed-loop business model into an investor story",
+    tags: ["Pitch Deck", "Business Storytelling", "Art Direction"],
     description: "Shopify brands evaluating A/B testing tools need to quickly see credibility, results, and a clear path forward. The website and visual identity were built to present Cluster as a premium solution and make its value easy to understand from the first visit.\n\nA clear structure, subtle Shopify-inspired UI references, and a focused conversion flow helped build trust and highlight real outcomes. As a result, the site supported qualified demo bookings and became a key driver for growth.",
     whatIs: "Cluster is an AI-powered A/B testing platform built for Shopify brands. It helps e-commerce teams run smarter experiments and act on results faster, with an interface designed for marketers rather than data scientists.",
     timeline: "10 weeks",
