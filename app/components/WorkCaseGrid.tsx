@@ -78,10 +78,10 @@ function CaseImage({
 
 const FEATURE_GRID_VARIANTS = ["v1", "v2", "v3", "v4"] as const;
 
-function FeatureGrid({ images, variant, trio, quad }: { images: string[]; variant: (typeof FEATURE_GRID_VARIANTS)[number]; trio?: boolean; quad?: boolean }) {
+function FeatureGrid({ images, variant, trio, quad, duo }: { images: string[]; variant: (typeof FEATURE_GRID_VARIANTS)[number]; trio?: boolean; quad?: boolean; duo?: boolean }) {
   const areas = ["a", "b", "c", "d", "e"];
   return (
-    <div className={`work-case-feature-grid work-case-feature-grid--${trio ? "trio" : quad ? "quad" : variant}`}>
+    <div className={`work-case-feature-grid work-case-feature-grid--${duo ? "duo" : trio ? "trio" : quad ? "quad" : variant}`}>
       {images.map((src, i) => (
         <div key={i} className="work-case-feature-cell" style={{ gridArea: areas[i] }}>
           <Image
@@ -101,7 +101,8 @@ function FeatureGrid({ images, variant, trio, quad }: { images: string[]; varian
 function WorkCaseRow({ project, index }: { project: Project; index: number }) {
   const hasThemeCover = Boolean(project.coverDark && project.coverLight);
   const filmstrip = hasThemeCover ? [] : project.images.slice(2);
-  const useFeatureGrid = filmstrip.length >= 4 || filmstrip.length === 3;
+  const useFeatureGrid = filmstrip.length >= 2;
+  const duo = filmstrip.length === 2;
   const trio = filmstrip.length === 3;
   const quad = filmstrip.length === 4;
   const variant = FEATURE_GRID_VARIANTS[index % FEATURE_GRID_VARIANTS.length];
@@ -195,7 +196,7 @@ function WorkCaseRow({ project, index }: { project: Project; index: number }) {
           </div>
 
           {useFeatureGrid ? (
-            <FeatureGrid images={trio || quad ? filmstrip : filmstrip.slice(0, variant === "v4" ? 4 : 5)} variant={variant} trio={trio} quad={quad} />
+            <FeatureGrid images={duo || trio || quad ? filmstrip : filmstrip.slice(0, variant === "v4" ? 4 : 5)} variant={variant} trio={trio} quad={quad} duo={duo} />
           ) : (
             filmstrip.length > 0 && (
               <div className="work-case-filmstrip">

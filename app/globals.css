@@ -286,6 +286,12 @@ button {
   grid-template-areas: "a b c" "d d d";
   aspect-ratio: 2.1 / 1;
 }
+.work-case-feature-grid--duo {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "a b";
+  aspect-ratio: 2.2 / 1;
+}
 .work-case-feature-cell {
   position: relative;
   width: 100%;
@@ -550,7 +556,8 @@ button {
   .work-case-feature-grid--v3,
   .work-case-feature-grid--v4,
   .work-case-feature-grid--trio,
-  .work-case-feature-grid--quad {
+  .work-case-feature-grid--quad,
+  .work-case-feature-grid--duo {
     grid-template-columns: 1fr;
     grid-template-rows: none;
     grid-template-areas: "a" "b" "c" "d" "e";
@@ -657,7 +664,8 @@ button {
   .work-case-feature-grid--v3,
   .work-case-feature-grid--v4,
   .work-case-feature-grid--trio,
-  .work-case-feature-grid--quad {
+  .work-case-feature-grid--quad,
+  .work-case-feature-grid--duo {
     flex: 0 0 38%;
     aspect-ratio: auto;
   }
