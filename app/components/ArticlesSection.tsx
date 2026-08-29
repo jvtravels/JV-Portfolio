@@ -126,7 +126,7 @@ export default function ArticlesSection() {
               href="https://medium.com/design-bytes/the-art-of-moodboarding-724eac35d5f8"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="View all articles on Medium (opens in a new tab)"
+              aria-label="More from my brain, on Medium (opens in a new tab)"
               className="btn-primary"
               style={{
                 display: "flex",
@@ -141,9 +141,9 @@ export default function ArticlesSection() {
                 boxSizing: "border-box",
               }}
             >
-              <span className="btn-primary-label">View all Articles</span>
+              <span className="btn-primary-label">More From My Brain</span>
               <span className="btn-primary-fill" aria-hidden="true">
-                <span className="btn-primary-label">View all Articles</span>
+                <span className="btn-primary-label">More From My Brain</span>
               </span>
             </a>
           </div>
