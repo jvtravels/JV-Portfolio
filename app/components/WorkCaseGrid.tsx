@@ -82,18 +82,31 @@ function FeatureGrid({ images, variant, trio, quad, duo }: { images: string[]; v
   const areas = ["a", "b", "c", "d", "e"];
   return (
     <div className={`work-case-feature-grid work-case-feature-grid--${duo ? "duo" : trio ? "trio" : quad ? "quad" : variant}`}>
-      {images.map((src, i) => (
-        <div key={i} className="work-case-feature-cell" style={{ gridArea: areas[i] }}>
-          <Image
-            src={src}
-            alt=""
-            fill
-            draggable={false}
-            sizes="(max-width: 768px) 100vw, 40vw"
-            style={{ objectFit: "cover", objectPosition: src.endsWith("/Work/Dono/D3.jpg") || src.startsWith("/Work/Kayu/") ? "center" : "top" }}
-          />
-        </div>
-      ))}
+      {images.map((src, i) =>
+        src.endsWith(".mp4") ? (
+          <div key={i} className="work-case-feature-cell" style={{ gridArea: areas[i] }}>
+            <video
+              src={src}
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          </div>
+        ) : (
+          <div key={i} className="work-case-feature-cell" style={{ gridArea: areas[i] }}>
+            <Image
+              src={src}
+              alt=""
+              fill
+              draggable={false}
+              sizes="(max-width: 768px) 100vw, 40vw"
+              style={{ objectFit: "cover", objectPosition: src.endsWith("/Work/Dono/D3.jpg") || src.startsWith("/Work/Kayu/") ? "center" : "top" }}
+            />
+          </div>
+        )
+      )}
     </div>
   );
 }
