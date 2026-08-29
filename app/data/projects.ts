@@ -313,8 +313,8 @@ export const PROJECTS: Project[] = [
     ],
     industry: "AI Automation",
     role: "Brand, Design, Development",
-    liveSite: "calldesk.ai",
-    liveUrl: "https://calldesk.ai",
+    liveSite: "beboldair.com",
+    liveUrl: "https://beboldair.com/",
     year: "2023",
     images: ["/Work/BoldAir/B1.png", "/Work/BoldAir/B2.png", "/Work/BoldAir/B3.png", "/Work/BoldAir/B4.png", "/Work/BoldAir/B5.png", "/Work/BoldAir/B6.png", "/Work/BoldAir/B7.png"],
     userGroups: [
