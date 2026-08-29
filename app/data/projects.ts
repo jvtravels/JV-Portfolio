@@ -354,8 +354,8 @@ export const PROJECTS: Project[] = [
     ],
     industry: "A/B Testing",
     role: "Brand, Design, Development",
-    liveSite: "getcluster.ai",
-    liveUrl: "https://getcluster.ai",
+    liveSite: "vegetableandbutcher.com",
+    liveUrl: "https://vegetableandbutcher.com/",
     year: "2024",
     images: ["/Work/Vegetable/V1.png", "/Work/Vegetable/V2.png", "/Work/Vegetable/V3.mp4", "/Work/Vegetable/V4.mp4"],
     userGroups: [
